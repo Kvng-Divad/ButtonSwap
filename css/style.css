@@ -289,6 +289,7 @@ padding-top: 5px ;
     font-family: 'Merriweather', serif;
     font-weight: 700;
     border: 0;
+    padding-left:-2px;
     text-align:center;
 }
 #max:active{
