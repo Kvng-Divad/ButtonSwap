@@ -103,6 +103,9 @@ font-size: 35px;
 margin-right: 1.5em;
 color:var(--txt-100);
 }
+.nav-togglet i {
+Color:var(--txt-100);
+}
 #wallet{
 width:150px;
 height: 30px;
