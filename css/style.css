@@ -273,6 +273,7 @@ padding-top: 5px ;
     justify-content: space-around;
     align-items: center;
     margin-left: 22em;
+    text-align:center;
 }
 #half:active{
     opacity: 0;
@@ -289,7 +290,6 @@ padding-top: 5px ;
     font-family: 'Merriweather', serif;
     font-weight: 700;
     border: 0;
-    padding-left:-2px;
     text-align:center;
 }
 #max:active{
@@ -482,6 +482,7 @@ width: 124px;
 @media (max-width:1049px){    
     .nav-toggler{
         display: flex;
+        margin-left:-5px;
     }
     .navbar-item{
         display: none;
