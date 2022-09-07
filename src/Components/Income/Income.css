@@ -1,0 +1,11 @@
+
+.input{
+    gap: .5rem;
+    padding: .5rem;
+}
+
+.label{
+    font-size: var(--font-size-n);
+    font-weight: 600;
+    color: var(--text-color);
+}

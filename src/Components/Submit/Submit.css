@@ -1,0 +1,17 @@
+.close-title{
+    margin-top: 4rem;
+    justify-self: center;
+    gap: .5rem;
+    justify-items: center;
+}
+.close-title p{
+    font-size: var(--font-size-n);
+    font-weight: 600;
+    color: var(--text-color2);
+}
+.close-description{
+    font-size: var(--h3-size);
+    color: var(--text-color);
+    font-weight: 700;
+    text-align: center;
+}

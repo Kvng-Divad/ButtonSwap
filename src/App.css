@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800;900&family=Lobster&family=Merriweather:wght@400;700;900&family=Nunito:wght@300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/lunchtype21');
+@import url('http://fonts.cdnfonts.com/css/ambit');
+:root{
+    --bg-color-1:#fff;
+    --bg-color-2:linear-gradient(90deg, #E3000F -5%, #7F070F 100%);
+    --bg-color-3:linear-gradient( 80deg, #222,#444);
+    --body-color:#aaa;
+    --skin-color:#e3000f;  
+    --skin-color2:#7f070f;
+    --skin-color3:#474747;
+    --text-color:#000;
+    --text-color2:#777777;
+    --text-color-alt:#fff;
+    --text-color-alt2:#eee;
+    --white-color3: #d9d9d9;
+    --card-color: linear-gradient(80deg, #121212, #f19333);
+    --box-shadow:0 .25rem .75rem rgba(0, 0, 0, 0.448);
+
+    --font-light: 300;
+    --font-medium: 500;
+    --font-semibold:600;
+    --font-bold:800;
+
+    --bdy-font-family-alt: 'DM Sans', sans-serif;
+    --bdy-font-family:'DM Sans', sans-serif ;
+
+   
+    --font-size-bggr:3.15rem;
+    --font-size-bg: 2.5rem;
+    --font-size-m: 1.5rem;
+    --font-size-nr: 1rem;
+    --font-size-sm: .875em;
+    --font-size-smlr: .75rem;
+    --h1-size: 2.75rem;
+    --h2-size:1.75rem;
+    --h3-size: 1.25rem;
+ }
+
+ body{
+     font-size: var(--font-size-nr);
+     font-family: var(--bdy-font-family);
+     background:var(--bg-color-1) ;
+     color: var(--text-color);
+     transition: all .3s ease;
+ }
+ *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+    
+}
+::before, ::after
+{
+    box-sizing: border-box;
+}
+html{
+   scroll-behavior: smooth;
+  
+}
+
+ul{
+   list-style: none;
+}
+img{
+   max-width: 100%;
+   height: auto;
+}
+a{
+   color: var(--text-color);
+}
+input,button{
+ font-family: var(--bdy-font-family);
+ outline: none;
+ border: none;
+}
+
+
+/*-----scroll-bar------*/
+::-webkit-scrollbar{
+   width:.5rem;
+   background-color:var(--body-color);
+}
+::-webkit-scrollbar-thumb{
+   background-color:var(--skin-color2);
+   border-radius: .5rem;
+}
+::-webkit-scrollbar-thumb:hover{
+   background-color: var(--skin-color);
+}
+/*-----*scroll-bar-----*/
+
+/*-----Reuseable----*/
+.section{
+   width: 100%;
+   height: 100%;
+   min-height: 100vh;
+}
+.main-container{
+   width: 100%;
+   height: 100%;
+   background: var(--bg-color-1);
+   min-height: 100vh;
+   margin: auto;
+   overflow-x: hidden;
+}
+.container{
+   width: 100%;
+   height: 100%;
+   max-width: 1040px;
+   margin: auto;
+}
+
+.grid{
+   display: grid;
+}
+.flex{
+   display: flex;
+}
+.butn{
+   background: var(--skin-color);
+   border: 1px solid var(--skin-color);
+   color: var(--text-color-alt);
+   font-family: var(--bdy-font-family);
+   font-size: var(--font-size-sm);
+   font-weight: 600;
+   border-radius: 5px;
+   padding: .5rem .75rem;
+   text-transform: uppercase;
+}
+.butn:hover{
+   background: transparent;
+   border: 1px solid var(--skin-color);
+   color: var(--text-color);
+}
+.Button{
+   width: 100%;
+   justify-items: flex-end;
+   margin: 3rem 0;
+}
+.btn-alt{
+   background: white;
+   border: 1px solid var(--text-color2);
+   color: var(--text-color);
+   font-size: var(--font-size-sm) !important;
+   font-weight: 600;
+   border-radius: 5px !important;
+   padding: .5rem .75rem !important;
+   text-transform: uppercase;
+}
+.btn-container{
+   justify-items: center;
+}
+.btn-alt:hover{
+   background: transparent !important;
+   border: 1px solid var(--text-color-alt) !important;
+   color: var(--text-color-alt) !important;
+}
+.btn-alt2{
+   background: white;
+   border: 1px solid var(--text-color-alt);
+   color: var(--text-color);
+   font-size: var(--font-size-sm) !important;
+   font-weight: 600;
+   border-radius: 5px !important;
+   padding: .5rem .75rem !important;
+   text-transform: uppercase;
+   margin: auto;
+}
+.btn-alt2:hover{
+   background: transparent !important;
+   border: 1px solid var(--text-color-alt) !important;
+   color: var(--text-color-alt) !important;
+}
+.btns{
+   background: var(--bg-color-2) !important;
+   border: 1px solid var(--skin-color);
+   color: var(--text-color-alt);
+   font-size: var(--font-size-sm) !important;
+   font-weight: 600;
+   border-radius: 25px !important;
+   padding: .65rem 5rem !important;
+   text-transform: uppercase;
+}
+.btns:hover{
+   background: transparent !important;
+   border: 1px solid var(--skin-color) !important;
+   color: var(--text-color) !important;
+}
+
+.title{
+   margin-bottom: 2rem;
+   gap: .5rem;
+   text-align: center;
+}
+.title h3{
+   font-size: var(--h3-size);
+   font-weight: 700;
+   color: var(--text-color);
+   font-family: var(--bdy-font-family);
+   text-transform: uppercase;
+   text-align: center;
+}
+.title p{
+   font-size: var(--font-size-n);
+   font-weight: 500;
+   color: var(--text-color2);
+   font-family: var(--bdy-font-family);
+   text-align: center;
+}
+.section-title h3{
+   font-size: var(--font-size-n);
+   font-weight: 700;
+   color: var(--text-color);
+}
+.section-title p{
+   font-size: var(--font-size-sm);
+   font-weight: 500;
+   color: var(--text-color2);
+}
+.Container{
+   margin: 2rem 0;
+   gap: 3rem;
+   padding: 1.5rem;
+}
+.Container2{
+   margin: 4rem 0;
+   gap: 3rem;
+   padding: 1.5rem;
+}
+.Container3{
+   margin: 4rem 0;
+   gap: 3rem;
+   padding: 1.5rem;
+}
+
+
+
+@media (min-width:780px){
+   .Container{
+       padding: 0 5rem;
+       max-width: 75%;
+       margin: 5rem auto;
+   }
+   
+   .btns{
+        padding: .65rem 9rem !important;
+   }
+   
+}
+@media (min-width:960px){
+   *{
+       font-size: 16px;
+   }
+   .Container3{
+      padding: 0 5rem;
+      max-width: 85%;
+      margin: 6rem auto;
+  }
+  .Container2{
+   padding: 0 5rem;
+   max-width: 100%;
+   margin: 6rem auto;
+}
+}

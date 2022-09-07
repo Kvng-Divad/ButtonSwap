@@ -1,0 +1,30 @@
+.verification-container{
+    gap: 2.5rem;
+    justify-items: center;
+}
+.verify-input{
+    gap: 1rem;
+    justify-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1.5rem 2rem;
+}
+.verify-input h3{
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+.verify-input p{
+    color: var(--text-color2);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+}
+.img-input{
+    display: grid;
+    align-items: center;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
