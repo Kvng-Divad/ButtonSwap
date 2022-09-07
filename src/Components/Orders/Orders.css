@@ -1,0 +1,40 @@
+.order-container{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+.phone-details{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+.order-details h3{
+    font-size: var(--font-size-n);
+    font-weight: 500;
+    color: var(--text-color);
+}
+.infos {
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    gap: .25rem;
+    padding: .5rem;
+}
+.name{
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    color: var(--text-color2);
+}
+.order-left{
+    background-color: #eee;
+    padding: 1rem;
+}
+
+
+@media (min-width:960px){
+    .order-container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    .order-right{
+        padding: 1rem;
+    }
+}

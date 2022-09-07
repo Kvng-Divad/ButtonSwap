@@ -1,0 +1,19 @@
+.order-summary{
+    padding: 1rem;
+    gap:2rem;
+}
+.order-details{
+    gap: .5rem;
+
+}
+.order-details h4{
+    font-size: var(--font-size-n);
+   font-weight: 400;
+   color: var(--text-color2);
+}
+
+.order-details p{
+    font-size: var(--font-size-n);
+    font-weight: 600;
+    color: var(--text-color);
+}
