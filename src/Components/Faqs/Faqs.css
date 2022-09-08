@@ -36,7 +36,7 @@
     text-align: center;
 }
 .overlay h3{
-    font-size: var(--h3-size);
+    font-size: 1.65rem;
     font-weight: 700;
     color: var(--text-color-alt);
     text-transform: uppercase;

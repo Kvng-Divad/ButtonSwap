@@ -16,7 +16,7 @@
     --text-color-alt2:#eee;
     --white-color3: #d9d9d9;
     --card-color: linear-gradient(80deg, #121212, #f19333);
-    --box-shadow:0 .25rem .75rem rgba(0, 0, 0, 0.448);
+    --box-shadow:0 .25rem .75rem rgba(0, 0, 0, 0.2);
 
     --font-light: 300;
     --font-medium: 500;

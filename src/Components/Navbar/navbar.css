@@ -10,12 +10,12 @@
     z-index: 10;
 }
 .nav-list{
-    gap: 2em;
-    display: none;
+    gap: 3rem;
+    display: none;    
 }
 .navlink{
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: 500;
 }
 .logo{
     display: flex;
@@ -24,11 +24,11 @@
     gap: .5rem;
 }
 .logo-img{
-    width:4rem;
+    width:5rem;
 }
 .logo-img2{
-    width:1.75rem;
-    height: 1.5rem;
+    width:2.5rem;
+    height: 2.25rem;
 }
 .toggler{
     display:flex;
