@@ -1,29 +1,32 @@
 .HowItWorks{
     justify-items: center;
     padding: 1rem;
-    margin: 16rem 0 5rem;
+    margin: 17rem 0 5rem;
     position: relative;
 }
 .HowItWorks-container{
     padding: 1rem;
     gap: 3rem;
     justify-items: center;
-    max-width: 100%;
+    justify-content: center;
+    width: 100%;
 }
 
 .HowItWorks-cards{
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 100%);
     justify-items: center;
     gap: 2rem;
 }
 .card{
     justify-items: center;
-    background: #fff8f8;
+    background: #fff6f6;
     border-radius: 15px;
     gap: 1rem;
-    padding:1rem .5rem;
+    padding: 3rem .25rem;
     text-align: center;
     width: 90%;
+    height: 100%;
+    margin: auto 0;
 }
 .card:hover{
     box-shadow: var(--box-shadow);
@@ -40,14 +43,21 @@
     color: var(--text-color2);
     font-family: var(--bdy-font-family);
     text-align: center;
-    padding: 0 1.5rem;
+    padding: 0 1.75rem;
 }
+@media (min-width:500px){
+    .card{
+        width: 60%;
+        height: 100%;
+    }
+ }
 @media (min-width:780px){
     .HowItWorks-cards{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 200px);
     }
     .card{
         width: 100%;
+        height: 100%;
     }
  }
 @media (min-width:960px){
@@ -55,7 +65,9 @@
         margin: 5rem 0;
         position: relative;
     }
-    
+    .HowItWorks-cards{
+        grid-template-columns: repeat(3, 250px);
+    }
     .HowItWorks-container{
         padding: 1rem 0;
         max-width: 80%;

@@ -4,7 +4,7 @@
     gap: 3rem;
 }
 .calculator-container{
-    width: 80%;
+    width: 90%;
     gap: 2rem;
 }
 .filter{
@@ -12,3 +12,9 @@
     font-size: var(--font-size-nr);
     font-weight: 400;
 }
+@media (min-width:500px){
+    .calculator-container{
+        width: 60%;
+        gap: 2rem;
+    }
+ }

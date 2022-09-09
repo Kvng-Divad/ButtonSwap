@@ -9,10 +9,19 @@ import icon3 from '../../Assets/svg3.png'
 import image1 from '../../Assets/image1.png'
 import image2 from '../../Assets/image2.png'
 import image3 from '../../Assets/image3.png'
+import {useQuery} from 'react-query';
 
+const fetchProducts = async () =>{
+  const res = await fetch('http://kezaafrica.herokuapp.com/v1/products/with-images?take=12&page=1');
+    return res.json();
+}
 
 const Offer = () => {
-  const Data = [
+
+  const {data, status} = useQuery('products', fetchProducts);
+    console.log(data);
+  
+    const Data = [
     {
       logo: icon1,
       image:image1,
