@@ -29,6 +29,7 @@ const fetchProducts = async (page = 1, take = 12) => {
 
 const Offer = () => {
   const [page, setPage] = useState(1);
+  // eslint-disable-next-line
   const { data, status, refetch } = useQuery("products", () =>
     fetchProducts(page)
   );
