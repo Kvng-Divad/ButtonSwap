@@ -2,6 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import url("http://fonts.cdnfonts.com/css/lunchtype21");
 @import url("http://fonts.cdnfonts.com/css/ambit");
+:root {
+  --bg-color-1: #fff;
+  --bg-color-2: linear-gradient(90deg, #e3000f -5%, #7f070f 100%);
+  --bg-color-3: linear-gradient(80deg, #222, #444);
+  --body-color: #aaa;
+  --skin-color: #e3000f;
+  --skin-color2: #7f070f;
+  --skin-color3: #474747;
+  --text-color: #000;
+  --text-color2: #777777;
+  --text-color-alt: #fff;
+  --text-color-alt2: #eee;
+  --white-color3: #d9d9d9;
+  --card-color: linear-gradient(80deg, #121212, #f19333);
+  --box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+}
 
 * {
   transition: all 0.3s ease;

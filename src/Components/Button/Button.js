@@ -29,7 +29,6 @@ const Btn = styled.button`
       font-family: var(--bdy-font-family);
       font-size: var(--font-size-sm);
       font-weight: 500;
-      border-radius: 5px;
       padding: .5rem .75rem;
       text-transform: uppercase;
    }

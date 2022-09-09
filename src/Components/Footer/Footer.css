@@ -11,11 +11,11 @@
 }
 .footer-info{
     max-width: 70%;
-    gap: .75rem;
+    gap: 1rem;
 }
 .footer-info2{
     max-width: 100%;
-    gap: .5rem;
+    gap: .75rem;
 }
 .footer-info p{
     font-size: 1rem;
@@ -32,7 +32,6 @@
     background: transparent;
     border: 1.5px solid var(--text-color-alt);
     color: var(--text-color-alt);
-    border-radius: 5px;
     align-items: center;
     justify-content: space-evenly;
     max-width: 6.75rem;

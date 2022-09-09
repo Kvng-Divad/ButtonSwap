@@ -67,7 +67,7 @@ const Navbar = () => {
               <li><a href='#faqs' className='navlink'>FAQS</a></li>
             </ul>
 
-            <Link to='/details' onClick={onClose} className='btn-container grid'>
+            <Link to='/offers' onClick={onClose} className='btn-container grid'>
                 <button className='btn-alt2' >
                     Apply Now
                 </button>
