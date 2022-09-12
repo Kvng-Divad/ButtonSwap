@@ -64,3 +64,6 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+.chakra-button.page-key.active {
+  color: #e3000f;
+}
