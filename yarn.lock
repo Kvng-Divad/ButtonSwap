@@ -2853,7 +2853,7 @@
 
 "@motionone/animation@^10.12.0", "@motionone/animation@^10.13.1":
   version "10.14.0"
-  resolved "https://registry.npmjs.org/@motionone/animation/-/animation-10.14.0.tgz"
+  resolved "https://registry.yarnpkg.com/@motionone/animation/-/animation-10.14.0.tgz#2f2a3517183bb58d82e389aac777fe0850079de6"
   integrity sha512-h+1sdyBP8vbxEBW5gPFDnj+m2DCqdlAuf2g6Iafb1lcMnqjsRXWlPw1AXgvUMXmreyhqmPbJqoNfIKdytampRQ==
   dependencies:
     "@motionone/easing" "^10.14.0"
@@ -2895,7 +2895,7 @@
 
 "@motionone/generators@^10.12.0", "@motionone/generators@^10.13.1":
   version "10.14.0"
-  resolved "https://registry.npmjs.org/@motionone/generators/-/generators-10.14.0.tgz"
+  resolved "https://registry.yarnpkg.com/@motionone/generators/-/generators-10.14.0.tgz#e05d9dd56da78a4b92db99185848a0f3db62242d"
   integrity sha512-6kRHezoFfIjFN7pPpaxmkdZXD36tQNcyJe3nwVqwJ+ZfC0e3rFmszR8kp9DEVFs9QL/akWjuGPSLBI1tvz+Vjg==
   dependencies:
     "@motionone/types" "^10.14.0"
@@ -2909,7 +2909,7 @@
 
 "@motionone/utils@^10.12.0", "@motionone/utils@^10.13.1", "@motionone/utils@^10.14.0":
   version "10.14.0"
-  resolved "https://registry.npmjs.org/@motionone/utils/-/utils-10.14.0.tgz"
+  resolved "https://registry.yarnpkg.com/@motionone/utils/-/utils-10.14.0.tgz#a19a3464ed35b08506747b062d035c7bc9bbe708"
   integrity sha512-sLWBLPzRqkxmOTRzSaD3LFQXCPHvDzyHJ1a3VP9PRzBxyVd2pv51/gMOsdAcxQ9n+MIeGJnxzXBYplUHKj4jkw==
   dependencies:
     "@motionone/types" "^10.14.0"
@@ -9456,6 +9456,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+recoil-persist@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/recoil-persist/-/recoil-persist-4.2.0.tgz#9fbb4a8c158cbb83ceb9dedf795aee24ed15395d"
+  integrity sha512-MHVfML9GxJP3RpkKR4F5rp7DtvzIvjWhowtMao/b7h2k4afMio/4sMAdUtltIrDaeVegH0Iga8Sx5XQ3oD7CzA==
 
 recoil@^0.7.5:
   version "0.7.5"
