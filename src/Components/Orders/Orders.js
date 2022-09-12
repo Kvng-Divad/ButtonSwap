@@ -1,5 +1,5 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import {Link, useParams} from 'react-router-dom'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import './Orders.css'
 import Buttonalt from '../Buttonalt/Buttonalt'
@@ -9,8 +9,35 @@ import Faceid from '../../Assets/Faceid.svg'
 import Fingerprint from '../../Assets/Fingerprint.svg'
 import Network from '../../Assets/Network.svg'
 import Phone from '../../Assets/phone.svg'
+import { useQuery } from "react-query";
+
+
+
+
+
+const fetchProduct = async (id) => {
+  const res = await fetch(
+    `http://kezaafrica.herokuapp.com/v1/products/with-images/${id}`
+  );
+  return res.json();
+};
+
 
 const Orders = () => {
+  
+  const {id} = useParams()
+  // eslint-disable-next-line 
+  const {product, setProduct} = useState()
+  // eslint-disable-next-line
+  const { data, status, refetch } = useQuery("product", () =>
+  fetchProduct(id)
+  );
+  useEffect(() => {
+    refetch();
+    // eslint-disable-next-line
+  }, [id]);
+
+  
   return (
     <div className='Container2 grid'>
 

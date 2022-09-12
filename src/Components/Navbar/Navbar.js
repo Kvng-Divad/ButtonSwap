@@ -31,7 +31,7 @@ const Navbar = () => {
       
       <ul className='nav-list flex'>
         <li><NavLink to='/#howitworks' className='navlink'>HOW IT WORKS</NavLink></li>
-        <li><NavLink to='/offers' className='navlink'>APPLY NOW</NavLink></li>
+        <li><NavLink to='/products' className='navlink'>APPLY NOW</NavLink></li>
         <li><a href='#eligibility' className='navlink'>CALCULATOR</a></li>
         <li><a href='#faqs' className='navlink'>FAQS</a></li>
       </ul>
@@ -62,12 +62,12 @@ const Navbar = () => {
 
             <ul className='drop-menu-list grid'>
               <li><a href='#howitworks' className='navlink'>HOW IT WORKS</a></li>
-              <li><NavLink to='/offers' className='navlink'>APPLY NOW</NavLink></li>
+              <li><NavLink to='/products' className='navlink'>APPLY NOW</NavLink></li>
               <li><a href='#calculator' className='navlink'>CALCULATOR</a></li>
               <li><a href='#faqs' className='navlink'>FAQS</a></li>
             </ul>
 
-            <Link to='/offers' onClick={onClose} className='btn-container grid'>
+            <Link to='/products' onClick={onClose} className='btn-container grid'>
                 <button className='btn-alt2' >
                     Apply Now
                 </button>

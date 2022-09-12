@@ -11,10 +11,14 @@ import {
 import {Form, Formik} from 'formik'
 import { PinInput, PinInputField,} from '@chakra-ui/react'
 
+const onSubmit = async (values, actions) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  actions.resetForm();
+};
+
+
 
 const Detail = () => {
-
-  
 
   return (
     <div className='Container grid'>
@@ -28,19 +32,14 @@ const Detail = () => {
 
     <div className='form grid'>
           <Formik
-                initialValues={{ name: '' }}
-                onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    actions.setSubmitting(false)
-                    }, 1000)
-                }}
+                initialValues={{ email: '' }}
+                onSubmit={onSubmit}
                 >
                 {(props) => (
                 <Form>        
                   <FormControl isRequired>
                     <FormLabel>Work email</FormLabel>
-                    <Input placeholder='Enter your work email' />
+                    <Input name='email' placeholder='Enter your work email' />
                   </FormControl>
 
                   <div className='Button grid'>
@@ -85,9 +84,7 @@ const Detail = () => {
                       <PinInputField />
                       <PinInputField />
                     </PinInput>
-                 
                 
-
                     <div className='Button grid'>
                       <Buttonalt text='Verify' link='/application'/>
                     </div>
