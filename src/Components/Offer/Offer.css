@@ -20,6 +20,7 @@
 .phone-logo {
   border-bottom: 1px solid #ddd;
   max-width: 3rem;
+  width: 100%;
   align-items: center;
   justify-items: center;
   padding: 0.25rem;
@@ -52,7 +53,7 @@
   text-align: center;
 }
 
-.pagination{
+.pagination {
   justify-items: center;
   justify-self: center;
   justify-content: space-between;
@@ -61,31 +62,31 @@
   align-items: center;
   margin-top: 2rem;
 }
-.page{
+.page {
   justify-items: center;
   max-width: 100% !important;
-  gap: .5rem;
+  gap: 0.5rem;
 }
-.page-nav{
+.page-nav {
   min-width: 5rem !important;
   padding: 1rem !important;
   background: #fff !important;
   border: 1px solid #eee;
-   font-size: var(--font-size-sm);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--text-color);
 }
-.page-nav2{
+.page-nav2 {
   min-width: 3rem !important;
   max-width: 4rem;
   padding: 1rem !important;
   background: #fff !important;
   border: 1px solid #eee;
-   font-size: var(--font-size-sm);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--text-color);
 }
-.page-key{
+.page-key {
   width: 1.75rem !important;
   height: 1.75rem !important;
   background: #fff !important;
@@ -96,29 +97,23 @@
 }
 .page-key:hover,
 .page-nav:hover,
-.page-nav2:hover
-{
+.page-nav2:hover {
   background: #eee !important;
 }
 
-.progressbar{
-  justify-content: center!important;
+.progressbar {
+  justify-content: center !important;
   width: 100% !important;
 }
-.progress-bar{
+.progress-bar {
   justify-self: center !important;
   margin: 0 auto !important;
 }
-.progress-label{
+.progress-label {
   font-size: var(--font-size-nr) !important;
   font-weight: 600 !important;
   color: var(--text-color) !important;
 }
-
-
-
-
-
 
 @media (min-width: 650px) {
   .phone-cards {
