@@ -1,6 +1,6 @@
 import {React , useState}from 'react'
 import './Authenticate.css'
-import Breadcrumbs from '../Breadcrumb/Breadcrumb'
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import {
   FormControl,
@@ -32,7 +32,32 @@ const Authenticate = () => {
   return (
     <div className='Container grid'>
 
-        <Breadcrumbs/>
+        <div className='breadcrumb-container grid'>
+          <div className='hero-section grid'>
+            <div className='hero-icon flex'>
+              <Link to='/'><ChevronLeftIcon className='heroicon'/></Link>
+            </div>
+            <h3 className='hero-title'>APPLICATION</h3>
+          </div>
+          <div className='breadcrumb flex'>
+
+            <div className='breadcrumbItem flex isCurrentPage'>
+              <Link to='' className='breadcrumbLink '>1</Link>
+            </div>
+            <div className='seperator isCurrentPage'></div>
+            <div className='breadcrumbItem flex isCurrentPage'>
+              <Link to='' className='breadcrumbLink'>2</Link>
+            </div>
+            <div className='seperator isCurrentPage'></div>
+            <div isCurrentPage className='breadcrumbItem flex isCurrentPage'>
+              <Link to='' className='breadcrumbLink'>3</Link>
+            </div>
+            <div className='seperator isCurrentPage'></div>
+            <div className='breadcrumbItem flex isCurrentPage'>
+              <Link to='' className='breadcrumbLink'>4</Link>
+            </div>
+          </div>
+        </div>
 
         <div className='section-title'>
           <h3>Account Authentication</h3>

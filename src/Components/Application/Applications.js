@@ -11,18 +11,27 @@ import {
 import {Formik, Form, Field} from 'formik'
 import { Link } from 'react-router-dom'
 
-const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    actions.resetForm();
-  };
-
 
 const Applications = () => {
+    function validateName(value) {
+    let error
+    if (!value) {
+      error = 'Name is required'
+    } else if (value.toLowerCase()) {
+      error = "Jeez! You're not a fan 😱"
+    }
+    return error
+  }
+   
       
   return (
-    <div className='Container grid'>
-        <Breadcrumbs/>
-
+    <div className='grid'>
+        
+        <div className='head'>
+            <Breadcrumbs/>
+        </div>
+        
+      <div className='Container grid'>
         <div className='section-title'>
             <h3>Personal details</h3>
             <p>Kindly provide your information in the required fields</p>
@@ -30,16 +39,18 @@ const Applications = () => {
 
         <div>
             <Formik
-                initialValues={[
-                { name: '' },
-                { AccountNumber: '' },
-                { BVN: '' }]}
-                onSubmit={onSubmit}
+                initialValues={[{ name: '' }, { AccountNumber: '' }, { BVN: '' }]}
+                onSubmit={(values, actions) => {
+                    setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2))
+                    actions.setSubmitting(false)
+                    }, 1000)
+                }}
                 >
                 {(props) => (
                     <Form className='form grid'>
 
-                    <Field name='name' validate={''}>
+                    <Field name='name' validate={validateName}>
                         {({ field, form }) => (
                         <FormControl isInvalid={form.errors.name && form.touched.name}>
                             <FormLabel>Name of Bank</FormLabel>
@@ -49,7 +60,7 @@ const Applications = () => {
                         )}
                     </Field>
 
-                    <Field name='AccountNumber' validate={''}>
+                    <Field name='AccountNumber' validate={validateName}>
                         {({ field, form }) => (
                         <FormControl isInvalid={form.errors.name && form.touched.name}>
                             <FormLabel>Account number</FormLabel>
@@ -59,7 +70,7 @@ const Applications = () => {
                         )}
                     </Field>
 
-                    <Field name='BVN' validate={''}>
+                    <Field name='BVN' validate={validateName}>
                         {({ field, form }) => (
                         <FormControl isInvalid={form.errors.name && form.touched.name}>
                             <FormLabel>BVN</FormLabel>
@@ -97,7 +108,7 @@ const Applications = () => {
                     {(props) => (
                         <Form className='form grid'>
 
-                        <Field name='name' validate={''}>
+                        <Field name='name' validate={validateName}>
                             {({ field, form }) => (
                             <FormControl isInvalid={form.errors.name && form.touched.name}>
                                 <FormLabel>Full name</FormLabel>
@@ -107,7 +118,7 @@ const Applications = () => {
                             )}
                         </Field>
 
-                        <Field name='number' validate={''}>
+                        <Field name='number' validate={validateName}>
                             {({ field, form }) => (
                             <FormControl isInvalid={form.errors.number && form.touched.number}>
                                 <FormLabel>Phone number</FormLabel>
@@ -117,7 +128,7 @@ const Applications = () => {
                             )}
                         </Field>
 
-                        <Field name='address' validate={''}>
+                        <Field name='address' validate={validateName}>
                             {({ field, form }) => (
                             <FormControl isInvalid={form.errors.address && form.touched.address}>
                                 <FormLabel>Delivery address</FormLabel>
@@ -144,7 +155,7 @@ const Applications = () => {
             </Formik>
         </div>
         
-
+      </div>                          
         
     </div>
   )

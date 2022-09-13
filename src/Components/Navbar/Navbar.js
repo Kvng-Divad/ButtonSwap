@@ -62,7 +62,7 @@ const Navbar = () => {
 
             <ul className='drop-menu-list grid'>
               <li><a href='#howitworks' className='navlink'>HOW IT WORKS</a></li>
-              <li><NavLink to='/products' className='navlink'>APPLY NOW</NavLink></li>
+              <li><NavLink to='/produtcs' className='navlink'>APPLY NOW</NavLink></li>
               <li><a href='#calculator' className='navlink'>CALCULATOR</a></li>
               <li><a href='#faqs' className='navlink'>FAQS</a></li>
             </ul>

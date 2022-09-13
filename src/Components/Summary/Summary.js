@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import Buttonalt from '../Buttonalt/Buttonalt'
-import './Summary.css'
 
 const Summarys = () => {
   return (
