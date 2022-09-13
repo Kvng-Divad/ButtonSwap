@@ -22,7 +22,7 @@ import { productsState, singleProductState } from "../../data/state";
 
 const fetchProducts = async (page = 1, brand, take = 12) => {
   const res = await fetch(
-    `http://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}&brand=${brand}`
+    `https://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}&brand=${brand}`
   );
   return res.json();
 };
@@ -40,8 +40,6 @@ const Offer = () => {
   const list = products.list;
   const totalCount = products.totalCount;
   const numberOfPages = products.numberOfPages;
-
-
 
   const conveneNumber = Intl.NumberFormat(undefined, {
     style: "currency",
@@ -159,9 +157,9 @@ const Offer = () => {
           setPage(page);
         }}
       >
-        <PaginationContainer className='pagination'>
+        <PaginationContainer className="pagination">
           <PaginationPrevious>Previous</PaginationPrevious>
-          <PaginationPageGroup className='page'>
+          <PaginationPageGroup className="page">
             {pages.map(page => (
               <PaginationPage
                 className={`page-key${currentPage === page ? " active" : ""}`}
