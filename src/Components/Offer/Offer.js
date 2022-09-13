@@ -20,9 +20,9 @@ import {
 import { useRecoilState } from "recoil";
 import { productsState, singleProductState } from "../../data/state";
 
-const fetchProducts = async (page = 1, take = 12) => {
+const fetchProducts = async (page = 1, brand = "", take = 12) => {
   const res = await fetch(
-    `http://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}`
+    `http://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}&brand=${brand}`
   );
   return res.json();
 };
@@ -40,8 +40,6 @@ const Offer = () => {
   const list = products.list;
   const totalCount = products.totalCount;
   const numberOfPages = products.numberOfPages;
-
-  // Add a progress bar to show that it is refetching when status === loading
 
   const conveneNumber = Intl.NumberFormat(undefined, {
     style: "currency",
@@ -61,7 +59,7 @@ const Offer = () => {
       setLoading(false);
     });
     // eslint-disable-next-line
-  }, [page]);
+  }, [page, brand]);
 
   return (
     <div className="Container3 grid">
@@ -85,9 +83,15 @@ const Offer = () => {
         value={brand}
         onChange={e => setBrand(e.target.value)}
       >
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+        <option value="iphone">Iphone</option>
+        <option value="tecno">Tecno</option>
+        <option value="samsung">Samsung</option>
+        <option value="infinix">Infinix</option>
+        <option value="redmi">Redmi</option>
+        <option value="huawei">Huawei</option>
+        <option value="google">Google</option>
+        <option value="tecno">Tecno</option>
+        <option value="samsung">Samsung</option>
       </Select>
 
       {(status === "loading" || loading) && (
@@ -150,8 +154,9 @@ const Offer = () => {
             );
           })}
       </div>
-      {/* Style this pagination component  */}
+
       <Pagination
+        className="paginations grid"
         pagesCount={pagesCount}
         currentPage={currentPage}
         onPageChange={page => {
@@ -159,9 +164,9 @@ const Offer = () => {
           setPage(page);
         }}
       >
-        <PaginationContainer>
-          <PaginationPrevious>Previous</PaginationPrevious>
-          <PaginationPageGroup>
+        <PaginationContainer className="pagination grid">
+          <PaginationPrevious className="page-nav">Previous</PaginationPrevious>
+          <PaginationPageGroup className="page grid">
             {pages.map(page => (
               <PaginationPage
                 className={`page-key${currentPage === page ? " active" : ""}`}
@@ -170,7 +175,7 @@ const Offer = () => {
               />
             ))}
           </PaginationPageGroup>
-          <PaginationNext>Next</PaginationNext>
+          <PaginationNext className="page-nav2">Next</PaginationNext>
         </PaginationContainer>
       </Pagination>
     </div>

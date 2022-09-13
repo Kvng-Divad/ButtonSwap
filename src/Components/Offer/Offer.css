@@ -19,6 +19,7 @@
 }
 .phone-logo {
   border-bottom: 1px solid #ddd;
+  max-width: 3rem;
   width: 100%;
   align-items: center;
   justify-items: center;
@@ -31,7 +32,7 @@
   margin-bottom: 0.25rem;
 }
 .phone-name {
-  font-size: var(--font-size-nr);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--text-color);
   text-transform: uppercase;
@@ -50,6 +51,68 @@
   color: var(--text-color);
   font-family: var(--bdy-font-family);
   text-align: center;
+}
+
+.pagination {
+  justify-items: center;
+  justify-self: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 60% !important;
+  align-items: center;
+  margin-top: 2rem;
+}
+.page {
+  justify-items: center;
+  max-width: 100% !important;
+  gap: 0.5rem;
+}
+.page-nav {
+  min-width: 5rem !important;
+  padding: 1rem !important;
+  background: #fff !important;
+  border: 1px solid #eee;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-color);
+}
+.page-nav2 {
+  min-width: 3rem !important;
+  max-width: 4rem;
+  padding: 1rem !important;
+  background: #fff !important;
+  border: 1px solid #eee;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-color);
+}
+.page-key {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  background: #fff !important;
+  border: 1px solid #eee;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-color);
+}
+.page-key:hover,
+.page-nav:hover,
+.page-nav2:hover {
+  background: #eee !important;
+}
+
+.progressbar {
+  justify-content: center !important;
+  width: 100% !important;
+}
+.progress-bar {
+  justify-self: center !important;
+  margin: 0 auto !important;
+}
+.progress-label {
+  font-size: var(--font-size-nr) !important;
+  font-weight: 600 !important;
+  color: var(--text-color) !important;
 }
 
 @media (min-width: 650px) {

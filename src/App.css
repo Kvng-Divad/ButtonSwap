@@ -146,7 +146,6 @@ button {
   font-family: var(--bdy-font-family);
   font-size: var(--font-size-sm);
   font-weight: 600;
-  border-radius: 5px;
   padding: 0.5rem 0.75rem;
   text-transform: uppercase;
 }
@@ -166,7 +165,6 @@ button {
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
-  border-radius: 5px !important;
   padding: 0.5rem 0.75rem !important;
   text-transform: uppercase;
 }
@@ -184,7 +182,6 @@ button {
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
-  border-radius: 5px !important;
   padding: 0.5rem 0.75rem !important;
   text-transform: uppercase;
   margin: auto;
@@ -201,7 +198,6 @@ button {
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
   border-radius: 25px !important;
-  padding: 0.65rem 5rem !important;
   text-transform: uppercase;
 }
 .btns:hover {
