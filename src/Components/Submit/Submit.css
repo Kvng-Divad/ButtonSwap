@@ -4,6 +4,9 @@
     gap: .5rem;
     justify-items: center;
 }
+.close-title img{
+    width: 450px;
+}
 .close-title p{
     font-size: var(--font-size-n);
     font-weight: 600;

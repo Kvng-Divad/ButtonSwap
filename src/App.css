@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800;900&family=Lobster&family=Merriweather:wght@400;700;900&family=Nunito:wght@300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
-@import url("http://fonts.cdnfonts.com/css/lunchtype21");
-@import url("http://fonts.cdnfonts.com/css/ambit");
 :root {
   --bg-color-1: #fff;
   --bg-color-2: linear-gradient(90deg, #e3000f -5%, #7f070f 100%);
@@ -16,7 +13,7 @@
   --text-color-alt2: #eee;
   --white-color3: #d9d9d9;
   --card-color: linear-gradient(80deg, #121212, #f19333);
-  --box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  --box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -146,6 +143,7 @@ button {
   font-family: var(--bdy-font-family);
   font-size: var(--font-size-sm);
   font-weight: 600;
+  border-radius: 5px;
   padding: 0.5rem 0.75rem;
   text-transform: uppercase;
 }
@@ -165,6 +163,7 @@ button {
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
+  border-radius: 5px !important;
   padding: 0.5rem 0.75rem !important;
   text-transform: uppercase;
 }
@@ -182,6 +181,7 @@ button {
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
+  border-radius: 5px !important;
   padding: 0.5rem 0.75rem !important;
   text-transform: uppercase;
   margin: auto;
@@ -198,6 +198,7 @@ button {
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
   border-radius: 25px !important;
+  padding: 0.65rem 5rem !important;
   text-transform: uppercase;
 }
 .btns:hover {
@@ -251,6 +252,77 @@ button {
   gap: 3rem;
   padding: 1.5rem;
 }
+
+/*------Breadcrumbs----*/
+.hero-section{
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.hero-icon{
+  padding:.35rem;
+  background: var(--skin-color);
+  border: 1px solid var(--skin-color);
+  justify-content: center;
+  align-items: center;
+  max-width: 2rem;
+  color: var(--text-color-alt) !important;
+}
+.hero-icon:hover{
+  background: transparent;
+  border: 1px solid var(--skin-color);
+  color: var(--text-color) !important;
+}
+.heroicon{
+  font-size: var(--font-size-n);
+}
+.hero-title{
+  font-size: var(--font-size-n);
+  font-weight: 600;
+  color: var(--text-color2);
+  text-align: center;
+}
+.breadcrumb-container{
+  margin-top: 3rem;
+}
+
+.breadcrumb{
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ gap: .25rem;
+}
+.breadcrumbItem{
+  padding:.35rem .65rem;
+  background: var(--body-color);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--skin-color);
+  color: var(--text-color) ;
+}
+.isCurrentPage{
+  background: var(--skin-color) !important;
+  color: var(--text-color-alt) !important;
+}
+.breadcrumbLink{
+  font-size: var(--font-size-n);
+  font-weight: 700;
+  text-decoration: none ;
+}
+.seperator{
+  height: .25rem;
+  width: 100%;
+  background: var(--body-color);
+}
+.blur{
+  opacity:.5;
+}
+.breadcrumb-container{
+  background: #eee;
+  padding: 1rem;
+}
+
+/*------Breadcrumbs----*/
+
 
 @media (min-width: 780px) {
   .Container {
