@@ -8,7 +8,6 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import {
   Pagination,
   PaginationContainer,
