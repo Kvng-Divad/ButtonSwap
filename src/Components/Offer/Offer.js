@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Offer.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-import { Select } from "@chakra-ui/react";
+import {
+  CircularProgress,
+  CircularProgressLabel,
+  Select,
+} from "@chakra-ui/react";
 import { useQuery } from "react-query";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import {
@@ -14,6 +18,8 @@ import {
   PaginationPrevious,
   usePagination,
 } from "@ajna/pagination";
+import { useRecoilState } from "recoil";
+import { productsState, singleProductState } from "../../data/state";
 
 const fetchProducts = async (page = 1, brand = "", take = 12) => {
   const res = await fetch(
@@ -23,15 +29,18 @@ const fetchProducts = async (page = 1, brand = "", take = 12) => {
 };
 
 const Offer = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [brand, setBrand] = useState("");
-
-  const { data, status, refetch } = useQuery("products", () =>
-    fetchProducts(page, brand)
-  );
-  const list = data?.data?.list;
-  const totalCount = data?.data?.totalCount;
-  const numberOfPages = data?.data?.numberOfPages;
+  const [loading, setLoading] = useState(false);
+  const [, setProduct] = useRecoilState(singleProductState);
+  const [products, setProducts] = useRecoilState(productsState);
+  const { status } = useQuery("products", () => fetchProducts(page, brand), {
+    keepPreviousData: true,
+  });
+  const list = products.list;
+  const totalCount = products.totalCount;
+  const numberOfPages = products.numberOfPages;
 
   const conveneNumber = Intl.NumberFormat(undefined, {
     style: "currency",
@@ -44,16 +53,12 @@ const Offer = () => {
     initialState: { currentPage: 1 },
   });
 
-  const products = list?.map(item => ({
-    logo: item?.brand?.image,
-    image: item?.meta?.images?.find(image => image?.image?.length > 1)?.image,
-    name: item?.name,
-    price: item?.meta?.price?.min,
-    color: item?.meta?.colors[0],
-  }));
-
   useEffect(() => {
-    refetch();
+    setLoading(true);
+    fetchProducts(page, brand)?.then(data => {
+      setProducts(data?.data);
+      setLoading(false);
+    });
     // eslint-disable-next-line
   }, [page, brand]);
 
@@ -76,8 +81,8 @@ const Offer = () => {
         variant="filled"
         className="filter"
         size="lg"
-        value=""
-        onSelect={e => setBrand(e.target.value)}
+        value={brand}
+        onChange={e => setBrand(e.target.value)}
       >
         <option value="iphone">Iphone</option>
         <option value="tecno">Tecno</option>
@@ -90,7 +95,7 @@ const Offer = () => {
         <option value="samsung">Samsung</option>
       </Select>
 
-      {status === "loading" && (
+      {(status === "loading" || loading) && (
         <div className="progressbar flex">
           <CircularProgress
             isIndeterminate
@@ -112,31 +117,43 @@ const Offer = () => {
         </div>
       )}
       <div className="phone-cards grid">
-        {products?.map(({ logo, image, color, name, price }, index) => {
-          return (
-            <div key={index} className="phone-card grid">
-              <div className="phone-logo grid">
-                <img src={logo} alt="icon" />
+        {!(status === "error" || status === "loading" || loading) &&
+          list?.map((product, index) => {
+            const logo = product?.brand?.image;
+            const image = product?.meta?.images?.find(
+              image => image?.image?.length > 1
+            )?.image;
+            const name = product?.name;
+            const price = product?.meta?.price?.min;
+            return (
+              <div key={index} className="phone-card grid">
+                <div className="phone-logo grid">
+                  <img src={logo} alt="icon" />
+                </div>
+
+                <div className="phone-img">
+                  <img src={image} alt="icon" />
+                </div>
+
+                <div className="phone-color"></div>
+
+                <h3 className="phone-name">{name}</h3>
+
+                <p className="price">
+                  From <span>{conveneNumber(price)}</span> per month{" "}
+                </p>
+                <button
+                  onClick={() => {
+                    setProduct(product);
+                    navigate(`/products/${product?.id}`);
+                  }}
+                  className="butn"
+                >
+                  Select
+                </button>
               </div>
-
-              <div className="phone-img">
-                <img src={image} alt="icon" />
-              </div>
-
-              <div className="phone-color"></div>
-
-              <h3 className="phone-name">{name}</h3>
-
-              <p className="price">
-                From <span>{conveneNumber(price)}</span> per month{" "}
-              </p>
-
-              <Link to={`/products/${index}`}>
-                <button className="butn">Select</button>
-              </Link>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
 
       <Pagination
@@ -153,7 +170,7 @@ const Offer = () => {
           <PaginationPageGroup className="page grid">
             {pages.map(page => (
               <PaginationPage
-                className="page-key"
+                className={`page-key${currentPage === page ? " active" : ""}`}
                 key={`pagination_page_${page}`}
                 page={page}
               />
