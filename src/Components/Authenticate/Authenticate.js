@@ -1,5 +1,4 @@
 import {React , useState}from 'react'
-import './Authenticate.css'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import {
@@ -61,7 +60,7 @@ const Authenticate = () => {
 
         <div className='section-title'>
           <h3>Account Authentication</h3>
-          <p>Kindly provide your information in the required fields</p>
+          <p>Password should have at least 8 characters</p>
         </div>
         
         <div >

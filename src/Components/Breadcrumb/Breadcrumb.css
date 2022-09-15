@@ -1,6 +1,9 @@
-.hero-section{
+.hero-Section{
     gap: 1rem;
     margin-bottom: 1rem;
+}
+.Breadcrumb-container{
+    margin: 5rem auto 2rem;
 }
 .hero-icon{
     padding:.35rem;
@@ -17,22 +20,21 @@
     color: var(--text-color) !important;
  }
 .heroicon{
-    font-size: var(--font-size-n);
+    font-size: var(--font-size-nr);
 }
 .hero-title{
-    font-size: var(--font-size-n);
+    font-size: var(--font-size-nr);
     font-weight: 600;
     color: var(--text-color2);
     text-align: center;
 }
-.breadcrumb-container{
-    margin-top: 3rem;
-}
 
-.breadcrumb{
+
+.Breadcrumb{
    justify-content: space-between;
    align-items: center;
-   width: 100%;
+   width: 80%;
+   justify-self: center;
    gap: .25rem;
 }
 .breadcrumbItem{

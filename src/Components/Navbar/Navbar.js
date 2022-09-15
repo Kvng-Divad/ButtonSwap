@@ -32,8 +32,8 @@ const Navbar = () => {
       <ul className='nav-list flex'>
         <li><NavLink to='/#howitworks' className='navlink'>HOW IT WORKS</NavLink></li>
         <li><NavLink to='/products' className='navlink'>APPLY NOW</NavLink></li>
-        <li><a href='#eligibility' className='navlink'>CALCULATOR</a></li>
-        <li><a href='#faqs' className='navlink'>FAQS</a></li>
+        <li><NavLink to='/#calculator' className='navlink'>CALCULATOR</NavLink></li>
+        <li><NavLink to='/#faqs' className='navlink'>FAQS</NavLink></li>
       </ul>
 
       <div className='logo'>
@@ -61,10 +61,10 @@ const Navbar = () => {
           <DrawerBody>
 
             <ul className='drop-menu-list grid'>
-              <li><a href='#howitworks' className='navlink'>HOW IT WORKS</a></li>
-              <li><NavLink to='/produtcs' className='navlink'>APPLY NOW</NavLink></li>
-              <li><a href='#calculator' className='navlink'>CALCULATOR</a></li>
-              <li><a href='#faqs' className='navlink'>FAQS</a></li>
+            <li><NavLink to='/' className='navlink'>HOME</NavLink></li>
+              <li><NavLink to='/#howitworks' className='navlink'>HOW IT WORKS</NavLink></li>
+              <li><NavLink to='/#calculator' className='navlink'>CALCULATOR</NavLink></li>
+              <li><NavLink to='/#faqs' className='navlink'>FAQS</NavLink></li>
             </ul>
 
             <Link to='/products' onClick={onClose} className='btn-container grid'>

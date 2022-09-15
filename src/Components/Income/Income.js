@@ -12,12 +12,15 @@ const Incomes = () => {
     <div className='Container grid'>
 
     <div className='breadcrumb-container grid'>
+      
       <div className='hero-section grid'>
+
         <div className='hero-icon flex'>
           <Link to='/'><ChevronLeftIcon className='heroicon'/></Link>
         </div>
         <h3 className='hero-title'>APPLICATION</h3>
       </div>
+
       <div className='breadcrumb flex'>
 
         <div className='breadcrumbItem flex isCurrentPage'>

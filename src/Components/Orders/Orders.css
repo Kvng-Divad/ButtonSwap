@@ -3,12 +3,37 @@
     gap: 2rem;
 }
 .phone-details{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
-.order-details h3{
+.order-detail h3{
+    font-size: var(--font-size-nr);
+    font-weight: 600;
+    color: var(--text-color);
+}
+.order-details{
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    padding: 1rem;
+}
+.order-details h4{
     font-size: var(--font-size-n);
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--text-color2);
+}
+.order-details h3{
+    font-size: var(--font-size-m);
+    font-weight: 700;
+    color: var(--skin-color);
+}
+.phone-price{
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    color: var(--text-color2) !important;
+}
+.phone-price>span{
+    font-size: var(--font-size-nr);
+    font-weight: 600;
     color: var(--text-color);
 }
 .infos {
@@ -25,9 +50,56 @@
 }
 .order-left{
     background-color: #eee;
+    padding: 2rem;
+    gap: 2rem;
+}
+.order-left-images{
+    padding: 1rem 1rem 3rem;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    width: 100%;
+    margin: auto;
+}
+.order-logo{
+    border-bottom: 1px solid #eee;
+    width: 100%;
     padding: 1rem;
 }
-
+.order-logo img{
+    width: 5rem;
+    margin: auto
+}
+.order-img img{
+    width: 200px;
+    height: 300px;
+    margin: auto;
+}
+.radios{
+    padding: 1rem !important;
+}
+.active-radio{
+    background-color: var(--skin-color);
+    color: var(--text-color-alt);
+}
+.radio{
+    display: none !important;
+    padding: 1rem !important;
+}
+.radios-label{
+    gap: 1.5rem;
+}
+.radio-box{
+    padding: .75rem 1.5rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.radio-box:hover,.radio-box:active{
+    background-color: var(--skin-color);
+    color: var(--text-color-alt);
+}
 
 @media (min-width:960px){
     .order-container{
@@ -36,5 +108,9 @@
     }
     .order-right{
         padding: 1rem;
+    }
+    .order-left-images{
+        padding: 1rem 3rem 3rem;
+         width: 75%;
     }
 }

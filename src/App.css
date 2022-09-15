@@ -58,6 +58,7 @@
 body {
   font-size: var(--font-size-nr);
   font-family: var(--bdy-font-family);
+  font-weight: 500;
   background: var(--bg-color-1);
   color: var(--text-color);
   transition: all 0.3s ease;
@@ -154,7 +155,7 @@ button {
 }
 .Button {
   width: 100%;
-  justify-items: flex-end;
+  justify-items: center;
   margin: 3rem 0;
 }
 .btn-alt {
@@ -245,7 +246,6 @@ button {
 .Container2 {
   margin: 4rem 0;
   gap: 3rem;
-  padding: 1.5rem;
 }
 .Container3 {
   margin: 4rem 0;
@@ -254,6 +254,10 @@ button {
 }
 
 /*------Breadcrumbs----*/
+.section-header{
+  padding: 3rem 3rem 1rem;
+  row-gap: 3rem;
+}
 .hero-section{
   gap: 1rem;
   margin-bottom: 1rem;
@@ -327,7 +331,7 @@ button {
 @media (min-width: 780px) {
   .Container {
     padding: 0 5rem;
-    max-width: 75%;
+    max-width: 80%;
     margin: 5rem auto;
   }
 
@@ -339,10 +343,18 @@ button {
   * {
     font-size: 16px;
   }
+  .Button {
+    width: 100%;
+    justify-items: flex-end;
+  }
   .Container3 {
     padding: 0 5rem;
     max-width: 85%;
     margin: 6rem auto;
+  }
+  .section-header{
+    padding: 3rem 0rem 1rem;
+    row-gap: 3rem;
   }
   .Container2 {
     padding: 0 5rem;

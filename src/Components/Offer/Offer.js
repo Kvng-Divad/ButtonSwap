@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Offer.css";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
   CircularProgress,
@@ -22,7 +22,7 @@ import { productsState, singleProductState } from "../../data/state";
 
 const fetchProducts = async (page = 1, brand, take = 12) => {
   const res = await fetch(
-    `http://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}&brand=${brand}`
+    `https://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}&brand=${brand}`
   );
   return res.json();
 };
@@ -40,8 +40,6 @@ const Offer = () => {
   const list = products.list;
   const totalCount = products.totalCount;
   const numberOfPages = products.numberOfPages;
-
-
 
   const conveneNumber = Intl.NumberFormat(undefined, {
     style: "currency",
@@ -61,33 +59,40 @@ const Offer = () => {
       setLoading(false);
     });
     // eslint-disable-next-line
-  }, [page]);
+  }, [page, brand]);
 
   return (
     <div className="Container3 grid">
-      <div className="hero-icon flex">
-        <Link to="/">
-          <ChevronLeftIcon className="heroicon" />
-        </Link>
-      </div>
 
-      <div className="section-title">
-        <h3>Smartphone Offers</h3>
-        <p>Select a smartphone</p>
-      </div>
+        <div
+    className="hero-icon flex"
+    onClick={() => {
+      window.history.back();
+    }}
+  >
+    <ChevronLeftIcon className="heroicon" />
+        </div>
 
+        <div className="section-title">
+          <h3>Smartphone Offers</h3>
+          <p>Select a smartphone</p>
+        </div>  
+        
       <Select
         placeholder="All Brands"
         spacing={3}
         variant="filled"
         className="filter"
         size="lg"
-        value={brand}
-        onChange={e => setBrand(e.target.value)}
+        onClick={(e) => setBrand(e.target.value) }
       >
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+          <option value="iphone">Iphone</option>
+          <option value="tecno">Tecno</option>
+          <option value="samsung">Samsung</option>
+          <option value="infinix">Infinix</option>
+          <option value="redmi">Redmi</option>
+          <option value="huawei">Huawei</option>
+          <option value="google">Google</option>
       </Select>
 
       {(status === "loading" || loading) && (
@@ -159,9 +164,9 @@ const Offer = () => {
           setPage(page);
         }}
       >
-        <PaginationContainer className='pagination'>
+        <PaginationContainer className="pagination">
           <PaginationPrevious>Previous</PaginationPrevious>
-          <PaginationPageGroup className='page'>
+          <PaginationPageGroup className="page">
             {pages.map(page => (
               <PaginationPage
                 className={`page-key${currentPage === page ? " active" : ""}`}
