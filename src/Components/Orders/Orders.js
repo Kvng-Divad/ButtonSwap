@@ -8,7 +8,7 @@ import Fingerprint from "../../Assets/Fingerprint.svg";
 import Phone from "../../Assets/phone.svg";
 import { useRecoilState } from "recoil";
 import RadioCard from "../radioCard";
-import { singleProductState } from "../../data/state";
+import { applicationState, singleProductState } from "../../data/state";
 import {
   FormControl,
   RadioGroup,
@@ -20,27 +20,24 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-} from '@chakra-ui/react'
-import { Select, useRadioGroup } from '@chakra-ui/react'
-
-const conveneNumber = Intl.NumberFormat(undefined, {
-  style: "currency",
-  currency: "NGN",
-}).format;
+} from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
+import conveneNumber from "../../utils/convene-number";
 
 const Orders = () => {
   const [product] = useRecoilState(singleProductState);
-  // eslint-disable-next-line
+  const [application, setApplication] = useRecoilState(applicationState);
+
   const logo = product?.brand?.image;
-  // eslint-disable-next-line
-  const image = product?.meta?.images?.find( 
+
+  const image = product?.meta?.images?.find(
     image => image?.image?.length > 1
   )?.image;
   const name = product?.name;
- 
+
   const price = product?.meta?.price?.min;
- // eslint-disable-next-line
-  const color = product?.meta?.color;
+
+  const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
   const display = product?.components?.display;
   const battery = `${product?.components?.battery?.name}${
@@ -48,23 +45,17 @@ const Orders = () => {
   }`;
   const chip = product?.components?.chip;
 
-  const ram = ['64GB', '128GB', '256GB']
-  const plan = ['Pay Monthly', 'Pay Now']
-  // eslint-disable-next-line
-  const Color = ['64GB', '128GB', '256GB']
+  const ram = product?.storage?.ram;
+  const plans = [
+    { name: "Pay Monthly", value: "recurring" },
+    { name: "Pay Now", value: "once" },
+  ];
 
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'framework',
-    defaultValue: 'react',
-    onChange: console.log,
-  })
-  const group = getRootProps()
+  const oneTime = application.meta.plan === plans[1].value;
 
   return (
     <div className="Container2 grid">
-
       <div className="section-head grid">
-
         <div
           className="hero-icon flex"
           onClick={() => {
@@ -77,26 +68,21 @@ const Orders = () => {
         <div className="section-title">
           <h3>Choose a Phone Plan</h3>
         </div>
-
       </div>
-      
+
       <div className="order-container grid">
-        
         <div className="order-left grid">
-
           <div className="order-left-images grid">
-
             <div className="order-logo">
               <img src={logo} alt="log" />
             </div>
 
-              <div className="order-img">
-            <img src={image} alt="img" />
+            <div className="order-img">
+              <img src={image} alt="img" />
             </div>
           </div>
 
           <div className="order-detail grid">
-
             <h3>TOP DEVICE FEATURES</h3>
 
             <div className="phone-details grid">
@@ -119,7 +105,6 @@ const Orders = () => {
                 <img src={Fingerprint} alt="" />
                 <span className="name">{chip}</span>
               </div>
-
             </div>
           </div>
         </div>
@@ -129,50 +114,90 @@ const Orders = () => {
             <div className="order-details grid">
               <h4>MODEL</h4>
               <h3>{name}</h3>
-              <p className='phone-price'>
+              <p className="phone-price">
                 From <span>{conveneNumber(price)}</span> per month
               </p>
             </div>
 
-            < FormControl>
-
+            <FormControl>
               <div className="order-details">
                 <h4>CAPACITY</h4>
-                <HStack {...group}>
-                  {ram.map((value) => {
-                    const radio = getRadioProps({ value })
+                <HStack>
+                  {ram.map(value => {
                     return (
-                      <RadioCard key={value} {...radio}>
+                      <RadioCard
+                        onChange={() => {
+                          setApplication({
+                            ...application,
+                            product: {
+                              ...application.product,
+                              capacity: value,
+                            },
+                          });
+                        }}
+                        checked={application.product.capacity === value}
+                        key={value}
+                      >
                         {value}
                       </RadioCard>
-                    )
+                    );
                   })}
                 </HStack>
               </div>
 
               <div className="order-details">
                 <h4>COLOR</h4>
-                <RadioGroup defaultValue='' className="radios"> 
-                  <HStack spacing='24px' className="radio-color">
-                    <Radio colorScheme={color} value={color}>{color}</Radio>
-                    <Radio colorScheme={color} value={color}>{color}</Radio>
-                    <Radio colorScheme={color}value={color}>{color}</Radio>
+                <RadioGroup defaultValue="" className="radios">
+                  <HStack
+                    flexWrap={"wrap"}
+                    spacing="40px"
+                    className="radio-color"
+                  >
+                    {colors?.map((color, index) => (
+                      <Radio
+                        checked={application.product.color === color}
+                        onChange={() =>
+                          setApplication({
+                            ...application,
+                            product: {
+                              ...application.product,
+                              color,
+                            },
+                          })
+                        }
+                        key={index}
+                        colorScheme={color?.toLowerCase()}
+                        value={color}
+                      >
+                        {color}
+                      </Radio>
+                    ))}
                   </HStack>
                 </RadioGroup>
-
-                
               </div>
 
               <div className="order-details">
                 <h4>PAYMENT PLAN</h4>
-                <HStack {...group} className="radios-label flex">
-                  {plan.map((value) => {
-                    const radio = getRadioProps({ value })
+                <HStack className="radios-label flex">
+                  {plans.map(plan => {
                     return (
-                      <RadioCard key={value} {...radio} className="radio-box">
-                        {value}
+                      <RadioCard
+                        onChange={() =>
+                          setApplication({
+                            ...application,
+                            meta: {
+                              ...application.meta,
+                              plan: plan.value,
+                            },
+                          })
+                        }
+                        key={plan.value}
+                        checked={application.meta.plan === plan.value}
+                        className="radio-box"
+                      >
+                        {plan.name}
                       </RadioCard>
-                    )
+                    );
                   })}
                 </HStack>
               </div>
@@ -180,32 +205,94 @@ const Orders = () => {
               <div className="order-details">
                 <h4>PAYMENT TERMS</h4>
                 <Flex>
-                <NumberInput size='md' mr='2' maxW='100px' max={6} defaultValue={3} min={1}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
+                  <NumberInput
+                    isDisabled={oneTime}
+                    size="md"
+                    mr="2"
+                    maxW="100px"
+                    max={6}
+                    defaultValue={application.meta.terms.tenure}
+                    onChange={value =>
+                      setApplication({
+                        ...application,
+                        meta: {
+                          ...application.meta,
+                          terms: {
+                            ...application.meta.terms,
+                            tenure: Number(value),
+                          },
+                        },
+                      })
+                    }
+                    min={1}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
 
-                <Select placeholder='Select' maxW='100px'>
-                  <option value='month'>Month</option>
-                  <option value='months'>Months</option>
-                </Select>
-              </Flex>
+                  <Select
+                    disabled={oneTime}
+                    onChange={event =>
+                      setApplication({
+                        ...application,
+                        meta: {
+                          ...application.meta,
+                          terms: {
+                            ...application.meta.terms,
+                            type: event.target.value,
+                          },
+                        },
+                      })
+                    }
+                    placeholder="Select"
+                    maxW="100px"
+                  >
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                  </Select>
+                </Flex>
               </div>
 
               <div className="payment"></div>
 
               <div className="Button grid">
-                <Buttonalt text="Apply" link="/summary" />
-              </div>
+                <Buttonalt
+                  onClick={() => {
+                    const extra = 4000;
+                    const down = price * 0.3;
+                    const principal = price * 0.7;
+                    const months = oneTime ? 1 : application.meta.terms.tenure;
+                    const init = parseFloat(principal / months);
+                    const rate = 0.03;
+                    const increment = rate * init;
+                    const amount = parseFloat((increment + init) * months);
+                    const total = (amount + extra) * 100; // convert to kobo
+                    const dividend = parseFloat(total / months);
 
-            </ FormControl>
-            
+                    setApplication({
+                      ...application,
+                      product: {
+                        ...application.product,
+                        id: product.id,
+                        price,
+                      },
+                      payment: {
+                        total,
+                        dividend,
+                        down,
+                      },
+                    });
+                  }}
+                  text="Apply"
+                  link="/summary"
+                />
+              </div>
+            </FormControl>
           </div>
         </div>
-
       </div>
     </div>
   );
