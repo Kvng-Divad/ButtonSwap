@@ -24,11 +24,12 @@
     gap: .5rem;
 }
 .logo-img{
-    width:5rem;
+    width:7rem;
+    height: 3rem;
 }
 .logo-img2{
-    width:2.5rem;
-    height: 2.25rem;
+    width:3rem;
+    height: 3rem;
 }
 .toggler{
     display:flex;

@@ -5,14 +5,21 @@ import './Breadcrumb.css'
 
 const Breadcrumbs = () => {
   return (
-    <div className='breadcrumb-container grid'>
-      <div className='hero-section grid'>
-        <div className='hero-icon flex'>
-          <Link to='/'><ChevronLeftIcon className='heroicon'/></Link>
+    <div className='Breadcrumb-container grid'>
+
+      <div className='hero-Section grid'>
+      <div
+          className="hero-icon flex"
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          <ChevronLeftIcon className="heroicon" />
         </div>
         <h3 className='hero-title'>APPLICATION</h3>
       </div>
-      <div className='breadcrumb flex'>
+      
+      <div className='Breadcrumb flex'>
 
         <div className='breadcrumbItem flex isCurrentPage'>
           <Link to='' className='breadcrumbLink '>1</Link>
