@@ -12,11 +12,11 @@
 .hero{
     position: relative;
     width: 100%;
-    height: 60vh;
+    height: 40vh;
 }
 .hero img{
     width: 100%;
-    height: 60vh;
+    height: 40vh;
 }
 .right{
     align-items: center;
@@ -103,11 +103,31 @@
     .overlay h3{
         font-size: var(--h1-size);
     }
+    .hero{
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    .hero img{
+        width: 100%;
+        height: 50vh;
+    }
+    
 }
 @media (min-width:960px){
     .item{
         width: 45rem;
     }
+    .hero{
+        position: relative;
+        width: 100%;
+        height: 60vh;
+    }
+    .hero img{
+        width: 100%;
+        height: 60vh;
+    }
+    
 }
 @media (min-width:1200px){
     .item{

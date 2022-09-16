@@ -3,13 +3,12 @@ import './navbar.css'
 import Logo from '../../Assets/Logo.png'
 import Logo2 from '../../Assets/Logo2.svg'
 import { NavLink, Link} from "react-router-dom";
-import  { FaBars } from "react-icons/fa";
+import  { FaBars , FaTimes} from "react-icons/fa";
 import {
   Drawer,
   DrawerBody,
   DrawerContent,
   useDisclosure ,
-  DrawerCloseButton,
 } from '@chakra-ui/react'
 
 
@@ -41,7 +40,14 @@ const Navbar = () => {
 
         <div className='toggler' onClick={handleClick}>
 
-            <FaBars size={16} style={{color:"#000"}} ref={btnRef} onClick={onOpen} />  
+        {click ? (
+
+          <FaTimes size={16} style={{color:"#000"}} ref={btnRef} onClick={onClose} />
+          ) : (
+
+          <FaBars size={16} style={{color:"#000"}} ref={btnRef} onClick={onOpen} />  
+          )      
+          }      
 
         </div>
 
@@ -55,8 +61,6 @@ const Navbar = () => {
         finalFocusRef={btnRef}
       >
         <DrawerContent className='drop-menu grid'>
-
-          <DrawerCloseButton />
 
           <DrawerBody>
 

@@ -8,34 +8,43 @@ import { Input } from '@chakra-ui/react'
 
 const Verify = () => {
   return (
-    <div className='Container grid'>
 
-        <div className='breadcrumb-container grid'>
-          <div className='hero-section grid'>
-            <div className='hero-icon flex'>
-              <Link to='/'><ChevronLeftIcon className='heroicon'/></Link>
-            </div>
-            <h3 className='hero-title'>APPLICATION</h3>
+    <div>
+
+      <div className='breadcrumb-container grid'>
+        <div className='hero-section grid'>
+        <div
+            className="hero-icon flex"
+            onClick={() => {
+              window.history.back();
+            }}
+          >
+            <ChevronLeftIcon className="heroicon" />
           </div>
-          <div className='breadcrumb flex'>
 
-            <div className='breadcrumbItem flex isCurrentPage'>
-              <Link to='' className='breadcrumbLink '>1</Link>
-            </div>
-            <div className='seperator isCurrentPage'></div>
-            <div className='breadcrumbItem flex isCurrentPage'>
-              <Link to='' className='breadcrumbLink'>2</Link>
-            </div>
-            <div className='seperator isCurrentPage'></div>
-            <div isCurrentPage className='breadcrumbItem isCurrentPage flex'>
-              <Link to='' className='breadcrumbLink'>3</Link>
-            </div>
-            <div className='seperator isCurrentPage'></div>
-            <div className='breadcrumbItem flex'>
-              <Link to='' className='breadcrumbLink'>4</Link>
-            </div>
+          <h3 className='hero-title'>APPLICATION</h3>
+        </div>
+        <div className='breadcrumb flex'>
+
+          <div className='breadcrumbItem flex isCurrentPage'>
+            <Link to='' className='breadcrumbLink '>1</Link>
+          </div>
+          <div className='seperator isCurrentPage'></div>
+          <div className='breadcrumbItem flex isCurrentPage'>
+            <Link to='' className='breadcrumbLink'>2</Link>
+          </div>
+          <div className='seperator isCurrentPage'></div>
+          <div isCurrentPage className='breadcrumbItem isCurrentPage flex'>
+            <Link to='' className='breadcrumbLink'>3</Link>
+          </div>
+          <div className='seperator isCurrentPage'></div>
+          <div className='breadcrumbItem flex'>
+            <Link to='' className='breadcrumbLink'>4</Link>
           </div>
         </div>
+      </div>
+
+      <div className='Container grid'>
 
         <div className='section-title'>
           <h3>Identity Verification</h3>
@@ -71,7 +80,10 @@ const Verify = () => {
           <Buttonalt text='Next' link='/authentication'/>
         </div>
 
+      </div>
+      
     </div>
+    
   )
 }
 

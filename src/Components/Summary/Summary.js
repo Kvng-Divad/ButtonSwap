@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import Buttonalt from '../Buttonalt/Buttonalt'
 
@@ -7,13 +6,18 @@ const Summarys = () => {
   return (
     <div className='Container2 grid'>
 
-      <div className='hero-section grid'>
+      <div className="section-head grid">
 
-        <div className='hero-icon flex'>
-          <Link to='/'><ChevronLeftIcon className='heroicon'/></Link>
-        </div>
-        <h3 className='hero-title'>SUMMARY</h3>
+            <div
+              className="hero-icon flex"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              <ChevronLeftIcon className="heroicon" />
+            </div>
 
+            <h3 className='hero-title'>SUMMARY</h3>
       </div>
 
       <div className='order-container grid'>
