@@ -164,7 +164,6 @@ button {
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
   font-weight: 600;
-  border-radius: 5px !important;
   padding: 0.5rem 0.75rem !important;
   text-transform: uppercase;
 }
@@ -254,8 +253,8 @@ button {
 }
 
 /*------Breadcrumbs----*/
-.section-header{
-  padding: 3rem 3rem 1rem;
+.section-head{
+  padding: 3rem 2rem ;
   row-gap: 3rem;
 }
 .hero-section{
@@ -263,7 +262,7 @@ button {
   margin-bottom: 1rem;
 }
 .hero-icon{
-  padding:.35rem;
+  padding:.5rem;
   background: var(--skin-color);
   border: 1px solid var(--skin-color);
   justify-content: center;
@@ -285,10 +284,13 @@ button {
   color: var(--text-color2);
   text-align: center;
 }
-.breadcrumb-container{
-  margin-top: 3rem;
-}
 
+
+.breadcrumb-container{
+  margin: 4rem auto 2rem;
+  padding: 2rem 2rem;
+  background: #eee;
+}
 .breadcrumb{
  justify-content: space-between;
  align-items: center;
@@ -320,10 +322,7 @@ button {
 .blur{
   opacity:.5;
 }
-.breadcrumb-container{
-  background: #eee;
-  padding: 1rem;
-}
+
 
 /*------Breadcrumbs----*/
 
@@ -331,8 +330,8 @@ button {
 @media (min-width: 780px) {
   .Container {
     padding: 0 5rem;
-    max-width: 80%;
-    margin: 5rem auto;
+    max-width: 100%;
+    margin: 5rem 0;
   }
 
   .btns {
@@ -357,8 +356,13 @@ button {
     row-gap: 3rem;
   }
   .Container2 {
-    padding: 0 5rem;
+    padding: 0rem;
     max-width: 100%;
     margin: 6rem auto;
   }
+    .breadcrumb-container{
+        margin: 4rem auto 2rem;
+        padding: 2rem 5rem;
+        background: #eee;
+    }
 }

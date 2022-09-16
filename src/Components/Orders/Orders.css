@@ -101,7 +101,7 @@
     color: var(--text-color-alt);
 }
 
-@media (min-width:960px){
+@media (min-width:780px){
     .order-container{
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;

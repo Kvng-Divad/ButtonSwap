@@ -56,7 +56,7 @@ const Faqs = () => {
                 <h3>KEZA SMARTPHONE FINANCE</h3>
                 <p>Pay conveniently for a smartphone in monthly instalments</p>
 
-                <Link to='/details'>
+                <Link to='/products'>
                   <button className='btn-alt'>
                         Apply Now
                   </button>

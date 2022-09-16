@@ -32,72 +32,16 @@ const Applications = () => {
         </div>
         
       <div className='Container grid'>
-        <div className='section-title'>
-            <h3>Personal details</h3>
-            <p>Kindly provide your information in the required fields</p>
-        </div>
+        <div className='form-container grid'>
 
-        <div>
-            <Formik
-                initialValues={[{ name: '' }, { AccountNumber: '' }, { BVN: '' }]}
-                onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    actions.setSubmitting(false)
-                    }, 1000)
-                }}
-                >
-                {(props) => (
-                    <Form className='form grid'>
+            <div className='section-title'>
+                <h3>Personal details</h3>
+                <p>Kindly provide your information in the required fields</p>
+            </div>
 
-                    <Field name='name' validate={validateName}>
-                        {({ field, form }) => (
-                        <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <FormLabel>Name of Bank</FormLabel>
-                            <Input {...field} placeholder='Enter your bank name' />
-                            <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                        </FormControl>
-                        )}
-                    </Field>
-
-                    <Field name='AccountNumber' validate={validateName}>
-                        {({ field, form }) => (
-                        <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <FormLabel>Account number</FormLabel>
-                            <Input {...field} placeholder='Enter your account number' />
-                            <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                        </FormControl>
-                        )}
-                    </Field>
-
-                    <Field name='BVN' validate={validateName}>
-                        {({ field, form }) => (
-                        <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <FormLabel>BVN</FormLabel>
-                            <Input {...field} placeholder=' Enter your bvn ' />
-                            <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                        </FormControl>
-                        )}
-                    </Field>
-
-                    <div className='Button grid'>
-                        <Button
-                            isLoading={props.isSubmitting}
-                            type='submit'
-                            className='btns'
-                        >
-                            Verify
-                        </Button>
-                    </div>
-
-                    </Form>
-                )}
-            </Formik>
-        </div>
-        
-        <div>
-            <Formik
-                    initialValues={[{ name: '' }, { address: '' }, { number: '' }]}
+            <div>
+                <Formik
+                    initialValues={[{ name: '' }, { AccountNumber: '' }, { BVN: '' }]}
                     onSubmit={(values, actions) => {
                         setTimeout(() => {
                         alert(JSON.stringify(values, null, 2))
@@ -106,55 +50,113 @@ const Applications = () => {
                     }}
                     >
                     {(props) => (
-                        <Form className='form grid'>
+                        <Form >
 
                         <Field name='name' validate={validateName}>
                             {({ field, form }) => (
                             <FormControl isInvalid={form.errors.name && form.touched.name}>
-                                <FormLabel>Full name</FormLabel>
-                                <Input {...field} placeholder='Your full name' />
+                                <FormLabel>Name of Bank</FormLabel>
+                                <Input {...field} placeholder='Enter your bank name' />
                                 <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                             </FormControl>
                             )}
                         </Field>
 
-                        <Field name='number' validate={validateName}>
+                        <Field name='AccountNumber' validate={validateName}>
                             {({ field, form }) => (
-                            <FormControl isInvalid={form.errors.number && form.touched.number}>
-                                <FormLabel>Phone number</FormLabel>
-                                <Input {...field} placeholder='Your phone number ' />
-                                <FormErrorMessage>{form.errors.number}</FormErrorMessage>
+                            <FormControl isInvalid={form.errors.name && form.touched.name}>
+                                <FormLabel>Account number</FormLabel>
+                                <Input {...field} placeholder='Enter your account number' />
+                                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                             </FormControl>
                             )}
                         </Field>
 
-                        <Field name='address' validate={validateName}>
+                        <Field name='BVN' validate={validateName}>
                             {({ field, form }) => (
-                            <FormControl isInvalid={form.errors.address && form.touched.address}>
-                                <FormLabel>Delivery address</FormLabel>
-                                <Input {...field} placeholder='Your delivery address ' />
-                                <FormErrorMessage>{form.errors.address}</FormErrorMessage>
+                            <FormControl isInvalid={form.errors.name && form.touched.name}>
+                                <FormLabel>BVN</FormLabel>
+                                <Input {...field} placeholder=' Enter your bvn ' />
+                                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                             </FormControl>
                             )}
                         </Field>
 
                         <div className='Button grid'>
-                            <Link to='/income'>
-                                <Button
+                            <Button
                                 isLoading={props.isSubmitting}
                                 type='submit'
                                 className='btns'
                             >
-                                Next
+                                Verify
                             </Button>
-                            </Link>
                         </div>
 
                         </Form>
                     )}
-            </Formik>
+                </Formik>
+            </div>
+            
+            <div>
+                <Formik
+                        initialValues={[{ name: '' }, { address: '' }, { number: '' }]}
+                        onSubmit={(values, actions) => {
+                            setTimeout(() => {
+                            alert(JSON.stringify(values, null, 2))
+                            actions.setSubmitting(false)
+                            }, 1000)
+                        }}
+                        >
+                        {(props) => (
+                            <Form className='form grid'>
+
+                            <Field name='name' validate={validateName}>
+                                {({ field, form }) => (
+                                <FormControl isInvalid={form.errors.name && form.touched.name}>
+                                    <FormLabel>Full name</FormLabel>
+                                    <Input {...field} placeholder='Your full name' />
+                                    <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                                </FormControl>
+                                )}
+                            </Field>
+
+                            <Field name='number' validate={validateName}>
+                                {({ field, form }) => (
+                                <FormControl isInvalid={form.errors.number && form.touched.number}>
+                                    <FormLabel>Phone number</FormLabel>
+                                    <Input {...field} placeholder='Your phone number ' />
+                                    <FormErrorMessage>{form.errors.number}</FormErrorMessage>
+                                </FormControl>
+                                )}
+                            </Field>
+
+                            <Field name='address' validate={validateName}>
+                                {({ field, form }) => (
+                                <FormControl isInvalid={form.errors.address && form.touched.address}>
+                                    <FormLabel>Delivery address</FormLabel>
+                                    <Input {...field} placeholder='Your delivery address ' />
+                                    <FormErrorMessage>{form.errors.address}</FormErrorMessage>
+                                </FormControl>
+                                )}
+                            </Field>
+
+                            <div className='Button grid'>
+                                <Link to='/income'>
+                                    <Button
+                                    isLoading={props.isSubmitting}
+                                    type='submit'
+                                    className='btns'
+                                >
+                                    Next
+                                </Button>
+                                </Link>
+                            </div>
+
+                            </Form>
+                        )}
+                </Formik>
+            </div>
         </div>
-        
       </div>                          
         
     </div>

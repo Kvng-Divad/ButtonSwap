@@ -3,10 +3,12 @@
     margin-bottom: 1rem;
 }
 .Breadcrumb-container{
-    margin: 5rem auto 2rem;
+    margin: 4rem auto 2rem;
+    padding: 2rem 2rem;
+    background: #eee;
 }
-.hero-icon{
-    padding:.35rem;
+.Hero-icon{
+    padding:.5rem;
     background: var(--skin-color);
     border: 1px solid var(--skin-color);
     justify-content: center;
@@ -14,7 +16,7 @@
     max-width: 2rem;
     color: var(--text-color-alt) !important;
 }
-.hero-icon:hover{
+.Hero-icon:hover{
     background: transparent;
     border: 1px solid var(--skin-color);
     color: var(--text-color) !important;
@@ -33,7 +35,7 @@
 .Breadcrumb{
    justify-content: space-between;
    align-items: center;
-   width: 80%;
+   width: 100%;
    justify-self: center;
    gap: .25rem;
 }
@@ -58,4 +60,13 @@
     height: .25rem;
     width: 100%;
     background: var(--body-color);
+}
+
+
+@media (min-width: 960px){
+    .Breadcrumb-container{
+        margin: 4rem auto 2rem;
+        padding: 2rem 5rem;
+        background: #eee;
+    }
 }

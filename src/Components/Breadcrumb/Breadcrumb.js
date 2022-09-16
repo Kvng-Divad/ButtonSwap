@@ -9,7 +9,7 @@ const Breadcrumbs = () => {
 
       <div className='hero-Section grid'>
       <div
-          className="hero-icon flex"
+          className="Hero-icon flex"
           onClick={() => {
             window.history.back();
           }}

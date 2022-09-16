@@ -1,3 +1,13 @@
-.form{
-    gap: 1rem;
+.form-container{
+    width: 95%;
+    gap: 2rem;
+    margin: auto;
+}
+@media (min-width: 960px) {
+    .form-container{
+        width: 75%;
+        gap: 2rem;
+        margin: auto;
+    }
+
 }

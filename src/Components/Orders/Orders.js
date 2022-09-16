@@ -63,7 +63,7 @@ const Orders = () => {
   return (
     <div className="Container2 grid">
 
-      <div className="section-header grid">
+      <div className="section-head grid">
 
         <div
           className="hero-icon flex"
