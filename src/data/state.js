@@ -51,7 +51,7 @@ export const applicationState = atom({
       delivery_address: "",
       password: "",
       other: {
-        monthly_income: "",
+        monthly_income: 0,
         bank_branch: "",
       },
     },

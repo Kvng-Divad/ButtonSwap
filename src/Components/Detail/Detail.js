@@ -1,21 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import Buttonalt from "../Buttonalt/Buttonalt";
-import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Center,
+} from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { PinInput, PinInputField } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { applicationState } from "../../data/state";
+import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
+
+const defaultInfo = { message: "", status: "" };
 
 const Detail = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [application, setApplication] = useRecoilState(applicationState);
+  const [info, setInfo] = useState(defaultInfo);
+  const [initialValues, setInitialValues] = useState({ work_email: "" });
+
+  useEffect(() => {
+    setInitialValues({
+      work_email: application.user.work_email,
+    });
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="grid">
       <div className="head">
         <Breadcrumbs />
       </div>
-
+      {info.message && (
+        <Center>
+          <Alert
+            display={"flex"}
+            justifyContent="space-between"
+            alignSelf={"center"}
+            w={{ base: "90%", md: "50%" }}
+            status={info.status}
+          >
+            <AlertIcon />
+            <AlertTitle>{info.message}</AlertTitle>
+            <CloseButton onClick={() => setInfo(defaultInfo)} />
+          </Alert>
+        </Center>
+      )}
       <div className="Container grid">
         <div className="form-container grid">
           <div className="section-title">
@@ -24,7 +57,8 @@ const Detail = () => {
           </div>
 
           <Formik
-            initialValues={{ work_email: "" }}
+            initialValues={initialValues}
+            enableReinitialize
             onSubmit={(values, actions) => {
               setApplication({
                 ...application,
@@ -34,6 +68,10 @@ const Detail = () => {
                 },
               });
               // #TODO: Make a call to api for otp email
+              setInfo({
+                status: "success",
+                message: "Successfully sent you an OTP",
+              });
               actions.setSubmitting(false);
             }}
           >
@@ -51,6 +89,9 @@ const Detail = () => {
 
                 <div className="Button grid">
                   <Button
+                    disabled={
+                      props.values.work_email === application.user.work_email
+                    }
                     isLoading={props.isSubmitting}
                     type="submit"
                     className="btns"
@@ -74,6 +115,10 @@ const Detail = () => {
                   actions.setSubmitting(false);
 
                   // verify otp here
+                  setInfo({
+                    status: "success",
+                    message: "Successfully verified your OTP.",
+                  });
                   setIsVerified(true);
                 }, 1000);
               }}
@@ -98,7 +143,7 @@ const Detail = () => {
 
                   <div className="Button grid">
                     <Buttonalt
-                      disabled={!isVerified}
+                      disabled={!isVerified && !application.user.work_email}
                       type="submit"
                       text="Verify"
                       link="/application"

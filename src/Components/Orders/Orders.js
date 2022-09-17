@@ -23,6 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
 import conveneNumber from "../../utils/convene-number";
+import noImage from "../../Assets/no-image.png";
 
 const Orders = () => {
   const [product] = useRecoilState(singleProductState);
@@ -78,7 +79,11 @@ const Orders = () => {
             </div>
 
             <div className="order-img">
-              <img src={image} alt="img" />
+              <img
+                src={image || noImage}
+                style={{ width: !image ? "100%" : "" }}
+                alt="img"
+              />
             </div>
           </div>
 

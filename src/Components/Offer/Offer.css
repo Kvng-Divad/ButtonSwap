@@ -31,6 +31,26 @@
   position: relative;
   margin-bottom: 0.25rem;
 }
+.phone-img.empty img {
+  width: 100%;
+}
+.phone-img.empty::after {
+  content: "The picture of this device is currently unavailable";
+  display: block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: #8c8c8c;
+  position: absolute;
+  transform: translate(-27%, -75px);
+  width: 245px;
+}
+@media screen and (max-width: 500px) {
+  .phone-img.empty::after {
+    width: 200px;
+  }
+}
 .phone-name {
   font-size: var(--font-size-sm);
   font-weight: 600;
