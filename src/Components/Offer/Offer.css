@@ -25,6 +25,9 @@
   justify-items: center;
   padding: 0.25rem;
 }
+.phone-img {
+  position: relative;
+}
 .phone-img img {
   width: 5.5rem;
   height: 7rem;
@@ -48,7 +51,7 @@
 }
 @media screen and (max-width: 500px) {
   .phone-img.empty::after {
-    width: 200px;
+    width: 115px;
   }
 }
 .phone-name {

@@ -51,6 +51,10 @@ const Offer = () => {
     pagesCount: numberOfPages,
     total: totalCount,
     initialState: { currentPage: 1 },
+    limits: {
+      inner: 1,
+      outer: 3,
+    },
   });
 
   useEffect(() => {
@@ -167,9 +171,13 @@ const Offer = () => {
           setPage(page);
         }}
       >
-        <PaginationContainer className="pagination">
+        <PaginationContainer justifyContent={"center"} className="pagination">
           <PaginationPrevious>Previous</PaginationPrevious>
-          <PaginationPageGroup className="page">
+          <PaginationPageGroup
+            alignItems={"center"}
+            justifyContent="center"
+            className="page"
+          >
             {pages.map(page => (
               <PaginationPage
                 className={`page-key${currentPage === page ? " active" : ""}`}
