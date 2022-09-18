@@ -253,16 +253,16 @@ button {
 }
 
 /*------Breadcrumbs----*/
-.section-head{
-  padding: 3rem 2rem ;
+.section-head {
+  padding: 3rem 2rem;
   row-gap: 3rem;
 }
-.hero-section{
+.hero-section {
   gap: 1rem;
   margin-bottom: 1rem;
 }
-.hero-icon{
-  padding:.5rem;
+.hero-icon {
+  padding: 0.5rem;
   background: var(--skin-color);
   border: 1px solid var(--skin-color);
   justify-content: center;
@@ -270,62 +270,59 @@ button {
   max-width: 2rem;
   color: var(--text-color-alt) !important;
 }
-.hero-icon:hover{
+.hero-icon:hover {
   background: transparent;
   border: 1px solid var(--skin-color);
   color: var(--text-color) !important;
 }
-.heroicon{
+.heroicon {
   font-size: var(--font-size-n);
 }
-.hero-title{
+.hero-title {
   font-size: var(--font-size-n);
   font-weight: 600;
   color: var(--text-color2);
   text-align: center;
 }
 
-
-.breadcrumb-container{
+.breadcrumb-container {
   margin: 4rem auto 2rem;
   padding: 2rem 2rem;
   background: #eee;
 }
-.breadcrumb{
- justify-content: space-between;
- align-items: center;
- width: 100%;
- gap: .25rem;
+.breadcrumb {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0.25rem;
 }
-.breadcrumbItem{
-  padding:.35rem .65rem;
+.breadcrumbItem {
+  padding: 0.35rem 0.65rem;
   background: var(--body-color);
   justify-content: center;
   align-items: center;
   border: 1px solid var(--skin-color);
-  color: var(--text-color) ;
+  color: var(--text-color);
 }
-.isCurrentPage{
+.isCurrentPage {
   background: var(--skin-color) !important;
   color: var(--text-color-alt) !important;
 }
-.breadcrumbLink{
+.breadcrumbLink {
   font-size: var(--font-size-n);
   font-weight: 700;
-  text-decoration: none ;
+  text-decoration: none;
 }
-.seperator{
-  height: .25rem;
+.seperator {
+  height: 0.25rem;
   width: 100%;
   background: var(--body-color);
 }
-.blur{
-  opacity:.5;
+.blur {
+  opacity: 0.5;
 }
 
-
 /*------Breadcrumbs----*/
-
 
 @media (min-width: 780px) {
   .Container {
@@ -351,7 +348,7 @@ button {
     max-width: 85%;
     margin: 6rem auto;
   }
-  .section-header{
+  .section-header {
     padding: 3rem 0rem 1rem;
     row-gap: 3rem;
   }
@@ -360,9 +357,9 @@ button {
     max-width: 100%;
     margin: 6rem auto;
   }
-    .breadcrumb-container{
-        margin: 4rem auto 2rem;
-        padding: 2rem 5rem;
-        background: #eee;
-    }
+  .breadcrumb-container {
+    margin: 4rem auto 2rem;
+    padding: 2rem 5rem;
+    background: #eee;
+  }
 }
