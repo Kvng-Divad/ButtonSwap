@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { applicationState, singleProductState } from "../../data/state";
 import { Circle, Flex } from "@chakra-ui/react";
 import conveneNumber from "../../utils/convene-number";
+import "./Summary.css";
 
 const Summarys = () => {
   const [application] = useRecoilState(applicationState);
@@ -12,7 +13,7 @@ const Summarys = () => {
   const logo = product?.brand?.image;
   const model = product?.name;
   const image = product?.meta?.images?.find(
-    image => image?.image?.length > 1
+    (image) => image?.image?.length > 1
   )?.image;
   const capacity = application.product.capacity;
   const color = application.product.color;
@@ -88,7 +89,7 @@ const Summarys = () => {
             <div className="order-details">
               <h4>TOTAL</h4>
               <p>Down Payment: {conveneNumber(down)}</p>
-              {[...Array(tenure).keys()].map(number => {
+              {[...Array(tenure).keys()].map((number) => {
                 const cardinal = Number(String(number + 1).slice(-1));
                 return (
                   <p key={number}>{`${number + 1}${
@@ -105,7 +106,7 @@ const Summarys = () => {
             </div>
           </div>
 
-          <div className="payment"></div>
+          <div className="payment1"></div>
 
           <div className="Button grid">
             <Buttonalt text="Apply" link="/details" />

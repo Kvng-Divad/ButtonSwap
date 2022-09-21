@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import Buttonalt from "../Buttonalt/Buttonalt";
+
 import {
   FormControl,
   FormLabel,
@@ -12,6 +13,7 @@ import { Form, Formik } from "formik";
 import { PinInput, PinInputField } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { applicationState } from "../../data/state";
+import axios from "axios";
 import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
 
 const defaultInfo = { message: "", status: "" };
@@ -21,6 +23,19 @@ const Detail = () => {
   const [application, setApplication] = useRecoilState(applicationState);
   const [info, setInfo] = useState(defaultInfo);
   const [initialValues, setInitialValues] = useState({ work_email: "" });
+
+  const createOtpRequest = async () => {
+    await axios
+      .post("https://keza-zenith-staging.herokuapp.com/auth/request-otp", {
+        email: initialValues.work_email,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     setInitialValues({
@@ -75,7 +90,7 @@ const Detail = () => {
               actions.setSubmitting(false);
             }}
           >
-            {props => (
+            {(props) => (
               <Form onSubmit={props.handleSubmit}>
                 <FormControl isRequired>
                   <FormLabel>Work email</FormLabel>
@@ -87,7 +102,7 @@ const Detail = () => {
                   />
                 </FormControl>
 
-                <div className="Button grid">
+                <div onClick={createOtpRequest} className="Button grid">
                   <Button
                     disabled={
                       props.values.work_email === application.user.work_email
@@ -123,11 +138,11 @@ const Detail = () => {
                 }, 1000);
               }}
             >
-              {props => (
+              {(props) => (
                 <Form>
                   <PinInput
                     onComplete={() => props.handleSubmit()}
-                    onChange={value => {
+                    onChange={(value) => {
                       props.setFieldValue("otp", value);
                     }}
                     mask={false}

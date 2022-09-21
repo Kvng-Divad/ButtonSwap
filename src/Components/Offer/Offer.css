@@ -124,3 +124,8 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.Button {
+  display: flex;
+  justify-content: flex-start;
+}

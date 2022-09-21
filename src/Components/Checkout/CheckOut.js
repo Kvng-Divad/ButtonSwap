@@ -73,7 +73,7 @@ const CheckOut = () => {
             <div className="order-details">
               <h4>TOTAL</h4>
               <p>Down Payment: {conveneNumber(down)}</p>
-              {[...Array(tenure).keys()].map(number => {
+              {[...Array(tenure).keys()].map((number) => {
                 const cardinal = Number(String(number + 1).slice(-1));
                 return (
                   <p key={number}>{`${number + 1}${
@@ -90,7 +90,35 @@ const CheckOut = () => {
             </div>
           </div>
 
-          <div className="payment"></div>
+          <div className="payment">
+            <h3>TOTAL PAYMENT</h3>
+            <div className="payment-details">
+              <div className="top-pay">
+                <span>
+                  <input type="radio" />
+                </span>
+                <p>Down Payment</p>
+                <h1>₦110,000</h1>
+              </div>
+              <div className="main-payment">
+                <div className="list">
+                  <span />
+                  <p>1st montly payment:</p>
+                  <h4>₦63,500</h4>
+                </div>
+                <div className="list">
+                  <span />
+                  <p>2nd montly payment:</p>
+                  <h4>₦63,500</h4>
+                </div>
+                <div className="list">
+                  <span />
+                  <p>3rd montly payment:</p>
+                  <h4>₦63,500</h4>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <Buttonalt text="Finish" link="/submit" />
         </div>
