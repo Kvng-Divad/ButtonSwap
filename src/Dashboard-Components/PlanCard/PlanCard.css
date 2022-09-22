@@ -1,0 +1,46 @@
+.plan-conainer{
+    padding: .5rem;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    gap: 1rem;
+}
+
+.plan-value h3{
+    color: #E3000F;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.plan-value p{
+    font-size: var(--font-size-sm);
+    color: var(--text-color2);
+    font-weight: 400;
+    opacity: .7;
+}
+.planCard-left{
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+}
+.planCard-right{
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    margin-top: -.75rem;
+}
+.plan-keys{
+    gap: .25rem;
+}
+.plan-key{
+    gap: .25rem;
+    align-items: center;
+}
+.plan-key span{
+    width: .5rem;
+    height: .5rem;
+    border-radius: .25rem;
+    
+}
+.plan-key p{
+    font-size: var(--font-size-smlr);
+    color: var(--text-color2);
+}

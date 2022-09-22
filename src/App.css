@@ -1,75 +1,56 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 :root {
-  --bg-color-1: #fff;
+  --bg-color-1: #fff ;
   --bg-color-2: linear-gradient(90deg, #e3000f -5%, #7f070f 100%);
   --bg-color-3: linear-gradient(80deg, #222, #444);
   --body-color: #aaa;
   --skin-color: #e3000f;
   --skin-color2: #7f070f;
   --skin-color3: #474747;
-  --text-color: #000;
-  --text-color2: #777777;
+  --text-color: #1D1D1D;
+  --text-color2: ##8E8E8E;
   --text-color-alt: #fff;
   --text-color-alt2: #eee;
   --white-color3: #d9d9d9;
   --card-color: linear-gradient(80deg, #121212, #f19333);
-  --box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-* {
-  transition: all 0.3s ease;
-}
-
-:root {
-  --bg-color-1: #fff;
-  --bg-color-2: linear-gradient(90deg, #e3000f -5%, #7f070f 100%);
-  --bg-color-3: linear-gradient(80deg, #222, #444);
-  --body-color: #aaa;
-  --skin-color: #e3000f;
-  --skin-color2: #7f070f;
-  --skin-color3: #474747;
-  --text-color: #000;
-  --text-color2: #777777;
-  --text-color-alt: #fff;
-  --text-color-alt2: #eee;
-  --white-color3: #d9d9d9;
-  --card-color: linear-gradient(80deg, #121212, #f19333);
-  --box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.448);
+  --box-shadow: 0px 1px 8px rgba(24, 24, 24, 0.08);
 
   --font-light: 300;
   --font-medium: 500;
   --font-semibold: 600;
   --font-bold: 800;
 
-  --bdy-font-family-alt: "DM Sans", sans-serif;
+  --bdy-font-family-alt: "DM Sans", sans-seri !important;
   --bdy-font-family: "DM Sans", sans-serif;
 
-  --font-size-bggr: 3.15rem;
-  --font-size-bg: 2.5rem;
-  --font-size-m: 1.5rem;
-  --font-size-nr: 1rem;
-  --font-size-sm: 0.875em;
-  --font-size-smlr: 0.75rem;
-  --h1-size: 2.75rem;
-  --h2-size: 1.75rem;
-  --h3-size: 1.25rem;
+  --font-size-bggr: 3.15rem !important;
+  --font-size-bg: 2.5rem !important;
+  --font-size-m: 1.5rem !important;
+  --font-size-nr: 1rem !important;
+  --font-size-sm: 0.875rem !important;
+  --font-size-smlr: 0.75rem !important;
+  --h1-size: 2.75rem !important;
+  --h2-size: 1.75rem !important;
+  --h3-size: 1.5rem !important;
 }
 
 body {
-  font-size: var(--font-size-nr);
-  font-family: var(--bdy-font-family);
-  font-weight: 500;
+  font-size: var(--font-size-nr) !important;
+  font-family: var(--bdy-font-family) !important;
+  font-weight: 400;
   background: var(--bg-color-1);
   color: var(--text-color);
-  transition: all 0.3s ease;
+  
 }
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   font-size: 14px;
   outline: none;
+  transition: all 0.3s ease;
 }
 ::before,
 ::after {

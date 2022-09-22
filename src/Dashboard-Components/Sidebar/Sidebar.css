@@ -1,0 +1,32 @@
+.sidebar{
+    position: fixed;
+    background:var(--dash-bg-color) ;
+    padding: 9rem 0 3rem ;
+    gap: 7rem;
+    top:0;
+    bottom: 0;
+    z-index: 1;
+}
+.dash-menu{
+    gap: 1rem;
+}
+.menu-icon{
+    font-size: var(--font-size-nr);
+}
+.menu-title{
+    font-size: var(--font-size-nr);
+}
+.menu-link{
+    gap: .5rem;
+    color: var(--text-color-alt) ;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .25rem 3rem .25rem 1rem;
+}
+.menu-link.active{
+    background: var(--white-color);
+    color: var(--dash-color) ;
+}
+.menu-link.active .menu-icon{
+    fill: var(--dash-color) !important ;
+}

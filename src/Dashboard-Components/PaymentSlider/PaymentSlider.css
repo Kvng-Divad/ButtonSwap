@@ -1,0 +1,9 @@
+.swiper{
+    width: 100% !important;
+    position: relative !important;
+}
+.swiper-card{
+    max-width: 300px !important;
+    padding: .5rem;
+    background: var(--bg-color-1);
+}
