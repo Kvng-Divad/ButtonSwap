@@ -1,0 +1,12 @@
+.table-head{
+    font-family: var(--bdy-font-family) !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    color: var(--text-color2)!important;
+}
+.table-row{
+    font-family: var(--bdy-font-family) !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    color: var(--text-color)!important;
+}
