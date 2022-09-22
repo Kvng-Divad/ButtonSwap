@@ -1,97 +1,126 @@
-import React from 'react'
-import { ChevronLeftIcon } from '@chakra-ui/icons'
-import {Link} from 'react-router-dom'
-import './Income.css'
-import { Select } from '@chakra-ui/react'
-import { Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
-import {CheckIcon} from '@chakra-ui/icons'
-import Buttonalt from '../Buttonalt/Buttonalt'
+import "./Income.css";
+import React, { useEffect, useState } from "react";
+import { FormControl, FormErrorMessage, Image, Select } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from "@chakra-ui/react";
+import { CheckIcon } from "@chakra-ui/icons";
+import Buttonalt from "../Buttonalt/Buttonalt";
+import Breadcrumbs from "../Breadcrumb/Breadcrumb";
+import nairaIcon from "../../Assets/naira.png";
+import { useFormik } from "formik";
+import { applicationState } from "../../data/state";
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
+const defaultValues = { monthly_income: "", bank_branch: "" };
 
 const Incomes = () => {
+  const navigate = useNavigate();
+  const [application, setApplication] = useRecoilState(applicationState);
+  const [initialValues, setInitialValues] = useState(defaultValues);
+  const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
+    useFormik({
+      initialValues,
+      enableReinitialize: true,
+      onSubmit: values => {
+        setApplication({
+          ...application,
+          user: {
+            ...application.user,
+            other: {
+              monthly_income: values.monthly_income * 100, // convert to kobo
+              bank_branch: values.bank_branch,
+            },
+          },
+        });
+        navigate("/verification");
+      },
+    });
+
+  useEffect(() => {
+    setInitialValues({
+      monthly_income: application.user.other.monthly_income / 100, // convert to naira,
+      bank_branch: application.user.other.bank_branch,
+    });
+    // eslint-disable-next-line
+  }, []);
+
   return (
-
-  <div>
-
-    <div className='breadcrumb-container grid'>
-      
-      <div className='hero-section grid'>
-
-      <div
-              className="hero-icon flex"
-              onClick={() => {
-                window.history.back();
-              }}
-            >
-              <ChevronLeftIcon className="heroicon" />
-      </div>
-            
-        <h3 className='hero-title'>APPLICATION</h3>
+    <div>
+      <div className="grid">
+        <div className="head">
+          <Breadcrumbs current={3} />
+        </div>
       </div>
 
-      <div className='breadcrumb flex'>
+      <div className="Container grid">
+        <div className="form-container grid">
+          <div className="section-title">
+            <h3>Other information</h3>
+            <p>Kindly provide your information in the required fields</p>
+          </div>
 
-        <div className='breadcrumbItem flex isCurrentPage'>
-          <Link to='' className='breadcrumbLink '>1</Link>
-        </div>
-        <div className='seperator isCurrentPage'></div>
-        <div className='breadcrumbItem flex isCurrentPage'>
-          <Link to='' className='breadcrumbLink'>2</Link>
-        </div>
-        <div className='seperator isCurrentPage'></div>
-        <div isCurrentPage className='breadcrumbItem flex'>
-          <Link to='' className='breadcrumbLink'>3</Link>
-        </div>
-        <div className='seperator '></div>
-        <div className='breadcrumbItem flex'>
-          <Link to='' className='breadcrumbLink'>4</Link>
+          <form onSubmit={handleSubmit}>
+            <div className="input grid">
+              <FormControl
+                isInvalid={touched.monthly_income && errors.monthly_income}
+              >
+                <label className="label">Monthly income</label>
+
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<Image w="80%" src={nairaIcon} />}
+                  />
+                  <Input
+                    type={"number"}
+                    name="monthly_income"
+                    value={values.monthly_income}
+                    onChange={handleChange}
+                    placeholder="How much do you earn in a month?"
+                  />
+                  <InputRightElement
+                    children={<CheckIcon color="green.500" />}
+                  />
+                  <FormErrorMessage> {errors.monthly_income} </FormErrorMessage>
+                </InputGroup>
+              </FormControl>
+            </div>
+
+            <div className="input grid">
+              <FormControl>
+                <label className="label">Bank Branch</label>
+
+                <Select
+                  placeholder="Where is your bank located?"
+                  spacing={3}
+                  name="bank_branch"
+                  value={values.bank_branch}
+                  onChange={event =>
+                    setFieldValue("bank_branch", event.target.value)
+                  }
+                  className="filter"
+                  size="lg"
+                >
+                  <option value="lagos">Lagos</option>
+                  <option value="lagos-mainlad">Lagos Mainland</option>
+                  <option value="lagos-island">Lagos Island</option>
+                </Select>
+                <FormErrorMessage> {errors.bank_branch} </FormErrorMessage>
+              </FormControl>
+            </div>
+
+            <div className="Button grid">
+              <Buttonalt text="NEXT" type={"submit"} />
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  );
+};
 
-    <div className='Container grid'>
-
-      <div className='form-container grid'>
-
-        <div className='section-title'>
-          <h3>Other information</h3>
-          <p>Kindly provide your information in the required fields</p>
-        </div>
-
-        <div className='input grid'>
-
-        <label className='label'>Monthly income</label>
-
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents='none'
-            children='#'
-          />
-          <Input placeholder='How much do you earn in a month?' />
-          <InputRightElement children={<CheckIcon color='green.500' />} />
-        </InputGroup>
-        </div>
-
-        <div>
-
-          <label className='label'>Bank Branch</label>
-
-          <Select placeholder='Where is your bank located?' spacing={3}  className='filter' size='lg'>
-              <option value=''></option>
-              <option value=''></option>
-              <option value=''></option>
-          </Select>
-        </div>
-
-        <div className='Button grid'>
-          <Buttonalt text='NEXT' link='/verification'/>
-        </div>
-
-      </div>
-      
-    </div>
-
-  </div>
-  )
-}
-
-export default Incomes
+export default Incomes;

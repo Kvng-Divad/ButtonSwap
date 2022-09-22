@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./Dashboard.css";
 import { Route, Routes } from "react-router-dom";
 import Landing from "./Routes/Landing";
 import Offers from "./Routes/Offers";
@@ -14,6 +15,8 @@ import Checkout from "./Routes/Checkout";
 import Close from "./Routes/Close";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
+import Dashboard from "./Routes/Dashboard";
+import Payment from "./Routes/Payment";
 
 const client = new QueryClient();
 
@@ -34,6 +37,10 @@ function App() {
             <Route path="/authentication" element={<Authentication />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/submit" element={<Close />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/applications" element={<Payment />} />
+            <Route path="/profile" element={<Payment />} />
           </Routes>
         </div>
       </RecoilRoot>

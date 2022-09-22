@@ -5,7 +5,7 @@
 }
 
 .label{
-    font-size: var(--font-size-n);
-    font-weight: 600;
+    font-size: var(--font-size-nr);
+    font-weight: 500;
     color: var(--text-color);
 }

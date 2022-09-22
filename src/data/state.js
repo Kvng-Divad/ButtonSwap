@@ -15,3 +15,46 @@ export const singleProductState = atom({
   default: {},
   effects_UNSTABLE: implementPersist("singleProductState"),
 });
+
+export const applicationState = atom({
+  key: "applicationState",
+  default: {
+    product: {
+      id: "",
+      capacity: "",
+      color: "",
+      price: 0,
+    },
+    meta: {
+      plan: "",
+      terms: {
+        tenure: 0,
+        type: "",
+      },
+    },
+    payment: {
+      total: 0,
+      down: 0,
+      dividend: 0,
+    },
+    identity: {
+      stored: "",
+      supplied: "",
+    },
+    user: {
+      bvn: "",
+      bank: "",
+      work_email: "",
+      account_number: "",
+      full_name: "",
+      phone_number: "",
+      delivery_address: "",
+      password: "",
+      other: {
+        monthly_income: 0,
+        bank_branch: "",
+      },
+    },
+  },
+  // effects_UNSTABLE: implementPersist("applicationState"),
+});
