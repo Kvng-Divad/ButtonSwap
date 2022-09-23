@@ -1,0 +1,16 @@
+.info-plan{
+    justify-content: space-between;
+    align-items: center;
+}
+.info-plan p{
+    font-size: var(--font-size-sm);
+}
+.info-link{
+    font-size: var(--font-size-sm);
+    color: #E3000F;
+    opacity: .5;
+    margin-left: auto;
+}
+.info-link:hover{
+    opacity: .8;
+}

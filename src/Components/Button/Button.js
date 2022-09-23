@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 
-const Button = ({text , btn = 'btn' }) => {
+const Button = ({text}) => {
   return (
     <Btn>
       <Link to='/products'>
@@ -28,8 +28,8 @@ const Btn = styled.button`
       color: var(--text-color-alt);
       font-family: var(--bdy-font-family);
       font-size: var(--font-size-sm);
-      font-weight: 500;
-      padding: .5rem .75rem;
+      font-weight: 700;
+      padding: .5rem;
       text-transform: uppercase;
    }
    button:hover{

@@ -17,7 +17,12 @@
 .navlink{
     font-size: var(--font-size-sm);
     font-weight: 500;
+    text-transform: uppercase;
 }
+.navlink.active, .navlink:hover{
+    color:#E3000F ;
+}
+
 .logo{
     display: flex;
     justify-content: center;
@@ -25,7 +30,7 @@
     gap: .5rem;
 }
 .logo-img{
-    width:5rem;
+    width: 5rem;
     height: 2.25rem;
 }
 .logo-img2{
@@ -40,17 +45,37 @@
     z-index: 100!important;
 }
 .drop-menu{
-    top: 4rem !important;
     justify-items: center !important;
     background-color: var(--skin-color) !important;
     color: var(--text-color-alt) !important;
     gap: 2rem;
     z-index: 1!important;
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: all .5s ease;
+}
+.drop-menu.active{
+    display: block;
+    top: 4.5rem;
 }
 .drop-menu-list{
+    max-width: 100%;
     justify-items: center;
-    gap: 2em;
+    gap: 1.5em;
     padding: 2rem;
+}
+
+
+.navLink{
+    font-size: var(--font-size-sm);
+    padding: .5rem;
+    width: 100%;
+}
+.navLink.active, .navLink:hover{
+    color:#E3000F ;
+    background-color: var(--bg-color-1);
 }
 @media (min-width:960px){
     .toggler{

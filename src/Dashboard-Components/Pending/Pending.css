@@ -1,0 +1,5 @@
+.table-container{
+    background: var(--bg-color-1) !important;
+    padding: .75rem;
+    border-radius: .5rem;
+}

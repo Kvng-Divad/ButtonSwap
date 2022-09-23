@@ -1,5 +1,5 @@
 .phone-cards {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr) ;
   justify-items: center;
   gap: 1rem;
 }
@@ -49,6 +49,9 @@
   transform: translate(-27%, -75px);
   width: 245px;
 }
+
+
+
 @media screen and (max-width: 500px) {
   .phone-img.empty::after {
     width: 115px;

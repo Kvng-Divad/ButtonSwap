@@ -1,0 +1,82 @@
+.sidebar{
+    position: fixed;
+    background:var(--dash-bg-color) ;
+    padding: 8rem 0 3rem ;
+    gap: 5rem;
+    top:0;
+    bottom: 0;
+    z-index: 1;
+}
+.dash-menu{
+    gap: 1rem;
+}
+.menu-icon{
+    font-size: var(--font-size-nr);
+    color: var(--text-color-alt);
+}
+.menu-icon2{
+    font-size: 1.35rem;
+    color: var(--text-color-alt);
+}
+.menu-title{
+    font-size: var(--font-size-nr);
+}
+.menu-link{
+    gap: .5rem;
+    color: var(--text-color-alt) ;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .25rem 3rem .25rem 1rem;
+}
+.menu-link.active{
+    background: var(--white-color);
+    color: var(--dash-color) ;
+}
+
+.menu-link.active .menu-icon{
+    fill: var(--dash-color) !important ;
+}
+.profile{
+    grid-template-columns: repeat(2,max-content);
+    gap: .5rem;
+    padding: .5rem .25rem;
+}
+.profile-image img{
+    width: 3rem;
+    height: 3rem;
+}
+.profile-id{
+    gap: .25rem;
+}
+.profile-id p{
+    font-size: var(--font-size-sm);
+    color: var(--text-color-alt);
+}
+.profile-name h3{
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-color-alt);
+}
+
+.profile.active,.profile:hover, .signout:hover,.signout.active{
+    background: var(--white-color);
+}
+
+.profile.active .profile-name h3,.profile:hover .profile-name h3,
+.profile.active .profile-id p,.profile:hover .profile-id p{
+    color: #AA4428;
+}
+
+.signout{
+    gap: .5rem;
+    padding: 1rem;
+    margin-top: .25rem;
+}
+.signout p{
+    font-size: var(--font-size-sm);
+    color: var(--text-color-alt);
+}
+.signout:hover p,
+.signout:hover .menu-icon2{
+    color: #AA4428;
+}

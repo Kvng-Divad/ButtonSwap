@@ -3,8 +3,8 @@ import "./Offer.css";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
-  CircularProgress,
   CircularProgressLabel,
+  CircularProgress,
   Select,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
