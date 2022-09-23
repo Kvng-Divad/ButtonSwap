@@ -44,3 +44,29 @@
     justify-content: center;
   }
 }
+
+.video-element {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.camera {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.camera-container {
+  position: absolute;
+  z-index: 1;
+  top: 56vh;
+  translate: -50%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+}
