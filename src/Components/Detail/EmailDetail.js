@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -13,9 +13,8 @@ import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
 import { API_URI } from "../../constants";
 const defaultInfo = { message: "", status: "" };
 const EmailDetail = () => {
-  const { setEmail, authEmail } = useContext(CreateContext);
+  const { setEmail } = useContext(CreateContext);
   const [checkEmail, setCheckEmail] = React.useState("");
-  const [result, setResut] = React.useState();
   // eslint-disable-next-line
   const [application, setApplication] = useRecoilState(applicationState);
   // eslint-disable-next-line
@@ -28,8 +27,6 @@ const EmailDetail = () => {
   const {
     register,
     handleSubmit,
-    reset,
-
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(authSchema),

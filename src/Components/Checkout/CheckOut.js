@@ -17,7 +17,7 @@ const CheckOut = () => {
   const navigate = useNavigate();
   const [application] = useRecoilState(applicationState);
   const [product] = useRecoilState(singleProductState);
-  const [token, setToken] = useRecoilState(authTokenState);
+  const [, setToken] = useRecoilState(authTokenState);
   // const logo = product?.brand?.image;
   const model = product?.name;
   // const image = product?.meta?.images?.find(

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Verification.css";
 import Buttonalt from "../Buttonalt/Buttonalt";
-import { Center, HStack, Icon, IconButton, Input } from "@chakra-ui/react";
+import { Center, HStack, IconButton, Input } from "@chakra-ui/react";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import icon from "../../Assets/Icon5.png";
 import CameraPhoto, { FACING_MODES } from "jslib-html5-camera-photo";
