@@ -13,6 +13,7 @@ import { Formik, Form, Field } from "formik";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import { useRecoilState } from "recoil";
 import { applicationState } from "../../data/state";
+import * as yup from "yup";
 
 const Authenticate = () => {
   const [application, setApplication] = useRecoilState(applicationState);
@@ -21,11 +22,19 @@ const Authenticate = () => {
   const handleClick = () => setShow(!show);
   const handleClick2 = () => setShow2(!show2);
 
-  const checkPasswords = (stored, supplied, setFieldError) => {
-    if (stored !== supplied) {
-      setFieldError("confirmPassword", "passwords do not match");
-    }
-  };
+  const validationSchema = yup.object().shape({
+    password: yup.string().required().min(8),
+    confirmPassword: yup
+      .string()
+      .required()
+      .min(8)
+      .test(
+        "Checks if passwords match",
+        "Passwords do not match",
+        value => value === application.user.password
+      ),
+  });
+
   return (
     <div>
       <div className="grid">
@@ -44,6 +53,7 @@ const Authenticate = () => {
           <div>
             <Formik
               initialValues={{ password: "", confirmPassword: "" }}
+              validationSchema={validationSchema}
               onSubmit={(values, actions) => {
                 setTimeout(() => {
                   setApplication({
@@ -75,7 +85,16 @@ const Authenticate = () => {
                             type={show ? "text" : "password"}
                             placeholder="Enter your password"
                             value={props.values.password}
-                            onChange={props.handleChange}
+                            onChange={event => {
+                              props.handleChange(event);
+                              setApplication({
+                                ...application,
+                                user: {
+                                  ...application.user,
+                                  password: event.target.value,
+                                },
+                              });
+                            }}
                           />
                           <InputRightElement width="4.5rem">
                             <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -105,14 +124,7 @@ const Authenticate = () => {
                             pr="4.5rem"
                             type={show2 ? "text" : "password"}
                             placeholder="Confirm your password"
-                            onChange={e => {
-                              props.handleChange(e);
-                              checkPasswords(
-                                props.values.password,
-                                e.target.value,
-                                props.setFieldError
-                              );
-                            }}
+                            onChange={props.handleChange}
                           />
                           <InputRightElement width="4.5rem">
                             <Button
@@ -133,7 +145,13 @@ const Authenticate = () => {
 
                   <div className="Button grid">
                     <Link to="/checkout" isLoading={props.isSubmitting}>
-                      <Button type="submit" className="btns">
+                      <Button
+                        disabled={
+                          props.values.password !== props.values.confirmPassword
+                        }
+                        type="submit"
+                        className="btns"
+                      >
                         PLACE ORDER
                       </Button>
                     </Link>

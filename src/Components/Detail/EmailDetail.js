@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import { Center } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { applicationState } from "../../data/state";
 import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
+import { API_URI } from "../../constants";
 const defaultInfo = { message: "", status: "" };
 const EmailDetail = () => {
   const { setEmail, authEmail } = useContext(CreateContext);
@@ -19,7 +20,6 @@ const EmailDetail = () => {
   const [application, setApplication] = useRecoilState(applicationState);
   // eslint-disable-next-line
   const [info, setInfo] = React.useState(defaultInfo);
-  console.log("this is the checkmail", authEmail);
 
   const authSchema = yup.object({
     email: yup.string().required(),
@@ -38,35 +38,45 @@ const EmailDetail = () => {
   const onSubmit = handleSubmit(async data => {
     const { email } = data;
     setEmail(email);
-
+    setApplication({
+      ...application,
+      user: {
+        ...application.user,
+        work_email: email,
+      },
+    });
     await axios
       .post(
-        "https://keza-zenith-staging.herokuapp.com/auth/request-otp",
+        `${API_URI}/auth/request-otp`,
         {
           email,
+          agent: navigator.userAgent,
         },
         { headers: { "Access-Control-Allow-Origin": "*" } }
       )
       .then(res => {
-        reset();
-        console.log(res);
-        setResut(res);
-        console.log("this is res", result);
+        setInfo({ message: res.data.message, status: "success" });
       })
-      .catch(err => {});
+      .catch(err => {
+        const message = err?.response
+          ? err?.response?.data?.message
+          : err?.message;
+        setInfo({ message, status: "error" });
+      });
   });
   return (
     <div>
-      {result?.data?.message && (
+      {info?.message && (
         <Center>
           <Alert
             display={"flex"}
             justifyContent="space-between"
             alignSelf={"center"}
             w={{ base: "90%", md: "50%" }}
+            status={info.status}
           >
             <AlertIcon />
-            <AlertTitle>{result?.data?.message}</AlertTitle>
+            <AlertTitle>{info?.message}</AlertTitle>
             <CloseButton onClick={() => setInfo(defaultInfo)} />
           </Alert>
         </Center>

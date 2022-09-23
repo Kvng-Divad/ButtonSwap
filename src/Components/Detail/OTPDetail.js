@@ -8,6 +8,9 @@ import { CreateContext } from "./Context";
 
 import OTPInput from "otp-input-react";
 import { useNavigate } from "react-router-dom";
+import { API_URI } from "../../constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const OTPDetail = () => {
   const { authEmail } = useContext(CreateContext);
@@ -22,31 +25,36 @@ const OTPDetail = () => {
   } = useForm({
     resolver: yupResolver(authSchema),
   });
-  const onSubmit = async () => {
-    await axios
+  const onSubmit = () => {
+    axios
       .post(
-        "https://keza-zenith-staging.herokuapp.com/auth/verify-otp",
+        `${API_URI}/auth/verify-otp`,
         {
           email: authEmail,
           otp: OTP,
         },
         { headers: { "Access-Control-Allow-Origin": "*" } }
       )
-      .then((res) => {
-        console.log("Awesome... now you are in!", res);
-
+      .then(res => {
         hist("/application");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        const message = err?.response
+          ? err?.response?.data?.message
+          : err?.message;
+        toast(message, {
+          type: "success",
+        });
       });
+
+    axios.defaults.withCredentials = true;
   };
   return (
     <div>
       <Form
-        onSubmit={(e) => {
-          onSubmit();
+        onSubmit={e => {
           e.preventDefault();
+          onSubmit();
         }}
       >
         <InputHolder>
@@ -73,16 +81,11 @@ const OTPDetail = () => {
         <Error>{errors.otp?.message}</Error>
 
         <br />
-        {OTP.length === 4 ? (
-          <Button type="submit" bg="darkorange">
-            Verify
-          </Button>
-        ) : (
-          <Button disabled type="submit" bg="darkorange">
-            Verify
-          </Button>
-        )}
+        <Button disabled={OTP.length !== 4} type="submit" bg="darkorange">
+          Verify
+        </Button>
       </Form>
+      <ToastContainer />
     </div>
   );
 };
