@@ -8,7 +8,7 @@
 }
 .order-detail h3{
     font-size: var(--font-size-nr);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-color);
 }
 .order-details{
@@ -17,8 +17,8 @@
     padding: 1rem;
 }
 .order-details h4{
-    font-size: var(--font-size-n);
-    font-weight: 600;
+    font-size: var(--font-size-nr);
+    font-weight: 500;
     color: var(--text-color2);
 }
 .order-details h3{
