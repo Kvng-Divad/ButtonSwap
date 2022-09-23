@@ -14,5 +14,14 @@
     align-items: center;
 }
 .top-link{
-    font-size: var--(font-size-sm);
+    font-weight: 500;
+}
+.top-link.active ,.top-link:hover{
+    color:  #E3000F;
+}
+.top-link2{
+    font-size: var(--font-size-nr);
+}
+.topLink.active .top-link2,.topLink:hover .top-link2 {
+    color:  #E3000F;
 }

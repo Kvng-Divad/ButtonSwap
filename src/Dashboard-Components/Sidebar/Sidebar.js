@@ -1,11 +1,10 @@
 import React from 'react'
 import './Sidebar.css'
-import signout from '../../Assets/signout.svg'
-import {FaRegClipboard, FaHistory,} from 'react-icons/fa'
+import {FaRegClipboard, FaSignOutAlt} from 'react-icons/fa'
 import {AiOutlineHome,AiOutlineWallet} from 'react-icons/ai'
-import {BiSupport}from 'react-icons/bi'
-import { Link } from 'react-router-dom'
-
+//import {BiSupport}from 'react-icons/bi'
+import { NavLink } from 'react-router-dom'
+import profile from '../../Assets/profile.svg'
 
 
 const SidebarData = 
@@ -25,7 +24,7 @@ const SidebarData =
       link:'/payment',
       icon: AiOutlineWallet,
     },
-    {
+   /*{
       heading:'Action Center',
       link:'/history',
       icon: FaHistory,
@@ -34,7 +33,7 @@ const SidebarData =
       heading:'Support',
       link:'/support',
       icon: BiSupport,
-    },
+    },*/
   ]
 
 const Sidebar = () => {
@@ -44,14 +43,15 @@ const Sidebar = () => {
 
             {SidebarData.map (( item, index) => {
                 return(
-                  <Link to={item.link} className="menu-link flex active"
+                  <NavLink to={item.link} className="menu-link flex"
+                   activeClassName='active'
                     key={index}
                     >
                       <item.icon className="menu-icon"/>
                       <span className="menu-title">
                         {item.heading}
                     </span>
-                  </Link>
+                  </NavLink>
                 )
               })
               }
@@ -59,11 +59,31 @@ const Sidebar = () => {
 
           <div className="menuitem">
             
-            <div className="profile">
-              
+            <NavLink to='/profile' className='profile grid'
+              activeClassName='active'
+            >
+
+              <div className='profile-image'>
+                  <img src={profile} alt=''/>
+              </div>
+
+              <div className='profile-details grid'>
+                <div className='profile-id flex'>
+                    <p>ID:</p>
+                    <p>01234455</p>
+                </div>
+
+                <div className='profile-name'>
+                    <h3>Jemimah J.J</h3>
+                </div>
             </div>
+
+            </NavLink>
             
-            <img src={signout} alt='out' className="menu-icon"/>
+            <div className="signout flex">
+              <FaSignOutAlt className="menu-icon2"/>
+              <p>Sign Out</p>
+            </div>
           </div>
 
     </div>
