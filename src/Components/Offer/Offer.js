@@ -59,7 +59,7 @@ const Offer = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchProducts(page, brand)?.then(data => {
+    fetchProducts(page, brand)?.then((data) => {
       setProducts(data?.data);
       setLoading(false);
     });
@@ -88,7 +88,7 @@ const Offer = () => {
         variant="filled"
         className="filter"
         size="lg"
-        onClick={e => {
+        onClick={(e) => {
           setBrand(e.target.value);
           setPage(1);
         }}
@@ -128,7 +128,7 @@ const Offer = () => {
           list?.map((product, index) => {
             const logo = product?.brand?.image;
             const image = product?.meta?.images?.find(
-              image => image?.image?.length > 1
+              (image) => image?.image?.length > 1
             )?.image;
             const name = product?.name;
             const price = product?.meta?.price?.min;
@@ -166,7 +166,7 @@ const Offer = () => {
       <Pagination
         pagesCount={pagesCount}
         currentPage={currentPage}
-        onPageChange={page => {
+        onPageChange={(page) => {
           setCurrentPage(page);
           setPage(page);
         }}
@@ -178,7 +178,7 @@ const Offer = () => {
             justifyContent="center"
             className="page"
           >
-            {pages.map(page => (
+            {pages.map((page) => (
               <PaginationPage
                 className={`page-key${currentPage === page ? " active" : ""}`}
                 key={`pagination_page_${page}`}

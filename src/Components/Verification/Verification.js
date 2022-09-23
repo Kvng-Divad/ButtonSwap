@@ -3,6 +3,7 @@ import "./Verification.css";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import { Input } from "@chakra-ui/react";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
+import icon from "../../Assets/Icon5.png";
 
 const Verify = () => {
   const storedRef = useRef();
@@ -28,6 +29,7 @@ const Verify = () => {
         >
           <div className="verify-input grid">
             <h3>Take picture / Upload ID for verification</h3>
+            <img src={icon} alt="upload icon" />
             <Input
               ref={storedRef}
               hidden
@@ -37,7 +39,9 @@ const Verify = () => {
               className="img-input"
               capture="camera"
             />
-            <p>National ID/ International passport/ NIN slip</p>
+            <p>
+              National ID/ International <br /> passport/ NIN slip
+            </p>
           </div>
 
           <div
@@ -53,7 +57,11 @@ const Verify = () => {
               type="file"
               className="img-input"
             />
-            <p>Use your selfie camera to take a picture</p>
+            <img src={icon} alt="upload icon" />
+            <p>
+              Use your selfie camera to
+              <br /> take a picture
+            </p>
           </div>
         </div>
 

@@ -32,7 +32,7 @@ const Orders = () => {
   const logo = product?.brand?.image;
 
   const image = product?.meta?.images?.find(
-    image => image?.image?.length > 1
+    (image) => image?.image?.length > 1
   )?.image;
   const name = product?.name;
 
@@ -128,7 +128,7 @@ const Orders = () => {
               <div className="order-details">
                 <h4>CAPACITY</h4>
                 <HStack>
-                  {ram.map(value => {
+                  {ram.map((value) => {
                     return (
                       <RadioCard
                         onChange={() => {
@@ -184,7 +184,7 @@ const Orders = () => {
               <div className="order-details">
                 <h4>PAYMENT PLAN</h4>
                 <HStack className="radios-label flex">
-                  {plans.map(plan => {
+                  {plans.map((plan) => {
                     return (
                       <RadioCard
                         onChange={() =>
@@ -217,7 +217,7 @@ const Orders = () => {
                     maxW="100px"
                     max={6}
                     defaultValue={application.meta.terms.tenure}
-                    onChange={value =>
+                    onChange={(value) =>
                       setApplication({
                         ...application,
                         meta: {
@@ -240,7 +240,7 @@ const Orders = () => {
 
                   <Select
                     disabled={oneTime}
-                    onChange={event =>
+                    onChange={(event) =>
                       setApplication({
                         ...application,
                         meta: {
@@ -261,7 +261,7 @@ const Orders = () => {
                 </Flex>
               </div>
 
-              <div className="payment"></div>
+              <div className="payment1"></div>
 
               <div className="Button grid">
                 <Buttonalt

@@ -1,136 +1,134 @@
-.faqs{
-    margin: 5rem 0;
-    justify-items: center;
-    gap: 3rem;
+.faqs {
+  margin: 5rem 0;
+  justify-items: center;
+  gap: 3rem;
 }
-.faqs-container{
-    width:100%;
-    gap: 3rem;
-    justify-items: center;
-    grid-template-columns:  100%;
+.faqs-container {
+  width: 100%;
+  gap: 3rem;
+  justify-items: center;
+  grid-template-columns: 100%;
 }
-.hero{
+.hero {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+}
+.hero img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+.right {
+  align-items: center;
+}
+.overlay {
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  z-index: 1;
+  background: rgba(72, 72, 72, 0.47);
+  text-align: center;
+}
+.overlay h3 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-color-alt);
+  text-transform: uppercase;
+}
+.overlay p {
+  font-size: var(--font-size-nr);
+  font-weight: 500;
+  color: var(--text-color-alt);
+}
+.faqs-accordion {
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+}
+.item {
+  padding: 0.5rem 0;
+  width: 22rem;
+  border: 1px solid #eee !important;
+  border-radius: 5px;
+}
+.item:hover {
+  box-shadow: var(--box-shadow);
+}
+.item-box {
+  align-items: center;
+  justify-content: space-between;
+}
+.item-title {
+  font-size: var(--font-size-nr) !important;
+  font-weight: 700 !important;
+}
+.item-description {
+  font-size: var(--font-size-sm) !important;
+  font-weight: 500 !important;
+}
+
+@media (min-width: 400px) {
+  .item {
+    width: 25rem;
+  }
+}
+
+@media (min-width: 540px) {
+  .item {
+    width: 35rem;
+  }
+}
+
+@media (min-width: 780px) {
+  .faqs-container {
+    width: 100%;
+    gap: 2rem;
+    justify-items: center;
+    grid-template-columns: 100%;
+  }
+  .faqs-accordion {
+    gap: 1rem;
+    width: 90%;
+  }
+  .item {
+    width: 40rem;
+  }
+  .overlay h3 {
+    font-size: var(--h1-size);
+  }
+  .hero {
     position: relative;
     width: 100%;
-    height: 40vh;
-}
-.hero img{
+    height: 50vh;
+  }
+  .hero img {
     width: 100%;
-    height: 40vh;
+    height: 50vh;
+  }
 }
-.right{
-    align-items: center;
-}
-.overlay{
-    position: absolute;
-    flex-direction: column;
+@media (min-width: 960px) {
+  .item {
+    width: 45rem;
+  }
+  .hero {
+    position: relative;
     width: 100%;
-    height: 100%;
-    top: 0;
-    padding: 1rem;
-    align-items: center;
-    justify-content: center;
-    gap: .75rem;
-    z-index: 1;
-    background: rgba(72, 72, 72, 0.47);
-    text-align: center;
-}
-.overlay h3{
-    font-size: 1.65rem;
-    font-weight: 700;
-    color: var(--text-color-alt);
-    text-transform: uppercase;
-}
-.overlay p{
-    font-size: var(--font-size-nr);
-    font-weight: 500;
-    color: var(--text-color-alt);
-}
-.faqs-accordion{
-    gap: 2rem;
+    height: 60vh;
+  }
+  .hero img {
     width: 100%;
-    padding: 1rem;
+    height: 60vh;
+  }
 }
-.item{
-    padding: .5rem 0;
-    width: 22rem;
-    border: 1px solid #eee !important;
-    border-radius: 5px;   
-}
-.item:hover{
-    box-shadow: var(--box-shadow);
-}
-.item-box{
-    align-items: center;
-    justify-content: space-between;
-}
-.item-title{
-    font-size: var(--font-size-nr) !important;
-    font-weight: 700 !important;
-}
-.item-description{
-    font-size: var(--font-size-sm) !important;
-    font-weight: 500 !important;
-}
-
-@media (min-width:400px){
-    .item{
-        width: 25rem;
-    }
-}
-
-@media (min-width:540px){
-    .item{
-        width: 35rem;
-    }
-    
-}
-
-@media (min-width:780px){
-    .faqs-container{
-        width:100%;
-        gap: 2rem;
-        justify-items: center;
-        grid-template-columns: 100%;
-    }
-    .faqs-accordion{
-        gap: 1rem;
-        width: 90%;
-    }
-    .item{
-        width: 40rem;
-    }
-    .overlay h3{
-        font-size: var(--h1-size);
-    }
-    .hero{
-        position: relative;
-        width: 100%;
-        height: 50vh;
-    }
-    .hero img{
-        width: 100%;
-        height: 50vh;
-    }
-    
-}
-@media (min-width:960px){
-    .item{
-        width: 45rem;
-    }
-    .hero{
-        position: relative;
-        width: 100%;
-        height: 60vh;
-    }
-    .hero img{
-        width: 100%;
-        height: 60vh;
-    }
-    
-}
-@media (min-width:1200px){
-    .item{
-        width: 50rem;
-    }
+@media (min-width: 1200px) {
+  .item {
+    width: 50rem;
+  }
 }
