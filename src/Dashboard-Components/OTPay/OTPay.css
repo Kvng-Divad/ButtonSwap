@@ -1,0 +1,12 @@
+.labels{
+    font-size: var(--font-size-nr);
+    font-weight: 400;
+    color: var(--text-color2);
+}
+.otp-input{
+    padding: .5rem;
+    gap: .5rem;
+}
+.otp-from{
+    padding: .5rem;
+}

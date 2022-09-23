@@ -40,7 +40,7 @@ const HowItWorks = () => {
       <div className="HowItWorks-cards grid">
         {Data.map(({ icon, name, description, color}) => {
           return (
-            <Link to='/products'className="card grid" style={{background:{color}}}>
+            <Link to='/products'className="card grid">
 
               <div className="icons">
                 <img src={icon} alt='icon'/>

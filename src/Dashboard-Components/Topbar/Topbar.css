@@ -1,0 +1,18 @@
+.topbar{
+    position: fixed;
+    padding: 1rem 6rem;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    z-index: 10;
+    left: 0;
+    right: 0;
+    background: var(--bg-color-1);
+}
+.top-right{
+    gap: 1.5rem;
+    align-items: center;
+}
+.top-link{
+    font-size: var--(font-size-sm);
+}
