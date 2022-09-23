@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../Components/Button/Button";
 import "./OTPay.css";
 import { FormControl, FormErrorMessage, Image, Select } from "@chakra-ui/react";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
@@ -8,6 +7,7 @@ import nairaIcon from "../../Assets/naira.png";
 import { useNavigate } from "react-router-dom";
 import { applicationState } from "../../data/state";
 import { useRecoilState } from "recoil";
+import Dashbtn from "../dash-btn";
 
 const defaultValues = { amount: "", plan: "" };
 
@@ -77,7 +77,7 @@ const OTPay = () => {
         </div>
 
         <div className="dash-btn grid">
-          <Button text="PAY NOW" type={"submit"} />
+          <Dashbtn text='PAY NOW' type="submit" link=''/>
         </div>
       </form>
     </div>

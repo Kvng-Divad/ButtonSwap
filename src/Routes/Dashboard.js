@@ -5,7 +5,7 @@ import Sidebar from '../Dashboard-Components/Sidebar/Sidebar'
 import Topbar from '../Dashboard-Components/Topbar/Topbar'
 import {Link} from 'react-router-dom'
 import Recent from '../Dashboard-Components/Recent/Recent'
-import SummarryCard from '../Dashboard-Components/SummarryCard/SummarryCard'
+import SummaryDetail from '../Dashboard-Components/SummaryDetail/SummaryDetail'
 import ScheduleCard from '../Dashboard-Components/ScheduleCard/ScheduleCard'
 import PlanCardAlt from '../Dashboard-Components/PlanCardAlt/PlanCardAlt'
 
@@ -63,7 +63,7 @@ const Dashboard = () => {
                   <Link to='/applications' className="dash-nav">view</Link>
                 </div>
                 
-                <SummarryCard/>
+                <SummaryDetail/>
               </div>
 
               <div className='dash-center grid right-cont'>

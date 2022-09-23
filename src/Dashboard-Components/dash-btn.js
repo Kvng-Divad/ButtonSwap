@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 
-const Button = ({text}) => {
+const Dashbtn = ({text, type , link}) => {
   return (
     <Btn>
-      <Link to='/products'>
-      <button className=''>
+      <Link to={link}>
+      <button className='' type={type}>
             {text}
         </button>
       </Link>
@@ -18,7 +18,7 @@ const Button = ({text}) => {
   )
 }
 
-export default Button;
+export default Dashbtn;
 
 const Btn = styled.button`
     background:transparent;
@@ -27,9 +27,9 @@ const Btn = styled.button`
       border: 1px solid var(--skin-color);
       color: var(--text-color-alt);
       font-family: var(--bdy-font-family);
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-smlr);
       font-weight: 700;
-      padding: .5rem;
+      padding: .25rem .5rem;
       text-transform: uppercase;
    }
    button:hover{
