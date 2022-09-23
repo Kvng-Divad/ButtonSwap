@@ -12,6 +12,7 @@ import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 import { applicationState } from "../../data/state";
 import { useRecoilState } from "recoil";
+import axios from "axios";
 
 const defaultValues = {
   bank: "",
@@ -30,7 +31,22 @@ const Applications = () => {
   const [initialValues, setInitialValues] = useState(defaultValues);
   const [user, setUser] = useState(defaultValues.user);
 
-  const nextPage = event => {
+  const createPersonalDetail = async () => {
+    await axios
+      .post("https://keza-zenith-staging.herokuapp.com/auth/login-user", {
+        bank: application.bank,
+        account_number: application.account_number,
+        bvn: application.bvn,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const nextPage = (event) => {
     event?.preventDefault && event?.preventDefault();
     setApplication({
       ...application,
@@ -143,6 +159,7 @@ const Applications = () => {
                       isLoading={isSubmitting}
                       type="submit"
                       className="btns"
+                      onClick={createPersonalDetail}
                     >
                       Verify
                     </Button>
