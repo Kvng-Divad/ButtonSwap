@@ -13,7 +13,7 @@ import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
 import { API_URI } from "../../constants";
 const defaultInfo = { message: "", status: "" };
 const EmailDetail = () => {
-  const { setEmail } = useContext(CreateContext);
+  const { setEmail, authEmail } = useContext(CreateContext);
   const [checkEmail, setCheckEmail] = React.useState("");
   // eslint-disable-next-line
   const [application, setApplication] = useRecoilState(applicationState);
@@ -39,7 +39,7 @@ const EmailDetail = () => {
       ...application,
       user: {
         ...application.user,
-        work_email: email,
+        work_email: authEmail,
       },
     });
     await axios

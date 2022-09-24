@@ -1,16 +1,16 @@
-.info-plan{
-    justify-content: space-between;
-    align-items: center;
+.info-plan {
+  justify-content: space-between;
+  align-items: center;
 }
-.info-plan p{
-    font-size: var(--font-size-sm);
+.info-plan p {
+  font-size: var(--font-size-sm);
 }
-.info-link{
-    font-size: var(--font-size-sm);
-    color: #E3000F;
-    opacity: .5;
-    margin-left: auto;
+.info-link {
+  font-size: var(--font-size-sm);
+  color: #e3000f;
+  opacity: 0.5;
+  margin-left: auto;
 }
-.info-link:hover{
-    opacity: .8;
+.info-link:hover {
+  opacity: 0.8;
 }

@@ -1,12 +1,17 @@
-.labels{
-    font-size: var(--font-size-nr);
-    font-weight: 400;
-    color: var(--text-color2);
+.otpay {
+  opacity: 0.4;
+  pointer-events: none;
 }
-.otp-input{
-    padding: .5rem;
-    gap: .5rem;
+
+.labels {
+  font-size: var(--font-size-nr);
+  font-weight: 400;
+  color: var(--text-color2);
 }
-.otp-from{
-    padding: .5rem;
+.otp-input {
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+.otp-from {
+  padding: 0.5rem;
 }

@@ -1,52 +1,52 @@
-.paymentcard{
- grid-area: 1rem;
+.paymentcard {
+  grid-area: 1rem;
 }
-.payment-cards{
-    grid-template-columns: 1fr;
-    gap: 1rem;
+.payment-cards {
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
-.p-card{
-    padding: .5rem 4rem .5rem 1rem;
-    width: 100%;
-    border-radius: .5rem;
-    gap: .5rem;
-    background: var(--bg-color-1);
+.p-card {
+  padding: 0.5rem 4rem 0.5rem 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  background: var(--bg-color-1);
 }
-.p-card-content{
-    padding: 0 0 0 1rem;
-    gap: .5rem;
+.p-card-content {
+  padding: 0 0 0 1rem;
+  gap: 0.5rem;
 }
-.p-name{
-    font-size: var(--font-size-nr);
-    color: var(--text-color2);
-    font-weight: 400;
-    opacity: .7;
+.p-name {
+  font-size: var(--font-size-nr);
+  color: var(--text-color2);
+  font-weight: 400;
+  opacity: 0.7;
 }
-.p-price{
-    align-items: center;
-    justify-content: flex-start;
+.p-price {
+  align-items: center;
+  justify-content: flex-start;
 }
-.p-icon{
-    width: 2rem;
-    height: 2rem;
+.p-icon {
+  width: 2rem;
+  height: 2rem;
 }
-.p-value{
-    font-size: 2rem !important;
-    font-weight: 700;
-    color: var(--text-color3);
+.p-value {
+  font-size: 1.2rem !important;
+  font-weight: 700;
+  color: var(--text-color3);
 }
-.p-progress{
-    font-size: var(--font-size-sm);
-    font-weight: 400;
+.p-progress {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
 }
-.p-description{
-    font-size: var(--font-size-sm);
-    color: var(--text-color3);
-    font-weight: 400;
+.p-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-color3);
+  font-weight: 400;
 }
 
 @media (min-width: 780px) {
-    .payment-cards{
-        grid-template-columns: repeat(3,1fr);    
-    }
+  .payment-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -7,6 +7,11 @@ import {
   FormErrorMessage,
   Input,
   Button,
+  Center,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  CloseButton,
 } from "@chakra-ui/react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -27,11 +32,14 @@ const defaultValues = {
   },
 };
 
+const defaultInfo = { message: "", status: "" };
+
 const Applications = () => {
   const navigate = useNavigate();
   const [application, setApplication] = useRecoilState(applicationState);
   const [initialValues, setInitialValues] = useState(defaultValues);
   const [user, setUser] = useState(defaultValues.user);
+  const [info, setInfo] = React.useState(defaultInfo);
 
   const createPersonalDetail = async values => {
     axios
@@ -57,7 +65,15 @@ const Applications = () => {
           gender,
         });
       })
-      .catch(err => {});
+      .catch(err => {
+        const message = err?.response
+          ? err?.response?.data?.message ===
+            "Something went wrong: BVN not found. Provide a valid BVN"
+            ? "Sorry, we can't get your details at this time, please proceed."
+            : err?.response?.data?.message
+          : err?.message;
+        setInfo({ message, status: "error" });
+      });
 
     axios.defaults.withCredentials = true;
   };
@@ -93,7 +109,21 @@ const Applications = () => {
       <div className="head">
         <Breadcrumbs current={2} />
       </div>
-
+      {info?.message && (
+        <Center>
+          <Alert
+            display={"flex"}
+            justifyContent="space-between"
+            alignSelf={"center"}
+            w={{ base: "90%", md: "50%" }}
+            status={info.status}
+          >
+            <AlertIcon />
+            <AlertTitle>{info?.message}</AlertTitle>
+            <CloseButton onClick={() => setInfo(defaultInfo)} />
+          </Alert>
+        </Center>
+      )}
       <div className="Container grid">
         <div className="form-container grid">
           <div className="section-title">
