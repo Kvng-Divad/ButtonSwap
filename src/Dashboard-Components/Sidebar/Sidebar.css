@@ -6,6 +6,7 @@
     top:0;
     bottom: 0;
     z-index: 1;
+    left: -14rem;
 }
 .dash-menu{
     gap: 1rem;
@@ -79,4 +80,17 @@
 .signout:hover p,
 .signout:hover .menu-icon2{
     color: #AA4428;
+}
+@media (min-width: 998px) {
+    .sidebar{
+        left: 0rem;
+    }
+    .menu-title, .profile-details, .signout p{
+        display: none;
+    }
+}
+@media (min-width: 1250px) {
+    .menu-title, .profile-details, .signout p{
+        display: grid;
+    }
 }

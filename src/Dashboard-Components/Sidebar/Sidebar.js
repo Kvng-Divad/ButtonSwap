@@ -1,10 +1,13 @@
-import React from 'react'
+import {React, useContext} from 'react'
 import './Sidebar.css'
 import {FaRegClipboard, FaSignOutAlt} from 'react-icons/fa'
 import {AiOutlineHome,AiOutlineWallet} from 'react-icons/ai'
 //import {BiSupport}from 'react-icons/bi'
 import { NavLink } from 'react-router-dom'
 import profile from '../../Assets/profile.svg'
+import { motion } from "framer-motion";
+import  {toggleContext} from '../../Context/Context'
+
 
 
 const SidebarData = 
@@ -37,8 +40,38 @@ const SidebarData =
   ]
 
 const Sidebar = () => {
+
+  const {expanded, setExpanded} = useContext(toggleContext);
+  
+
+  const reSize = () => {
+    if(expanded === true) {
+      setExpanded(!expanded)
+  }
+  else{
+    setExpanded(false)
+  }
+  }
+
+  window.addEventListener("resize", reSize);
+
+  const sidebarVariants = {
+    true: {
+      left : '0rem'
+    },
+    false:{
+      left : '-14rem'
+    }
+  }
+
   return (
-    <div className='sidebar grid'>        
+    <motion.div className='sidebar grid'
+    variants={sidebarVariants}
+    animate={window.innerWidth<=998?`${expanded}`:''}
+    onClick={()=>
+      setExpanded(false)
+    }
+    >        
           <div className="dash-menu grid">
 
             {SidebarData.map (( item, index) => {
@@ -86,7 +119,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-    </div>
+    </motion.div>
   )
 }
 

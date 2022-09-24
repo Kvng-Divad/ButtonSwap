@@ -1,6 +1,6 @@
 .topbar{
     position: fixed;
-    padding: 1rem 6rem;
+    padding: 1rem;
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--box-shadow);
@@ -9,19 +9,48 @@
     right: 0;
     background: var(--bg-color-1);
 }
+.top-left{
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: 2rem;
+}
 .top-right{
     gap: 1.5rem;
     align-items: center;
+    margin-right: 5rem;
 }
 .top-link{
     font-weight: 500;
+    display: none;
 }
 .top-link.active ,.top-link:hover{
     color:  #E3000F;
 }
 .top-link2{
     font-size: var(--font-size-nr);
+    display: none;
 }
 .topLink.active .top-link2,.topLink:hover .top-link2 {
     color:  #E3000F;
+}
+.toggler2{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100!important;
+}
+@media (min-width: 998px) {
+    .top-link, .top-link2{
+        display: block;
+    }
+    .top-left{
+        margin-left: 5rem;
+    }
+    .toggler2{
+        display:none;
+    }
+}
+@media (min-width: 1250px){
+    
 }

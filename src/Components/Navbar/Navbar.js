@@ -19,7 +19,7 @@ const Navbar = () => {
       setClick(!click)
   }
   }
-  //let ddm = document.querySelector('drop-menu')
+
 
   window.addEventListener("resize", reSize);
 

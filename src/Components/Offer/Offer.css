@@ -3,6 +3,11 @@
   justify-items: center;
   gap: 1rem;
 }
+.phone-skeketon{
+  grid-template-columns: repeat(2, 1fr) !important;
+  justify-items: center !important; 
+  gap:1rem !important; 
+}
 .phone-card {
   justify-items: center;
   background: #fff;
@@ -48,14 +53,6 @@
   position: absolute;
   transform: translate(-27%, -75px);
   width: 245px;
-}
-
-
-
-@media screen and (max-width: 500px) {
-  .phone-img.empty::after {
-    width: 115px;
-  }
 }
 .phone-name {
   font-size: var(--font-size-sm);
@@ -106,24 +103,42 @@
   justify-content: center !important;
   width: 100% !important;
 }
-.progress-bar {
-  justify-self: center !important;
-}
+
 .progress-label {
   font-size: var(--font-size-nr) !important;
   font-weight: 600 !important;
   color: var(--text-color) !important;
 }
-
+@media screen and (max-width: 500px) {
+  .phone-img.empty::after {
+    width: 115px;
+  }
+}
 @media (min-width: 650px) {
   .phone-cards {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     gap: 2rem;
   }
+  .phone-skeketon{
+    grid-template-columns: repeat(3, 1fr) !important;
+    justify-items: center !important;
+    gap: 2rem !important;
+  }
 }
 @media (min-width: 1200px) {
   .phone-cards {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .phone-skeketon{
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .phone-cards {
+    /* grid-template-columns: repeat(auto-fill, 186px); */
+    background: red;
+    width: 100%;
   }
 }

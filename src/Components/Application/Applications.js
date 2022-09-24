@@ -12,6 +12,8 @@ import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 import { applicationState } from "../../data/state";
 import { useRecoilState } from "recoil";
+import axios from "axios";
+import { API_URI } from "../../constants";
 
 const defaultValues = {
   bank: "",
@@ -21,6 +23,7 @@ const defaultValues = {
     full_name: "",
     phone_number: "",
     delivery_address: "",
+    gender: "",
   },
 };
 
@@ -30,15 +33,42 @@ const Applications = () => {
   const [initialValues, setInitialValues] = useState(defaultValues);
   const [user, setUser] = useState(defaultValues.user);
 
+  const createPersonalDetail = async values => {
+    axios
+      .get(
+        `${API_URI}/auth/fetch-user-details/?account_number=${values.account_number}&bvn=${values.bvn}`
+      )
+      .then(res => {
+        const {
+          bvn: {
+            firstname,
+            lastname,
+            middlename,
+            gender,
+            residential_address: delivery_address,
+            phone: phone_number,
+          },
+        } = res;
+        const full_name = `${firstname} ${middlename} ${lastname}`;
+        setUser({
+          full_name,
+          phone_number,
+          delivery_address,
+          gender,
+        });
+      })
+      .catch(err => {});
+
+    axios.defaults.withCredentials = true;
+  };
+
   const nextPage = event => {
     event?.preventDefault && event?.preventDefault();
     setApplication({
       ...application,
       user: {
         ...application.user,
-        full_name: "Test User",
-        phone_number: "07019203472",
-        delivery_address: "10, Ola Adebiyi street, Lagos, Nigeria",
+        ...user,
       },
     });
     navigate("/income");
@@ -84,11 +114,7 @@ const Applications = () => {
                       ...values,
                     },
                   });
-                  setUser({
-                    full_name: "Test User",
-                    phone_number: "07019203472",
-                    delivery_address: "10, Ola Adebiyi street, Lagos, Nigeria",
-                  });
+                  createPersonalDetail(values);
                   actions.setSubmitting(false);
                 }, 1000);
               }}
@@ -158,15 +184,28 @@ const Applications = () => {
             </div>
             <FormControl>
               <FormLabel>Full Name</FormLabel>
-              <Input value={user.full_name} readOnly />
+              <Input
+                value={user.full_name}
+                onChange={e => setUser({ ...user, full_name: e.target.value })}
+              />
             </FormControl>
             <FormControl>
               <FormLabel>Phone Number</FormLabel>
-              <Input value={user.phone_number} readOnly />
+              <Input
+                value={user.phone_number}
+                onChange={e =>
+                  setUser({ ...user, phone_number: e.target.value })
+                }
+              />
             </FormControl>
             <FormControl>
               <FormLabel>Delivery Addres</FormLabel>
-              <Input value={user.delivery_address} readOnly />
+              <Input
+                value={user.delivery_address}
+                onChange={e =>
+                  setUser({ ...user, delivery_address: e.target.value })
+                }
+              />
             </FormControl>
             <div className="Button grid">
               <Button onClick={nextPage} type="submit" className="btns">

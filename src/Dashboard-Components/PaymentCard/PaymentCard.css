@@ -6,8 +6,8 @@
     gap: 1rem;
 }
 .p-card{
-    padding: .5rem 1rem;
-    min-width: 200px;
+    padding: .5rem 4rem .5rem 1rem;
+    width: 100%;
     border-radius: .5rem;
     gap: .5rem;
     background: var(--bg-color-1);
@@ -45,7 +45,7 @@
     font-weight: 400;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 780px) {
     .payment-cards{
         grid-template-columns: repeat(3,1fr);    
     }

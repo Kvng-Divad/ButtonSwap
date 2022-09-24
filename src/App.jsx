@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import "./Dashboard.css";
 import { Route, Routes } from "react-router-dom";
@@ -19,12 +19,18 @@ import Dashboard from "./Routes/Dashboard";
 import Payment from "./Routes/Payment";
 import MyApplications from "./Routes/MyApplications";
 import Profile from "./Routes/Profile";
+import  {toggleContext} from './Context/Context'
 
 const client = new QueryClient();
 
+
+
 function App() {
+  const [expanded, setExpanded] = useState(false);
+  
   return (
     <QueryClientProvider client={client}>
+      <toggleContext.Provider value={{expanded, setExpanded}}>
       <RecoilRoot>
         <div className="main-container">
           <Routes>
@@ -46,6 +52,7 @@ function App() {
           </Routes>
         </div>
       </RecoilRoot>
+      </toggleContext.Provider>
     </QueryClientProvider>
   );
 }

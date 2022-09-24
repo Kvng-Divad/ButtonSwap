@@ -1,12 +1,88 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Verification.css";
 import Buttonalt from "../Buttonalt/Buttonalt";
-import { Input } from "@chakra-ui/react";
+import { Center, HStack, IconButton, Input } from "@chakra-ui/react";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
+import icon from "../../Assets/Icon5.png";
+import CameraPhoto, { FACING_MODES } from "jslib-html5-camera-photo";
+import { FaCamera, FaCameraRetro, FaCheck } from "react-icons/fa";
+import axios from "axios";
+import { applicationState } from "../../data/state";
+import { useRecoilState } from "recoil";
+import { API_URI } from "../../constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Verify = () => {
-  const storedRef = useRef();
+  const videoRef = useRef();
+  const [application, setApplication] = useRecoilState(applicationState);
   const suppliedRef = useRef();
+  const [supplied, setSupplied] = useState();
+  const [cameraPhoto, setCameraPhoto] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  function startCameraMaxResolution(idealFacingMode) {
+    if (cameraPhoto) {
+      cameraPhoto.startCameraMaxResolution(idealFacingMode).then(() => {
+        setIsOpen(true);
+      });
+    }
+  }
+
+  function takePhoto() {
+    if (cameraPhoto) {
+      const config = {
+        sizeFactor: 1,
+      };
+      const dataUri = cameraPhoto.getDataUri(config);
+      setSupplied(dataUri);
+    }
+  }
+
+  function stopCamera() {
+    if (cameraPhoto) {
+      cameraPhoto.stopCamera().then(() => {
+        setIsOpen(false);
+      });
+    }
+  }
+
+  const checkBvn = () => {
+    stopCamera();
+    const form = new FormData();
+    form.append("idNumber", application.user.bvn);
+    form.append("photoBase64", supplied);
+    axios
+      .post(`${API_URI}/auth/face-match`, form)
+      .then(res => {
+        if (res.data.ok) {
+          const { supplied, stored } = res.data.payload;
+          setApplication({
+            ...application,
+            identity: {
+              stored,
+              supplied,
+            },
+          });
+        }
+      })
+      .catch(error => {
+        const message = error?.response
+          ? error?.response?.data?.message
+          : error?.message;
+        toast(message, {
+          type: "error",
+        });
+      });
+    setIsDisabled(false);
+    axios.defaults.withCredentials = true;
+  };
+
+  useEffect(() => {
+    setCameraPhoto(new CameraPhoto(videoRef.current));
+  }, []);
+
   return (
     <div>
       <div className="grid">
@@ -15,34 +91,20 @@ const Verify = () => {
         </div>
       </div>
 
-      <div className="Container grid">
+      <div className="Container grid" style={{ position: "relative" }}>
         <div className="section-title">
           <h3>Identity Verification</h3>
           <p>Kindly provide your information in the required fields</p>
         </div>
 
         {/* Style this properly David */}
-        <div
-          className="verification-container grid"
-          onClick={() => storedRef.current?.click()}
-        >
-          <div className="verify-input grid">
-            <h3>Take picture / Upload ID for verification</h3>
-            <Input
-              ref={storedRef}
-              hidden
-              placeholder=""
-              size="md"
-              type="file"
-              className="img-input"
-              capture="camera"
-            />
-            <p>National ID/ International passport/ NIN slip</p>
-          </div>
-
+        <Center>
           <div
             className="verify-input grid"
-            onClick={() => suppliedRef.current?.click()}
+            onClick={() => {
+              const facingMode = FACING_MODES.USER;
+              startCameraMaxResolution(facingMode);
+            }}
           >
             <h3>Take / Upload a photo of your face</h3>
             <Input
@@ -53,14 +115,72 @@ const Verify = () => {
               type="file"
               className="img-input"
             />
-            <p>Use your selfie camera to take a picture</p>
+            <img src={icon} alt="upload icon" />
+            <p>
+              Use your selfie camera to
+              <br /> take a picture
+            </p>
           </div>
-        </div>
+        </Center>
+
+        {isOpen && (
+          <HStack
+            className="camera-container"
+            w={{ base: "50%", md: "20%" }}
+            justifyContent="space-between"
+          >
+            <IconButton
+              variant={"solid"}
+              colorScheme="teal"
+              aria-label="start camera"
+              fontSize="20px"
+              icon={<FaCamera />}
+              onClick={takePhoto}
+              className="camera"
+            />
+
+            {supplied && (
+              <IconButton
+                variant={"solid"}
+                colorScheme="whatsapp"
+                aria-label="start camera"
+                fontSize="20px"
+                icon={<FaCheck />}
+                onClick={checkBvn}
+                className="camera"
+              />
+            )}
+
+            <IconButton
+              variant={"solid"}
+              colorScheme="messenger"
+              aria-label="start camera"
+              fontSize="20px"
+              icon={<FaCameraRetro />}
+              onClick={stopCamera}
+              className="camera"
+            />
+          </HStack>
+        )}
+
+        <video
+          ref={videoRef}
+          style={{ display: !supplied && isOpen ? "block" : "none" }}
+          className="video-element"
+          autoPlay
+        />
+        <img
+          alt="imgCamera"
+          className="video-element"
+          src={supplied}
+          style={{ display: supplied && isOpen ? "block" : "none" }}
+        />
 
         <div className="Button grid">
-          <Buttonalt text="Next" link="/authentication" />
+          <Buttonalt disabled={isDisabled} text="Next" link="/authentication" />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
