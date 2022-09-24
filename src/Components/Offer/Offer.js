@@ -3,9 +3,9 @@ import "./Offer.css";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
-  CircularProgressLabel,
-  CircularProgress,
   Select,
+  CircularProgress,
+  CircularProgressLabel,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
 import {
@@ -103,19 +103,24 @@ const Offer = () => {
       </Select>
 
       {(status === "loading" || loading) && (
-        <div className="progressbar flex">
-          <CircularProgress
-            isIndeterminate
-            color="red.400"
-            size="200px"
-            thickness="4px"
-            className="progress-bar grid"
-          >
-            <CircularProgressLabel className="progress-label">
-              Loading Data...
-            </CircularProgressLabel>
-          </CircularProgress>
-        </div>
+       
+          
+       <div className="progressbar flex">
+       <CircularProgress
+         isIndeterminate
+         color="red.400"
+         size="200px"
+         thickness="4px"
+         className="progress-bar grid"
+       >
+         <CircularProgressLabel className="progress-label">
+           Loading Data...
+         </CircularProgressLabel>
+       </CircularProgress>
+     </div>
+
+          
+
       )}
 
       {status === "error" && (

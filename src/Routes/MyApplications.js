@@ -1,10 +1,11 @@
 import React from 'react'
 import AccountDetails from '../Dashboard-Components/AccountDetails/AccountDetails'
 import DeviceDetails from '../Dashboard-Components/DeviceDetails/DeviceDetails'
-import DeviceInfo from '../Dashboard-Components/DeviceInfo/DeviceInfo'
+import ApplicationDetails from '../Dashboard-Components/ApplicationDetails/ApplicationDetails'
 import PersonalDetails from '../Dashboard-Components/PersonalDetails/PersonalDetails'
 import Sidebar from '../Dashboard-Components/Sidebar/Sidebar'
 import Topbar from '../Dashboard-Components/Topbar/Topbar'
+import ApplicationProgress from '../Dashboard-Components/ApplicationProgress/ApllicationProgress'
 
 const MyApplications = () => {
   return (
@@ -24,19 +25,24 @@ const MyApplications = () => {
 
                 <div className='application-dash grid'>
 
-                    <div className='application-grid grid-box grid'>
-                        
-                        <><PersonalDetails title='Personal details'/></>
-                        
-                        <><AccountDetails title='Account Information'/></>
+                     <div className='application-grid grid-box grid'>
+
+                        <ApplicationDetails title='Pending Actions'/>
+
+                        <ApplicationProgress title='Application Progress'/>
                     </div>
 
                     <div className='application-grid grid'>
                         <DeviceDetails title='Device details'/>
                     </div>
 
-                    <div className='application-grid grid'>
-                        <DeviceInfo title='My Device'/>
+                    
+
+                    <div className='application-grid grid-box grid'>
+                        
+                        <><PersonalDetails title='Personal details'/></>
+                        
+                        <><AccountDetails title='Account Information'/></>
                     </div>
 
                 </div>

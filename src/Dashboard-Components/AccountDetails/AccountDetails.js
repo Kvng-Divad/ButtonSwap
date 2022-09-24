@@ -1,5 +1,4 @@
 import React from 'react'
-import './AccountDetails.css'
 
 const AccountDetails = ({title}) => {
   const Data = [
