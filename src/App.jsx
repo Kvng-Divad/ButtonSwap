@@ -17,6 +17,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 import Dashboard from "./Routes/Dashboard";
 import Payment from "./Routes/Payment";
+import Headers from "./Routes/Headers";
+import Signin from "./Routes/Signin";
+import ApplicationSummary from "./Routes/ApplicationSummary";
 
 const client = new QueryClient();
 
@@ -41,6 +44,9 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/applications" element={<Payment />} />
             <Route path="/profile" element={<Payment />} />
+            <Route path="/header" element={<Headers />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/appsummary" element={<ApplicationSummary />} />
           </Routes>
         </div>
       </RecoilRoot>
