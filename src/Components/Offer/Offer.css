@@ -142,3 +142,11 @@
     width: 100%;
   }
 }
+
+@media (max-width: 425px) {
+  .phone-cards {
+    /* grid-template-columns: repeat(auto-fill, 186px); */
+    background: red;
+    width: 100%;
+  }
+}
