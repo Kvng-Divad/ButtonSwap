@@ -89,7 +89,7 @@ const Incomes = () => {
                     onChange={handleChange}
                     placeholder="How much do you earn in a month?"
                   />
-                  <InputRightElement w="22%">
+                  <InputRightElement w={{ base: "44%", md: "22%" }}>
                     <Text w="100%">{conveneNumber(values.monthly_income)}</Text>
                   </InputRightElement>
                   <FormErrorMessage> {errors.monthly_income} </FormErrorMessage>

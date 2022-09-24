@@ -1,7 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
 import "./Verification.css";
+import React, { useEffect, useRef, useState } from "react";
 import Buttonalt from "../Buttonalt/Buttonalt";
-import { Center, HStack, IconButton, Input } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  Center,
+  CloseButton,
+  HStack,
+  IconButton,
+} from "@chakra-ui/react";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import icon from "../../Assets/Icon5.png";
 import CameraPhoto, { FACING_MODES } from "jslib-html5-camera-photo";
@@ -13,14 +21,16 @@ import { API_URI } from "../../constants";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const defaultInfo = { message: "", status: "" };
+
 const Verify = () => {
   const videoRef = useRef();
   const [application, setApplication] = useRecoilState(applicationState);
-  const suppliedRef = useRef();
   const [supplied, setSupplied] = useState();
   const [cameraPhoto, setCameraPhoto] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [info, setInfo] = React.useState(defaultInfo);
 
   function startCameraMaxResolution(idealFacingMode) {
     if (cameraPhoto) {
@@ -57,14 +67,16 @@ const Verify = () => {
       .post(`${API_URI}/auth/face-match`, form)
       .then(res => {
         if (res.data.ok) {
-          const { supplied, stored } = res.data.payload;
+          const { supplied, stored, face_verification } = res.data.payload;
           setApplication({
             ...application,
             identity: {
               stored,
               supplied,
             },
+            face_verification,
           });
+          setIsDisabled(false);
         }
       })
       .catch(error => {
@@ -90,7 +102,21 @@ const Verify = () => {
           <Breadcrumbs current={4} />
         </div>
       </div>
-
+      {info?.message && (
+        <Center>
+          <Alert
+            display={"flex"}
+            justifyContent="space-between"
+            alignSelf={"center"}
+            w={{ base: "90%", md: "50%" }}
+            status={info.status}
+          >
+            <AlertIcon />
+            <AlertTitle>{info?.message}</AlertTitle>
+            <CloseButton onClick={() => setInfo(defaultInfo)} />
+          </Alert>
+        </Center>
+      )}
       <div className="Container grid" style={{ position: "relative" }}>
         <div className="section-title">
           <h3>Identity Verification</h3>
@@ -101,20 +127,13 @@ const Verify = () => {
         <Center>
           <div
             className="verify-input grid"
+            style={{ cursor: "pointer" }}
             onClick={() => {
               const facingMode = FACING_MODES.USER;
               startCameraMaxResolution(facingMode);
             }}
           >
             <h3>Take / Upload a photo of your face</h3>
-            <Input
-              ref={suppliedRef}
-              hidden
-              placeholder=""
-              size="md"
-              type="file"
-              className="img-input"
-            />
             <img src={icon} alt="upload icon" />
             <p>
               Use your selfie camera to

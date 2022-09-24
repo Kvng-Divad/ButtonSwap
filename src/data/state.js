@@ -56,6 +56,7 @@ export const applicationState = atom({
         bank_branch: "",
       },
     },
+    face_verification: {},
   },
   effects_UNSTABLE: implementPersist("applicationState"),
 });

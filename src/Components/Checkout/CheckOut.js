@@ -1,5 +1,5 @@
 import "./CheckOut.css";
-import React from "react";
+import React, { useState } from "react";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import { useRecoilState } from "recoil";
@@ -12,12 +12,15 @@ import conveneNumber from "../../utils/convene-number";
 import axios from "axios";
 import { API_URI } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CheckOut = () => {
   const navigate = useNavigate();
   const [application] = useRecoilState(applicationState);
   const [product] = useRecoilState(singleProductState);
   const [, setToken] = useRecoilState(authTokenState);
+  const [loading, setloading] = useState(false);
   // const logo = product?.brand?.image;
   const model = product?.name;
   // const image = product?.meta?.images?.find(
@@ -45,11 +48,22 @@ const CheckOut = () => {
   axios.defaults.withCredentials = true;
 
   const createApplication = () => {
+    setloading(true);
     axios
       .post(`${API_URI}/applications/create-application`, application)
       .then(res => {
+        setloading(false);
         setToken(res.data.payload.token);
         navigate("/submit");
+      })
+      .catch(error => {
+        setloading(false);
+        const message = error?.response
+          ? error?.response?.data?.message
+          : error?.message;
+        toast(message, {
+          type: "error",
+        });
       });
 
     axios.defaults.withCredentials = true;
@@ -127,9 +141,13 @@ const CheckOut = () => {
             </div>
           </div>
 
-          <Buttonalt text="Finish" onClick={createApplication} />
+          <Buttonalt
+            text={loading ? "Submitting..." : "Finish"}
+            onClick={createApplication}
+          />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
