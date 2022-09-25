@@ -1,14 +1,26 @@
 import "./CheckOut.css";
-import React from "react";
+import React, { useState } from "react";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import { useRecoilState } from "recoil";
-import { applicationState, singleProductState } from "../../data/state";
+import {
+  applicationState,
+  authTokenState,
+  singleProductState,
+} from "../../data/state";
 import conveneNumber from "../../utils/convene-number";
+import axios from "axios";
+import { API_URI } from "../../constants";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CheckOut = () => {
+  const navigate = useNavigate();
   const [application] = useRecoilState(applicationState);
   const [product] = useRecoilState(singleProductState);
+  const [, setToken] = useRecoilState(authTokenState);
+  const [loading, setloading] = useState(false);
   // const logo = product?.brand?.image;
   const model = product?.name;
   // const image = product?.meta?.images?.find(
@@ -33,6 +45,29 @@ const CheckOut = () => {
   const tenure = application.meta.terms.tenure;
   const down = application.payment.down;
   const dividend = application.payment.dividend;
+  axios.defaults.withCredentials = true;
+
+  const createApplication = () => {
+    setloading(true);
+    axios
+      .post(`${API_URI}/applications/create-application`, application)
+      .then(res => {
+        setloading(false);
+        setToken(res.data.payload.token);
+        navigate("/submit");
+      })
+      .catch(error => {
+        setloading(false);
+        const message = error?.response
+          ? error?.response?.data?.message
+          : error?.message;
+        toast(message, {
+          type: "error",
+        });
+      });
+
+    axios.defaults.withCredentials = true;
+  };
 
   return (
     <div>
@@ -70,24 +105,6 @@ const CheckOut = () => {
               <p>{paymentPlan}</p>
               <p>{paymentTerms}</p>
             </div>
-            <div className="order-details">
-              <h4>TOTAL</h4>
-              <p>Down Payment: {conveneNumber(down)}</p>
-              {[...Array(tenure).keys()].map((number) => {
-                const cardinal = Number(String(number + 1).slice(-1));
-                return (
-                  <p key={number}>{`${number + 1}${
-                    cardinal === 1
-                      ? "st"
-                      : cardinal === 2
-                      ? "nd"
-                      : cardinal === 3
-                      ? "rd"
-                      : "th"
-                  } payment: ${conveneNumber(dividend / 100)}`}</p>
-                );
-              })}
-            </div>
           </div>
 
           <div className="payment">
@@ -98,31 +115,39 @@ const CheckOut = () => {
                   <input type="radio" />
                 </span>
                 <p>Down Payment</p>
-                <h1>₦110,000</h1>
+                <h1>{conveneNumber(down)}</h1>
               </div>
               <div className="main-payment">
-                <div className="list">
-                  <span />
-                  <p>1st montly payment:</p>
-                  <h4>₦63,500</h4>
-                </div>
-                <div className="list">
-                  <span />
-                  <p>2nd montly payment:</p>
-                  <h4>₦63,500</h4>
-                </div>
-                <div className="list">
-                  <span />
-                  <p>3rd montly payment:</p>
-                  <h4>₦63,500</h4>
-                </div>
+                {[...Array(tenure).keys()].map(number => {
+                  const cardinal = Number(String(number + 1).slice(-1));
+                  const ordinal = `${number + 1}${
+                    cardinal === 1
+                      ? "st"
+                      : cardinal === 2
+                      ? "nd"
+                      : cardinal === 3
+                      ? "rd"
+                      : "th"
+                  }`;
+                  return (
+                    <div key={number} className="list">
+                      <span />
+                      <p>{ordinal} monthly payment:</p>
+                      <h4> {conveneNumber(dividend / 100)}</h4>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          <Buttonalt text="Finish" link="/submit" />
+          <Buttonalt
+            text={loading ? "Submitting..." : "Finish"}
+            onClick={createApplication}
+          />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

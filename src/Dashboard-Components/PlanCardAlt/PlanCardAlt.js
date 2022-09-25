@@ -1,8 +1,6 @@
 import React from "react";
 import "./PlanCardAlt.css";
 import { CircularProgress } from "@chakra-ui/react";
-import { useRecoilState } from "recoil";
-import { applicationState, singleProductState } from "../../data/state";
 import {
   Flex,
   NumberInput,
@@ -12,43 +10,62 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
+import { useUserContext } from "../../App";
 
 const PlanCardAlt = () => {
+  const { application } = useUserContext();
   const plans = [
     { name: "Pay Monthly", value: "recurring" },
     { name: "Pay Now", value: "once" },
   ];
 
-  // eslint-disable-next-line
-  const [product] = useRecoilState(singleProductState);
-  const [application, setApplication] = useRecoilState(applicationState);
-  const oneTime = application.meta.plan === plans[1].value;
+  const oneTime = application?.meta?.plan === plans[1].value;
+  const otherColors = [
+    "#FAE9AE",
+    "#FDC088",
+    "#FFE3CA",
+    "#FAE9AE",
+    "#FDC088",
+    "#FFE3CA",
+  ];
 
   const Data = [
     {
       plan: "Down payment",
       color: "#E3000F",
     },
-    {
-      plan: "1st instalment",
-      color: "#8A8A8A",
-    },
-    {
-      plan: "2nd instalment",
-      color: "#8A8A8A",
-    },
-    {
-      plan: "3rd instalment",
-      color: "#8A8A8A",
-    },
+    ...[...Array(application?.meta?.terms?.tenure).keys()]?.map(number => {
+      const cardinal = Number(String(number + 1).slice(-1));
+
+      return {
+        plan: `${number + 1}${
+          cardinal === 1
+            ? "st"
+            : cardinal === 2
+            ? "nd"
+            : cardinal === 3
+            ? "rd"
+            : "th"
+        } payment`,
+        color: otherColors[number],
+      };
+    }),
   ];
+
+  const percentage = application
+    ? Math.round(
+        (Number(application?.payment?.paid) /
+          Number(application?.payment?.total)) *
+          100
+      )
+    : 0;
 
   return (
     <div className="planCard">
       <div className="plan-conainer2 grid">
         <div className="planCardAlt-left grid">
           <CircularProgress
-            value={30}
+            value={percentage}
             size="120px"
             color="#E3000F"
             thickness="16px"
@@ -60,23 +77,11 @@ const PlanCardAlt = () => {
             <Select
               className="n-input"
               disabled={oneTime}
-              onChange={event =>
-                setApplication({
-                  ...application,
-                  meta: {
-                    ...application.meta,
-                    terms: {
-                      ...application.meta.terms,
-                      type: event.target.value,
-                    },
-                  },
-                })
-              }
-              placeholder="Monthly"
+              value={application?.meta?.terms?.type}
               maxW="120px"
             >
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
+              <option value="weeks">Weekly</option>
+              <option value="months">Monthly</option>
             </Select>
             <div>
               <Flex>
@@ -86,19 +91,7 @@ const PlanCardAlt = () => {
                   mr=""
                   maxW="60px"
                   max={6}
-                  defaultValue={application.meta.terms.tenure}
-                  onChange={value =>
-                    setApplication({
-                      ...application,
-                      meta: {
-                        ...application.meta,
-                        terms: {
-                          ...application.meta.terms,
-                          tenure: Number(value),
-                        },
-                      },
-                    })
-                  }
+                  value={application?.meta?.terms?.tenure}
                   min={1}
                 >
                   <NumberInputField className="n-input" />
@@ -110,24 +103,12 @@ const PlanCardAlt = () => {
 
                 <Select
                   className="n-input"
-                  disabled={oneTime}
-                  onChange={event =>
-                    setApplication({
-                      ...application,
-                      meta: {
-                        ...application.meta,
-                        terms: {
-                          ...application.meta.terms,
-                          type: event.target.value,
-                        },
-                      },
-                    })
-                  }
-                  placeholder="Select"
+                  placeholder="Select Plan"
+                  value={application?.meta?.plan}
                   maxW="120px"
                 >
-                  <option value="weeks">Weeks</option>
-                  <option value="months">Months</option>
+                  <option value="once">One Time</option>
+                  <option value="recurring">Recurring</option>
                 </Select>
               </Flex>
             </div>

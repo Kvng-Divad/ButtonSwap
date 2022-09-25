@@ -21,7 +21,7 @@
   --font-semibold: 600;
   --font-bold: 800;
 
-  --bdy-font-family-alt: "DM Sans", sans-seri !important;
+  --bdy-font-family-alt: "DM Sans", sans-serif !important;
   --bdy-font-family: "DM Sans", sans-serif;
 
   --font-size-bggr: 3.15rem !important;
@@ -38,7 +38,7 @@
 body {
   font-size: var(--font-size-nr) !important;
   font-family: var(--bdy-font-family) !important;
-  font-weight: 400;
+  font-weight: 4o00;
   background: var(--bg-color-1);
   color: var(--text-color);
   
@@ -124,9 +124,8 @@ button {
   color: var(--text-color-alt);
   font-family: var(--bdy-font-family);
   font-size: var(--font-size-sm);
-  font-weight: 600;
-  border-radius: 5px;
-  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 0.5rem;
   text-transform: uppercase;
 }
 .butn:hover {
@@ -144,8 +143,8 @@ button {
   border: 1px solid var(--text-color2);
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
-  font-weight: 600;
-  padding: 0.5rem 0.75rem !important;
+  font-weight: 700;
+  padding: 0.5rem 0.5rem !important;
   text-transform: uppercase;
 }
 .btn-container {
@@ -161,9 +160,8 @@ button {
   border: 1px solid var(--text-color-alt);
   color: var(--text-color);
   font-size: var(--font-size-sm) !important;
-  font-weight: 600;
-  border-radius: 5px !important;
-  padding: 0.5rem 0.75rem !important;
+  font-weight: 700;
+  padding: 0.5rem 0.5rem !important;
   text-transform: uppercase;
   margin: auto;
 }
@@ -177,7 +175,7 @@ button {
   border: 1px solid var(--skin-color);
   color: var(--text-color-alt);
   font-size: var(--font-size-sm) !important;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 25px !important;
   padding: 0.65rem 5rem !important;
   text-transform: uppercase;

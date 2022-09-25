@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import "./App.css";
 import "./Dashboard.css";
 import { Route, Routes } from "react-router-dom";
@@ -13,20 +13,60 @@ import Verification from "./Routes/Verification";
 import Authentication from "./Routes/Authentication";
 import Checkout from "./Routes/Checkout";
 import Close from "./Routes/Close";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { RecoilRoot } from "recoil";
+import { useRecoilState } from "recoil";
 import Dashboard from "./Routes/Dashboard";
 import Payment from "./Routes/Payment";
+<<<<<<< HEAD
 import Headers from "./Routes/Headers";
 import Signin from "./Routes/Signin";
 import ApplicationSummary from "./Routes/ApplicationSummary";
+=======
+import MyApplications from "./Routes/MyApplications";
+import Profile from "./Routes/Profile";
+import { toggleContext } from "./Context/Context";
+import { authTokenState } from "./data/state";
+import { useGetUser } from "./operations/user.operation";
+import { useGetUserApplications } from "./operations/application.operation";
+import { useGetSingleProduct } from "./operations/product.operation";
+>>>>>>> 30aa8a7b36a0e54786d2f782b6a7dd0dbb0dd6a3
 
-const client = new QueryClient();
+export const UserContext = createContext();
+
+export const useUserContext = () => useContext(UserContext);
 
 function App() {
+  const [expanded, setExpanded] = useState(false);
+  const [token] = useRecoilState(authTokenState);
+  const { getUser, getUserResult } = useGetUser();
+  const { getUserApplications, getUserApplicationsResult } =
+    useGetUserApplications();
+
+  const { getSingleProduct, getSingleProductResult } = useGetSingleProduct();
+
+  useEffect(() => {
+    if (token) {
+      getUser();
+      getUserApplications().then(res => {
+        if (res.data?.ok) {
+          getSingleProduct(res?.data?.payload?.[0]?.product?.id);
+        }
+      });
+    }
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <QueryClientProvider client={client}>
-      <RecoilRoot>
+    <UserContext.Provider
+      value={{
+        getUserResult,
+        getUserApplicationsResult,
+        user: getUserResult?.data?.data?.payload,
+        applications: getUserApplicationsResult?.data?.data?.payload,
+        application: getUserApplicationsResult?.data?.data?.payload?.[0],
+        product: getSingleProductResult?.data?.data?.data,
+      }}
+    >
+      <toggleContext.Provider value={{ expanded, setExpanded }}>
         <div className="main-container">
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -42,15 +82,20 @@ function App() {
             <Route path="/submit" element={<Close />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/payment" element={<Payment />} />
+<<<<<<< HEAD
             <Route path="/applications" element={<Payment />} />
             <Route path="/profile" element={<Payment />} />
             <Route path="/header" element={<Headers />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/appsummary" element={<ApplicationSummary />} />
+=======
+            <Route path="/applications" element={<MyApplications />} />
+            <Route path="/profile" element={<Profile />} />
+>>>>>>> 30aa8a7b36a0e54786d2f782b6a7dd0dbb0dd6a3
           </Routes>
         </div>
-      </RecoilRoot>
-    </QueryClientProvider>
+      </toggleContext.Provider>
+    </UserContext.Provider>
   );
 }
 

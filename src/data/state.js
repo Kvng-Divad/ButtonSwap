@@ -50,11 +50,19 @@ export const applicationState = atom({
       phone_number: "",
       delivery_address: "",
       password: "",
+      gender: "",
       other: {
         monthly_income: 0,
         bank_branch: "",
       },
     },
+    face_verification: {},
   },
-  // effects_UNSTABLE: implementPersist("applicationState"),
+  effects_UNSTABLE: implementPersist("applicationState"),
+});
+
+export const authTokenState = atom({
+  key: "authTokenState",
+  default: "",
+  effects_UNSTABLE: implementPersist("authTokenState"),
 });

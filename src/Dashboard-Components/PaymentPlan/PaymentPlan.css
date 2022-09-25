@@ -1,35 +1,37 @@
-.payment-plan{
-    gap: .5rem;
+.payment-plan {
+  gap: 0.5rem;
 }
-.payment-plan-top{
-    padding: .5rem;
-    justify-content: space-between;
-
+.payment-plan-top {
+  padding: 0.5rem;
+  justify-content: space-between;
 }
-.change-btn{
-    padding: 0 .15rem;
-    opacity: 0.4;
-    border: 0.8px solid #1D1D1D;
-    border-radius: 8px;
-    font-size: var(--font-size-smlr);
-    line-height: 14px;
-    color: var(--text-color2);
+.change-btn {
+  padding: 0 0.15rem;
+  opacity: 0.4;
+  border: 0.8px solid #1d1d1d;
+  border-radius: 8px;
+  font-size: var(--font-size-smlr);
+  line-height: 14px;
+  color: var(--text-color2);
 }
-.change-btn:hover{
-    opacity: 0.8;
+.change-btn:hover {
+  opacity: 0.8;
+}
+.change-btn:disabled {
+  opacity: 0.4;
 }
 .s-input,
-.n-input{
-    height: 2rem !important;
-    font-size: var(--font-size-sm) !important;
-    color: var(--text-color3)!important;
-    border: 0.8px solid var(--text-color2) !important;
-    border-radius: 8px !important;
+.n-input {
+  height: 2rem !important;
+  font-size: var(--font-size-sm) !important;
+  color: var(--text-color3) !important;
+  border: 0.8px solid var(--text-color2) !important;
+  border-radius: 8px !important;
 }
-.i-input{
-    height: 2.5rem !important;
-    font-size: var(--font-size-sm) !important;
-    color: var(--text-color3)!important;
-    border: 0.8px solid var(--text-color2) !important;
-    border-radius: 8px !important;
+.i-input {
+  height: 2.5rem !important;
+  font-size: var(--font-size-sm) !important;
+  color: var(--text-color3) !important;
+  border: 0.8px solid var(--text-color2) !important;
+  border-radius: 8px !important;
 }
