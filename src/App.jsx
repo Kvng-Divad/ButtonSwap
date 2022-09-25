@@ -16,6 +16,11 @@ import Close from "./Routes/Close";
 import { useRecoilState } from "recoil";
 import Dashboard from "./Routes/Dashboard";
 import Payment from "./Routes/Payment";
+import Agree from "./Routes/Agree";
+import PaymentDetail from "./Routes/PaymentDetail";
+import Headers from "./Routes/Headers";
+import Signin from "./Routes/Signin";
+import ApplicationSummary from "./Routes/ApplicationSummary";
 import MyApplications from "./Routes/MyApplications";
 import Profile from "./Routes/Profile";
 import { toggleContext } from "./Context/Context";
@@ -76,8 +81,15 @@ function App() {
             <Route path="/submit" element={<Close />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/paymentdetail" element={<PaymentDetail />} />
+            <Route path="/applications" element={<Payment />} />
+            <Route path="/profile" element={<Payment />} />
+            <Route path="/header" element={<Headers />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/appsummary" element={<ApplicationSummary />} />
             <Route path="/applications" element={<MyApplications />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/agree" element={<Agree />} />
           </Routes>
         </div>
       </toggleContext.Provider>
