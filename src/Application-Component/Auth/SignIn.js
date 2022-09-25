@@ -62,13 +62,14 @@ const Wrapper = styled.div`
   width: 400px;
   display: flex;
   align-items: center;
-  border-radius:5px;
+  border-radius: 5px;
   flex-direction: column;
   background: var(--text-color-alt2);
   justify-content: space-around;
 
   @media screen and (max-width: 425px) {
- width: 90%;
+    width: 90%;
+  }
 `;
 
 const Form = styled.div`
