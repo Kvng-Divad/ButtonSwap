@@ -1,26 +1,25 @@
-.device-info-container{
-    padding: 1rem;
-    gap: 2rem;
+.device-info-container {
+  padding: 1rem;
+  gap: 2rem;
 }
 
-.device-images{
-    justify-items: center;
+.device-images {
+  justify-items: center;
 }
 
-
-.device-detail p{
-    font-size: var(--font-size-nr);
-    font-weight: 500;
-    color: var(--text-color);
+.device-detail p {
+  font-size: var(--font-size-nr);
+  font-weight: 500;
+  color: var(--text-color);
 }
-.device-details{
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+.device-details {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 .spec {
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-    gap: .25rem;
-    padding: .5rem;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
 }

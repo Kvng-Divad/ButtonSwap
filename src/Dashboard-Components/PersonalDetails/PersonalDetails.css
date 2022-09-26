@@ -1,15 +1,15 @@
-.info-details{
-    gap: .5rem;
+.info-details {
+  gap: 0.5rem;
 }
-.info-details h4{
-    font-size: var(--font-size-sm);
-    color: var(--text-color2);
-    opacity: .8;
+.info-details h4 {
+  font-size: var(--font-size-sm);
+  color: var(--text-color2);
+  opacity: 0.8;
 }
-.info-details p{
-    font-size: var(--font-size-sm);
+.info-details p {
+  font-size: var(--font-size-sm);
 }
-.details-container{
-    gap: 1rem;
-    padding:1rem;
+.details-container {
+  gap: 1rem;
+  padding: 1rem;
 }
