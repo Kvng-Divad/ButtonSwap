@@ -1,44 +1,21 @@
-<<<<<<< HEAD
-.application-info{
-    padding: 1rem;
-    gap: 2rem;
+.application-info {
+  padding: 1rem;
+  gap: 2rem;
 }
 
-.application-info p{
-    font-size: var(--font-size-nr);
-    font-weight: 400;
-    color: var(--text-color2);
+.application-info p {
+  font-size: var(--font-size-nr);
+  font-weight: 400;
+  color: var(--text-color2);
 }
-.application-infos{
-    grid-template-columns:1fr;
-    gap: 1rem;
-}
-.actions {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: .25rem;
-    padding: .5rem;
-=======
-.application-info{
-    padding: 1rem;
-    gap: 2rem;
-}
-
-.application-info p{
-    font-size: var(--font-size-nr);
-    font-weight: 400;
-    color: var(--text-color2);
-}
-.application-infos{
-    grid-template-columns:1fr;
-    gap: 1rem;
+.application-infos {
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 .actions {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: .25rem;
-    padding: .5rem;
->>>>>>> d67a1c2f3415f50311b16434b41f1d8f69528f23
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
 }
