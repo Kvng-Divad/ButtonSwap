@@ -3,7 +3,7 @@
     --dash-color:  #AA4428;
     --white-color: #f1f1f1;
     --text-color: #1D1D1D;
-    --text-color2: ##8E8E8E;
+    --text-color2: #8E8E8E;
     --text-color3:#585858;
 }
 .dashboard{
@@ -22,12 +22,25 @@
 .main-dash{
     grid-template-columns: 100%;
     gap: 1.5rem;
-    margin: 5rem 0;
+    margin: 5rem 1rem;
 }
-.payment-main-dash{
+.payment-main-dash,
+.profile-main-dash{
     gap: 2rem;
-    grid-template-rows: repeat(3, max-contant);
-    margin: 5rem 0;
+    grid-template-rows: repeat(3, max-content);
+    margin: 5rem 1rem;
+}
+.application-main-dash{
+    gap: 2rem;
+    margin: 5rem 1rem;
+    grid-template-rows: repeat(2, max-content);
+}
+.application-dash{
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+.profile-dash{
+    gap: 2rem;
 }
 .dash-left{
     gap: 3rem;
@@ -46,6 +59,9 @@
 }
 .dash-title{
     font-weight: 500;
+}
+.dash-subtitle{
+    font-weight: 400;
 }
 .dash-nav{
     color:#E3000F;
@@ -74,22 +90,39 @@
     justify-items: center;
     margin-top: 1rem;
 }
-
-  @media (min-width: 960px) {
-    .dash-container{
-        grid-template-columns: 100%;
-    }
-    .main-dash{
-        grid-template-columns: 68% 28%;
-        margin: 5rem 0 2rem 14rem;
-    }
-    .payment-main-dash{
-        margin: 5rem 0 4rem 14rem;
-    }
+.application-details{
+    background: var(--bg-color-1);
+    border-radius: .5rem;
+    padding: .5rem;
+}
+.grid-box{
+    gap: 2rem;
+}
+.grid-box-center{
+    gap: 2rem;
+}
+.grid-box-end{
+    max-width: 93%;
+}
+.profile-btn{
+    display: grid;
+    justify-items: end;
+    align-items: flex-end;
+}
+@media (min-width: 998px) {
     .payment-top,
     .payment-end{
         grid-template-columns: 68% 28%;
         gap:1.5rem;
+    }
+    .main-dash{
+        grid-template-columns: 68% 28%;
+        margin: 5rem 0 2rem 6rem;
+    }
+    .application-main-dash,
+    .profile-main-dash,
+    .payment-main-dash{
+        margin: 5rem 0 4rem 6rem;
     }
     .dash-left{
         gap: 3rem;
@@ -97,8 +130,30 @@
     .dash-right{
         gap: 3rem;
     }
+    .grid-box-center{
+        grid-template-columns: repeat(2, 45%);
+    }
     .end-cont{
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
+}
+
+  @media (min-width: 1250px) {
+    .dash-container{
+        grid-template-columns: 100%;
+    }
+    .main-dash{
+        grid-template-columns: 68% 28%;
+        margin: 5rem 0 2rem 14rem;
+    }
+    .application-main-dash,
+    .profile-main-dash,
+    .payment-main-dash{
+        margin: 5rem 0 4rem 14rem;
+    }
+    .application-dash{
+        grid-template-columns: repeat(3, 30.5%);
+    }
+    
   }  

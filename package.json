@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "keza-zenith",
   "version": "0.1.0",
@@ -71,3 +72,78 @@
     "prettier": "^2.7.1"
   }
 }
+=======
+{
+  "name": "keza-zenith",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "https://keza-zenith-staging.herokuapp.com",
+  "dependencies": {
+    "@ajna/pagination": "^1.4.19",
+    "@chakra-ui/icons": "^2.0.6",
+    "@chakra-ui/react": "^2.2.6",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@hookform/resolvers": "^2.9.8",
+    "@material-ui/core": "^4.12.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "axios": "^0.27.2",
+    "firebase": "^9.9.4",
+    "formik": "^2.2.9",
+    "framer-motion": "^7.1.0",
+    "jslib-html5-camera-photo": "^3.3.4",
+    "otp-input-react": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.36.0",
+    "react-icons": "^4.4.0",
+    "react-loading-skeleton": "^3.1.0",
+    "react-otp-input": "^2.4.0",
+    "react-query": "^3.39.2",
+    "react-router-dom": "6.3.0",
+    "react-router-hash-link": "^2.4.3",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.8",
+    "recoil": "^0.7.5",
+    "recoil-persist": "^4.2.0",
+    "sass": "^1.54.4",
+    "styled-components": "^5.3.5",
+    "swiper": "^6.8.4",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "format": "prettier --write \"src/**/*.js\" && prettier --check \"src/**/*.js\"",
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "ci": "yarn install --immutable --immutable-cache --check-cache"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "prettier": "^2.7.1"
+  }
+}
+>>>>>>> d67a1c2f3415f50311b16434b41f1d8f69528f23

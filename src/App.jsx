@@ -45,7 +45,11 @@ function App() {
   useEffect(() => {
     if (token) {
       getUser();
+<<<<<<< HEAD
       getUserApplications().then((res) => {
+=======
+      getUserApplications().then(res => {
+>>>>>>> d67a1c2f3415f50311b16434b41f1d8f69528f23
         if (res.data?.ok) {
           getSingleProduct(res?.data?.payload?.[0]?.product?.id);
         }
