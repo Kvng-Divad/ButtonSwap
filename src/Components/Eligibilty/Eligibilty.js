@@ -6,7 +6,7 @@ import { Input } from '@chakra-ui/react'
 
 const Eligibilty = () => {
   return (
-    <div className='eligibilty grid' id='eligibility'>
+    <div className='eligibilty grid' id='calculator'>
       <div className="title grid">
         <h3>SMARTPHONE CALCULATOR</h3>
         <p>Find out what your phone plan looks like</p>

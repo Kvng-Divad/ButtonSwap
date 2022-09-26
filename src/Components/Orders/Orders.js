@@ -32,7 +32,7 @@ const Orders = () => {
   const logo = product?.brand?.image;
 
   const image = product?.meta?.images?.find(
-    (image) => image?.image?.length > 1
+    image => image?.image?.length > 1
   )?.image;
   const name = product?.name;
 
@@ -128,7 +128,7 @@ const Orders = () => {
               <div className="order-details">
                 <h4>CAPACITY</h4>
                 <HStack>
-                  {ram.map((value) => {
+                  {ram.map(value => {
                     return (
                       <RadioCard
                         onChange={() => {
@@ -171,7 +171,9 @@ const Orders = () => {
                           })
                         }
                         key={index}
-                        colorScheme={color?.toLowerCase()}
+                        colorScheme={
+                          application.product.color === color ? "red" : ""
+                        }
                         value={color}
                       >
                         {color}
@@ -184,7 +186,7 @@ const Orders = () => {
               <div className="order-details">
                 <h4>PAYMENT PLAN</h4>
                 <HStack className="radios-label flex">
-                  {plans.map((plan) => {
+                  {plans.map(plan => {
                     return (
                       <RadioCard
                         onChange={() =>
@@ -217,7 +219,7 @@ const Orders = () => {
                     maxW="100px"
                     max={6}
                     defaultValue={application.meta.terms.tenure}
-                    onChange={(value) =>
+                    onChange={value =>
                       setApplication({
                         ...application,
                         meta: {
@@ -240,7 +242,7 @@ const Orders = () => {
 
                   <Select
                     disabled={oneTime}
-                    onChange={(event) =>
+                    onChange={event =>
                       setApplication({
                         ...application,
                         meta: {
@@ -266,12 +268,12 @@ const Orders = () => {
               <div className="Button grid">
                 <Buttonalt
                   onClick={() => {
+                    const rate = 0.05;
                     const extra = 4000;
-                    const down = price * 0.3;
+                    const down = price * 0.3 * 100;
                     const principal = price * 0.7;
                     const months = oneTime ? 1 : application.meta.terms.tenure;
                     const init = parseFloat(principal / months);
-                    const rate = 0.03;
                     const increment = rate * init;
                     const amount = parseFloat((increment + init) * months);
                     const total = (amount + extra) * 100; // convert to kobo
@@ -283,6 +285,7 @@ const Orders = () => {
                         ...application.product,
                         id: product.id,
                         price,
+                        condition: "new",
                       },
                       payment: {
                         total,

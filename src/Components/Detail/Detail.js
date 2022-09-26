@@ -18,13 +18,16 @@ const Detail = () => {
     otp: yup.number().positive().integer(),
   });
 
+  // eslint-disable-next-line
   const { handleSubmit } = useForm({
     resolver: yupResolver(authSchema),
   });
 
+  // eslint-disable-next-line
   const [isVerified, setIsVerified] = useState(false);
   const [application, setApplication] = useRecoilState(applicationState);
   const [info, setInfo] = useState(defaultInfo);
+  // eslint-disable-next-line
   const [initialValues, setInitialValues] = useState({ work_email: "" });
 
   return (
@@ -73,7 +76,7 @@ const Detail = () => {
               actions.setSubmitting(false);
             }}
           >
-            {(props) => (
+            {props => (
               <div>
                 <EmailDetail />
               </div>
@@ -98,7 +101,7 @@ const Detail = () => {
                 }, 1000);
               }}
             >
-              {(props) => <OTPDetail />}
+              {props => <OTPDetail />}
             </Formik>
           </div>
         </div>

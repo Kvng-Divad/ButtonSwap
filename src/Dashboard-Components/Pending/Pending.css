@@ -1,5 +1,9 @@
-.table-container{
-    background: var(--bg-color-1) !important;
-    padding: .75rem;
-    border-radius: .5rem;
+.table-container {
+  background: var(--bg-color-1) !important;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+.pending {
+  opacity: 0.5;
+  pointer-events: none;
 }

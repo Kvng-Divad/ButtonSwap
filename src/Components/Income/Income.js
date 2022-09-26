@@ -1,13 +1,18 @@
 import "./Income.css";
 import React, { useEffect, useState } from "react";
-import { FormControl, FormErrorMessage, Image, Select } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormErrorMessage,
+  Image,
+  Select,
+  Text,
+} from "@chakra-ui/react";
 import {
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
-import { CheckIcon } from "@chakra-ui/icons";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import nairaIcon from "../../Assets/naira.png";
@@ -15,6 +20,8 @@ import { useFormik } from "formik";
 import { applicationState } from "../../data/state";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
+import { conveneNumber } from "../../utils";
+import banks from "../../constants/bank-array";
 const defaultValues = { monthly_income: "", bank_branch: "" };
 
 const Incomes = () => {
@@ -82,9 +89,9 @@ const Incomes = () => {
                     onChange={handleChange}
                     placeholder="How much do you earn in a month?"
                   />
-                  <InputRightElement
-                    children={<CheckIcon color="green.500" />}
-                  />
+                  <InputRightElement w={{ base: "44%", md: "22%" }}>
+                    <Text w="100%">{conveneNumber(values.monthly_income)}</Text>
+                  </InputRightElement>
                   <FormErrorMessage> {errors.monthly_income} </FormErrorMessage>
                 </InputGroup>
               </FormControl>
@@ -105,9 +112,15 @@ const Incomes = () => {
                   className="filter"
                   size="lg"
                 >
-                  <option value="lagos">Lagos</option>
-                  <option value="lagos-mainlad">Lagos Mainland</option>
-                  <option value="lagos-island">Lagos Island</option>
+                  {banks.map(bank => (
+                    <option
+                      style={{ textTransform: "uppercase" }}
+                      key={bank}
+                      value={bank}
+                    >
+                      {bank}
+                    </option>
+                  ))}
                 </Select>
                 <FormErrorMessage> {errors.bank_branch} </FormErrorMessage>
               </FormControl>

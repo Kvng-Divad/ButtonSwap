@@ -1,0 +1,42 @@
+.summarry-card{
+    padding: 0 1rem;
+    gap: .25rem;
+}
+.summarry-card h3{
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.summarry-detail{
+    grid-template-columns: repeat(3, 20%);
+}
+.summarry-detail-left{
+    gap: .15rem;
+}
+.summarry-detail-left h4{
+    font-size: var(--font-size-nr);
+}
+
+.summarry-detail-center p{
+    font-size: var(--font-size-sm);
+    color: var(--text-color2);
+}
+.detail-key{
+    gap: .25rem;
+    align-items: center;
+}
+.detail-key span{
+    width: .5rem;
+    height: .5rem;
+    border-radius: .25rem;
+    
+}
+.detail-key p{
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+}
+.Btns{
+    padding: 0 1rem 1rem 0;
+    margin-top: -1rem;
+}
