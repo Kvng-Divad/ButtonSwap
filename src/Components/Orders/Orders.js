@@ -1,5 +1,5 @@
 import "./Orders.css";
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Battery from "../../Assets/Battery.svg";
@@ -24,9 +24,11 @@ import {
 import { Select } from "@chakra-ui/react";
 import conveneNumber from "../../utils/convene-number";
 import noImage from "../../Assets/no-image.png";
+import axios from "axios";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const Orders = () => {
-  const [product] = useRecoilState(singleProductState);
+  const [product, setProdcut] = useRecoilState(singleProductState);
   const [application, setApplication] = useRecoilState(applicationState);
 
   const logo = product?.brand?.image;
@@ -37,6 +39,41 @@ const Orders = () => {
   const name = product?.name;
 
   const price = product?.meta?.price?.min;
+
+  const getProduct = useCallback(async (id) => {
+     axios.get(`https://kezaafrica.herokuapp.com/v1/products/get-product/${id}`)
+      .then((res) => {
+        if (res.data.ok) {
+          setProdcut(res.data.data);
+        }
+      })
+      .catch(({ message }) => {
+        setProdcut([]);
+      });
+    axios.defaults.withCredentials = true;
+  },[setProdcut])
+
+  const params = useParams()
+
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    getProduct(params.id)
+  },[params.id, getProduct])
+
+  useEffect(() => {
+    setApplication({
+      ...application,
+      product: {
+        ...application.product,
+        capacity: searchParams.get('storage') || '',
+        color: searchParams.get('color') || '',
+        plan: searchParams.get('paymentPlan') || '',
+        tenure: searchParams.get('terms') || ''
+      },
+    });
+  },[searchParams])
+
 
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
