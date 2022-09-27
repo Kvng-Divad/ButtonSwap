@@ -75,7 +75,7 @@ const Orders = () => {
       },
       meta: {
             ...oldState.meta,
-            plan: searchParams.get('paymentPlan') === 'month' ? 'once' : 'recurring',
+            plan: searchParams.get('paymentPlan') === 'month' ? 'recurring' : 'once',
             terms: {
               ...oldState.meta.terms,
               type: searchParams.get('paymentPlan') || '',
@@ -265,7 +265,6 @@ const Orders = () => {
                     mr="2"
                     maxW="100px"
                     max={6}
-                    defaultValue={application.meta.terms.tenure}
                     onChange={value =>
                       setApplication({
                         ...application,
@@ -280,6 +279,7 @@ const Orders = () => {
                     }
                     min={1}
                     value={application.meta.terms.tenure}
+                    defaultValue={application.meta.terms.tenure}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -304,8 +304,8 @@ const Orders = () => {
                     }
                     placeholder="Select"
                     maxW="100px"
-                    defaultValue={application.meta.terms.type}
                     value={application.meta.terms.type}
+                    defaultValue={application.meta.terms.type}
                   >
                     <option value="week">Weeks</option>
                     <option value="month">Months</option>
