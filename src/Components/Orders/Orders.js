@@ -1,5 +1,5 @@
 import "./Orders.css";
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Battery from "../../Assets/Battery.svg";
@@ -24,12 +24,15 @@ import {
 import { Select } from "@chakra-ui/react";
 import conveneNumber from "../../utils/convene-number";
 import noImage from "../../Assets/no-image.png";
+import axios from "axios";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const Orders = () => {
-  const [product] = useRecoilState(singleProductState);
+  const [product, setProdcut] = useRecoilState(singleProductState);
   const [application, setApplication] = useRecoilState(applicationState);
 
   const logo = product?.brand?.image;
+  const params = useParams();
 
   const image = product?.meta?.images?.find(
     image => image?.image?.length > 1
@@ -38,6 +41,53 @@ const Orders = () => {
 
   const price = product?.meta?.price?.min;
 
+  const getProduct = useCallback(
+    async id => {
+      axios
+        .get(`https://kezaafrica.herokuapp.com/v1/products/get-product/${id}`)
+        .then(res => {
+          if (res.data.ok) {
+            setProdcut(res.data.data);
+          }
+        })
+        .catch(({ message }) => {
+          setProdcut([]);
+        });
+      axios.defaults.withCredentials = true;
+    },
+    [setProdcut]
+  );
+
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    getProduct(params.id);
+  }, [getProduct, params.id]);
+
+  useEffect(() => {
+    setApplication(oldState => ({
+      ...oldState,
+      product: {
+        ...oldState.product,
+        capacity: searchParams.get("storage") || "",
+        color: searchParams.get("color") || "",
+        tenure: searchParams.get("terms") || "",
+      },
+      meta: {
+        ...oldState.meta,
+        plan:
+          searchParams.get("paymentPlan") === "month" ? "recurring" : "once",
+        terms: {
+          ...oldState.meta.terms,
+          type: searchParams.get("paymentPlan") || "",
+          tenure: searchParams.get("terms")
+            ? Number(searchParams.get("terms"))
+            : "",
+        },
+      },
+    }));
+  }, [searchParams, setApplication]);
+
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
   const display = product?.components?.display;
@@ -45,8 +95,7 @@ const Orders = () => {
     product?.components?.battery?.isRemovable ? "" : ", non-removable"
   }`;
   const chip = product?.components?.chip;
-
-  const ram = product?.storage?.ram;
+  const ram = product?.storage?.rom || [];
   const plans = [
     { name: "Pay Monthly", value: "recurring" },
     { name: "Pay Now", value: "once" },
@@ -218,7 +267,6 @@ const Orders = () => {
                     mr="2"
                     maxW="100px"
                     max={6}
-                    defaultValue={application.meta.terms.tenure}
                     onChange={value =>
                       setApplication({
                         ...application,
@@ -232,6 +280,8 @@ const Orders = () => {
                       })
                     }
                     min={1}
+                    value={application.meta.terms.tenure}
+                    defaultValue={application.meta.terms.tenure}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -256,9 +306,11 @@ const Orders = () => {
                     }
                     placeholder="Select"
                     maxW="100px"
+                    value={application.meta.terms.type}
+                    defaultValue={application.meta.terms.type}
                   >
-                    <option value="weeks">Weeks</option>
-                    <option value="months">Months</option>
+                    <option value="week">Weeks</option>
+                    <option value="month">Months</option>
                   </Select>
                 </Flex>
               </div>
