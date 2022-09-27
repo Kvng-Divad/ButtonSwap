@@ -20,6 +20,10 @@ const Eligibilty = () => {
   const [paymentPlan, setPaymentPlan] = useState('')
   const [terms, setTerms] = useState('')
 
+  const [colors, setColors] = useState([])
+
+  const [capacities, setCapacities] = useState([])
+
   const navigate = useNavigate()
 
   const getPhones = useCallback(() => {
@@ -37,6 +41,10 @@ const Eligibilty = () => {
 
   const handleSelectedItemsChange = (selectedItems) => {
     if (selectedItems) {
+      const phone = products.find(item => item.id === selectedItems[0].value);
+
+      setColors(phone.meta?.colors)
+      setCapacities(phone.storage?.ram)
       setSelectedItems(selectedItems.length === 0 ? [] : [selectedItems[selectedItems.length - 1]]);
     }
   };
@@ -86,13 +94,8 @@ const Eligibilty = () => {
          
 
         <Select value={storage} onChange={e => setPhoneStorage(e.target.value)} placeholder='Phone storage' spacing={3}  className='filter' size='lg'>
-          <option value='4GB'>4GB</option>
-          <option value='8GB'>8GB</option>
-          <option value='16GB'>16GB</option>
-          <option value='32GB'>32GB</option>
-          <option value='64GB'>64GB</option>
-          <option value='128GB'>128GB</option>
-          <option value='256GB'>256GB</option>
+         
+          {capacities.map(item => <option value={item}>{item}</option>)}
         </Select>
 
         <Select value={condition} onChange={e => setCondition(e.target.value)} placeholder='Phone condition' spacing={3}  className='filter' size='lg'>
@@ -101,11 +104,8 @@ const Eligibilty = () => {
         </Select>
 
         <Select value={color} onChange={e => setColor(e.target.value)} placeholder='Phone color' spacing={3}  className='filter' size='lg'>
-          <option value='Starlight'>Starlight</option>
-          <option value='Midnight'>Midnight</option>
-          <option value='Red'>Red</option>
-          <option value='Blue'>Blue</option>
-          <option value='Pink'>Pink</option>
+        
+          {colors.map(item => <option value={item}>{item}</option>)}
         </Select>
 
         <Select value={paymentPlan} onChange={e => setPaymentPlan(e.target.value)} placeholder='Payment plan' spacing={3}  className='filter' size='lg'>
