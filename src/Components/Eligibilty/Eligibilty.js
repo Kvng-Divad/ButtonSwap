@@ -41,10 +41,17 @@ const Eligibilty = () => {
 
   const handleSelectedItemsChange = (selectedItems) => {
     if (selectedItems) {
-      const phone = products.find(item => item.id === selectedItems[0].value);
+      const phone = products.find(item => item.id === selectedItems[0]?.value);
 
-      setColors(phone.meta?.colors)
+      if(phone){
+        setColors(phone.meta?.colors)
       setCapacities(phone.storage?.ram)
+      }else{
+        setColors([])
+        setCapacities([])
+      }
+
+      
       setSelectedItems(selectedItems.length === 0 ? [] : [selectedItems[selectedItems.length - 1]]);
     }
   };
