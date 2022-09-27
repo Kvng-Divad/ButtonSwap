@@ -1,5 +1,5 @@
 import "./Orders.css";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Battery from "../../Assets/Battery.svg";
@@ -61,6 +61,7 @@ const Orders = () => {
     getProduct(params.id)
   },[params.id, getProduct])
 
+
   useEffect(() => {
     setApplication({
       ...application,
@@ -82,7 +83,7 @@ const Orders = () => {
          
       },
     });
-  },[searchParams])
+  },)
 
 
   const colors = product?.meta?.colors;

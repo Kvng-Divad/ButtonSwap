@@ -12,7 +12,6 @@ import { createSearchParams, useNavigate } from 'react-router-dom'
 
 
 const Eligibilty = () => {
-  const {APP_URI} = useUserContext()
   const [products, setProducts] = useState([])
   const [selectedItems, setSelectedItems] = React.useState([]);
 
