@@ -32,7 +32,7 @@ const Orders = () => {
   const [application, setApplication] = useRecoilState(applicationState);
 
   const logo = product?.brand?.image;
-  const params = useParams()
+  const params = useParams();
 
   const image = product?.meta?.images?.find(
     image => image?.image?.length > 1
@@ -41,50 +41,52 @@ const Orders = () => {
 
   const price = product?.meta?.price?.min;
 
-  const getProduct = useCallback(async (id) => {
-     axios.get(`https://kezaafrica.herokuapp.com/v1/products/get-product/${id}`)
-      .then((res) => {
-        if (res.data.ok) {
-          setProdcut(res.data.data);
-        }
-      })
-      .catch(({ message }) => {
-        setProdcut([]);
-      });
-    axios.defaults.withCredentials = true;
-  },[setProdcut])
+  const getProduct = useCallback(
+    async id => {
+      axios
+        .get(`https://kezaafrica.herokuapp.com/v1/products/get-product/${id}`)
+        .then(res => {
+          if (res.data.ok) {
+            setProdcut(res.data.data);
+          }
+        })
+        .catch(({ message }) => {
+          setProdcut([]);
+        });
+      axios.defaults.withCredentials = true;
+    },
+    [setProdcut]
+  );
 
-  
-
-  const [searchParams] = useSearchParams()
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    getProduct(params.id)
-  },[getProduct, params.id])
-
-
+    getProduct(params.id);
+  }, [getProduct, params.id]);
 
   useEffect(() => {
     setApplication(oldState => ({
       ...oldState,
       product: {
         ...oldState.product,
-        capacity: searchParams.get('storage') || '',
-        color: searchParams.get('color') || '',
-        tenure: searchParams.get('terms') || '',
+        capacity: searchParams.get("storage") || "",
+        color: searchParams.get("color") || "",
+        tenure: searchParams.get("terms") || "",
       },
       meta: {
-            ...oldState.meta,
-            plan: searchParams.get('paymentPlan') === 'month' ? 'recurring' : 'once',
-            terms: {
-              ...oldState.meta.terms,
-              type: searchParams.get('paymentPlan') || '',
-              tenure: searchParams.get('terms') ? Number(searchParams.get('terms')) : ''
-          }
-         },
+        ...oldState.meta,
+        plan:
+          searchParams.get("paymentPlan") === "month" ? "recurring" : "once",
+        terms: {
+          ...oldState.meta.terms,
+          type: searchParams.get("paymentPlan") || "",
+          tenure: searchParams.get("terms")
+            ? Number(searchParams.get("terms"))
+            : "",
+        },
+      },
     }));
-  },[searchParams, setApplication])
-
+  }, [searchParams, setApplication]);
 
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
@@ -93,7 +95,7 @@ const Orders = () => {
     product?.components?.battery?.isRemovable ? "" : ", non-removable"
   }`;
   const chip = product?.components?.chip;
-  const ram = product?.storage?.ram || [];
+  const ram = product?.storage?.rom || [];
   const plans = [
     { name: "Pay Monthly", value: "recurring" },
     { name: "Pay Now", value: "once" },
