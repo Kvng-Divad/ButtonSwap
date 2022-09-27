@@ -1,5 +1,5 @@
 import "./Orders.css";
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect } from "react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import Buttonalt from "../Buttonalt/Buttonalt";
 import Battery from "../../Assets/Battery.svg";
