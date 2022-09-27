@@ -69,18 +69,21 @@ const Orders = () => {
         capacity: searchParams.get('storage') || '',
         color: searchParams.get('color') || '',
         tenure: searchParams.get('terms') || '',
+        
+        plan: searchParams.get('paymentPlan') || '',
          meta: {
             ...application.meta,
-            plan: searchParams.get('paymentPlan') || '',
+            terms: {
+              ...application.meta.terms,
+              type: searchParams.get('paymentPlan') || '',
+              tenure: searchParams.get('terms') ? Number(searchParams.get('terms')) : ''
+          }
          },
-         terms: {
-            ...application.meta.terms,
-            type: searchParams.get('paymentPlan') || '',
-            tenure: searchParams.get('terms') ? Number(searchParams.get('terms')) : ''
-        }
+         
       },
     });
   },[searchParams])
+
 
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
