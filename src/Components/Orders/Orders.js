@@ -68,12 +68,19 @@ const Orders = () => {
         ...application.product,
         capacity: searchParams.get('storage') || '',
         color: searchParams.get('color') || '',
-        plan: searchParams.get('paymentPlan') || '',
-        tenure: searchParams.get('terms') || ''
+        tenure: searchParams.get('terms') || '',
+         meta: {
+            ...application.meta,
+            plan: searchParams.get('paymentPlan') || '',
+         },
+         terms: {
+            ...application.meta.terms,
+            type: searchParams.get('paymentPlan') || '',
+            tenure: searchParams.get('terms') ? Number(searchParams.get('terms')) : ''
+        }
       },
     });
   },[searchParams])
-
 
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
@@ -269,6 +276,7 @@ const Orders = () => {
                       })
                     }
                     min={1}
+                    value={application.meta.terms.tenure}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -293,9 +301,10 @@ const Orders = () => {
                     }
                     placeholder="Select"
                     maxW="100px"
+                    defaultValue={application.meta.terms.type}
                   >
-                    <option value="weeks">Weeks</option>
-                    <option value="months">Months</option>
+                    <option value="week">Weeks</option>
+                    <option value="month">Months</option>
                   </Select>
                 </Flex>
               </div>

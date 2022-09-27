@@ -111,16 +111,16 @@ const Eligibilty = () => {
         </Select>
 
         <Select value={paymentPlan} onChange={e => setPaymentPlan(e.target.value)} placeholder='Payment plan' spacing={3}  className='filter' size='lg'>
-          <option value='Pay monthly'>Pay monthly</option>
+          <option value='month'>Pay monthly</option>
         </Select>
 
         <Select value={terms} onChange={e => setTerms(e.target.value)} placeholder='Payment terms' spacing={3}  className='filter' size='lg'>
-          <option value='1 Month'>1 Month</option>
-          <option value='2 Months'> 2 Months</option>
-          <option value='3 Months'> 3 Months</option>
-          <option value='4 Months'> 4 Months</option>
-          <option value='5 Months'>5 Months</option>
-          <option value='6 Months'>6 Months</option>
+          <option value='1'>1 Month</option>
+          <option value='2'> 2 Months</option>
+          <option value='3'> 3 Months</option>
+          <option value='4'> 4 Months</option>
+          <option value='5'>5 Months</option>
+          <option value='6'>6 Months</option>
         </Select>
 
       </div>
