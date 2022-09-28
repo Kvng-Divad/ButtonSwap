@@ -32,7 +32,7 @@ const Incomes = () => {
     useFormik({
       initialValues,
       enableReinitialize: true,
-      onSubmit: values => {
+      onSubmit: (values) => {
         setApplication({
           ...application,
           user: {
@@ -106,13 +106,13 @@ const Incomes = () => {
                   spacing={3}
                   name="bank_branch"
                   value={values.bank_branch}
-                  onChange={event =>
+                  onChange={(event) =>
                     setFieldValue("bank_branch", event.target.value)
                   }
                   className="filter"
                   size="lg"
                 >
-                  {banks.map(bank => (
+                  {banks.map((bank) => (
                     <option
                       style={{ textTransform: "uppercase" }}
                       key={bank}

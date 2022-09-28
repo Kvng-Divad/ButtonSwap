@@ -1,5 +1,7 @@
-import React from "react";
 import "./PaymentDetails.css";
+
+import Buttonalt from "../../Components/Buttonalt/Buttonalt";
+import React from "react";
 
 const PaymentDetails = () => {
   return (
@@ -112,6 +114,13 @@ const PaymentDetails = () => {
               </div>
               <span>This amount should exceed: ₦141,500</span>
             </div>
+          </div>
+          <div className="buttons">
+            <button>
+              <Buttonalt text="Next" link="/details" />
+            </button>
+
+            <button>SKIP</button>
           </div>
         </div>
       </div>
