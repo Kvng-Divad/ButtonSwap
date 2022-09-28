@@ -6,17 +6,17 @@ const SignIn = () => {
     <Container>
       <TextHolder>
         {" "}
-        <Text>Sign In</Text>
+        <Text>Welcome Jemimah</Text>
         <SmallText>Sign in to your account</SmallText>
       </TextHolder>
       <Wrapper>
         <Form>
           <FormHolder>
-            <Label>Work email</Label>
+            {/* <Labels>Work email</Labels> */}
             <input />
           </FormHolder>
           <FormHolder>
-            <Label>Password</Label>
+            <Labels>Password</Labels>
             <input />
           </FormHolder>
           <Forget>Forget password?</Forget>
@@ -58,13 +58,13 @@ const SmallText = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 300px;
-  width: 400px;
+  height: 400px;
+  width: 70%;
   display: flex;
   align-items: center;
   border-radius: 5px;
   flex-direction: column;
-  background: var(--text-color-alt2);
+  background: #fafafa;
   justify-content: space-around;
 
   @media screen and (max-width: 425px) {
@@ -79,18 +79,24 @@ const Form = styled.div`
 const FormHolder = styled.div`
   margin-top: 10px;
   input {
-    width: 300px;
+    width: 500px;
     height: 35px;
-    background: var(--text-color-alt2);
+    background: #fafafa;
     border-radius: 4px;
     border: 1px solid lightgray;
+    @media screen and (max-width: 768px) {
+      width: 350px;
+    }
     @media screen and (max-width: 375px) {
+      width: 300px;
+    }
+    @media screen and (max-width: 320px) {
       width: 250px;
     }
   }
 `;
 
-const Label = styled.div``;
+const Labels = styled.div``;
 
 const Forget = styled.div`
   display: flex;
@@ -101,15 +107,15 @@ const Forget = styled.div`
 `;
 
 const Button = styled.div`
-  height: 32px;
-  width: 300px;
+  height: 40px;
+  width: 150px;
   display: flex;
   color: white;
   font-weight: bold;
   background: var(--bg-color-2);
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
   @media screen and (max-width: 375px) {
     width: 250px;

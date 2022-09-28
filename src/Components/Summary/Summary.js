@@ -108,7 +108,7 @@ const Summarys = () => {
 
           <div className="payment1"></div>
 
-          <div className="Button grid">
+          <div className="Button1">
             <Buttonalt text="Apply" link="/details" />
           </div>
         </div>

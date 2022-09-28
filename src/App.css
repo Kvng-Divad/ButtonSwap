@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 :root {
-  --bg-color-1: #fff ;
+  --bg-color-1: #fff;
   --bg-color-2: linear-gradient(90deg, #e3000f -5%, #7f070f 100%);
   --bg-color-3: linear-gradient(80deg, #222, #444);
   --body-color: #aaa;
   --skin-color: #e3000f;
   --skin-color2: #7f070f;
   --skin-color3: #474747;
-  --text-color: #1D1D1D;
-  --text-color2: ##8E8E8E;
+  --text-color: #1d1d1d;
+  --text-color2: ##8e8e8e;
   --text-color-alt: #fff;
   --text-color-alt2: #eee;
   --white-color3: #d9d9d9;
@@ -41,7 +41,6 @@ body {
   font-weight: 4o00;
   background: var(--bg-color-1);
   color: var(--text-color);
-  
 }
 * {
   margin: 0;

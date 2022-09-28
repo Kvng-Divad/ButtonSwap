@@ -1,18 +1,45 @@
-.form {
+.forHolder {
   width: 70%;
   height: 80vh;
   background: white;
   margin: auto;
-  margin-top: 10px;
   overflow-y: scroll;
-  padding-top: 15px;
+  padding-top: 20px;
 }
 
-h4 {
+@media (max-width: 425px) {
+  .forHolder {
+    width: 90%;
+  }
+}
+.Holder {
+  height: 90vh;
+  background-color: #fafafa;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.bigText {
+  font-size: 20px;
+  font-weight: bold;
   text-align: center;
 }
 
-form {
+@media (max-width: 425px) {
+  .bigText {
+    font-size: 17px;
+  }
+}
+.smallTxt {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+forHolder {
   width: 90%;
   height: 100%;
   margin-left: 20px;
@@ -20,12 +47,17 @@ form {
   font-weight: 400;
 }
 
-form p {
+form {
+  width: 95%;
+  margin: auto;
+}
+
+forHolder p {
   line-height: 1.5;
   font-size: 16px;
 }
 
-.form input {
+.forHolder input {
   border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
 }
 

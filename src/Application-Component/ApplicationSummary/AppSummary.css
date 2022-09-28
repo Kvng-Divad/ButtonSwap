@@ -18,7 +18,7 @@ h1 {
 .mainBody {
   margin-top: 30px;
   width: 100%;
-  background-color: #eee;
+  background-color: #fafafa;
   display: flex;
   height: 200vh;
   padding-top: 50px;
@@ -48,9 +48,15 @@ h1 {
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .mainLeft {
+    width: 500px;
+    height: 400px;
+  }
+}
 @media (max-width: 425px) {
   .mainLeft {
-    width: 700px;
+    width: 800px;
   }
 }
 
@@ -160,6 +166,12 @@ h1 {
   /* display: none; */
 }
 
+@media (max-width: 425px) {
+  .right {
+    width: 80%;
+  }
+}
+
 .right hr {
   background: rgb(216, 216, 216);
   height: 1px;
@@ -196,10 +208,10 @@ h1 {
   margin-bottom: 8px;
 }
 
-span {
+/* span {
   opacity: 0.5;
   text-transform: uppercase;
-}
+} */
 
 .name {
   margin-top: 40px;
@@ -239,7 +251,7 @@ span {
 }
 @media (max-width: 425px) {
   .paymentHolder {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 }
 
