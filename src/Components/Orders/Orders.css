@@ -54,7 +54,7 @@
   gap: 2rem;
 }
 .order-left-images {
-  padding: 1rem 1rem 3rem;
+  padding: 2rem 1rem 3rem;
   justify-items: center;
   align-items: center;
   gap: 1rem;
@@ -62,19 +62,15 @@
   width: 100%;
   margin: auto;
 }
-.order-logo {
-  border-bottom: 1px solid #eee;
-  width: 100%;
-  padding: 1rem;
-}
-.order-logo img {
-  width: 5rem;
-  margin: auto;
-}
+
+
 .order-img img {
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 350px;
   margin: auto;
+}
+.slide{
+  width: 400px !important;
 }
 .radios {
   padding: 1rem !important;

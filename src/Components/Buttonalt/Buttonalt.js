@@ -29,10 +29,11 @@ const Btn = styled.button`
     color: var(--text-color-alt);
     font-family: var(--bdy-font-family);
     font-size: var(--font-size-sm);
-    font-weight: 600;
-    border-radius: 25px;
-    padding: 0.65rem 4rem;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 0.5rem 4rem;
     text-transform: uppercase;
+    justify-self:center;
   }
   button:hover {
     background: transparent;
@@ -44,7 +45,7 @@ const Btn = styled.button`
   }
   @media (min-width: 780px) {
     button {
-      padding: 0.65rem 5rem;
+      padding: 0.5rem 4rem;
     }
   }
 `;

@@ -1,0 +1,72 @@
+.payment-schdule{
+    padding: .5rem;
+    margin-top: -1rem;
+    gap: .5rem;
+}
+.payment-schduler{
+    gap: .05rem;
+    align-items: flex-start;
+}
+.payment-schduler.active .schduledate p,
+.payment-schduler.active .duedate,
+.payment-schduler.active .due-date,
+.payment-schduler.active .schedule-rounder2{
+    color: var(--skin-color);
+}
+.scheduler{
+    gap: 5.5em;
+    justify-content: space-between;
+    align-items: center;
+}
+.schduledate{
+    padding: 0 .25rem;
+    gap: .35rem;
+}
+.schduledate p{
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+}
+.duedate{
+    font-size: var(--font-size-smlr);
+    color: var(--text-color3);
+    opacity: .5;
+}
+.due-date{
+    font-size: var(--font-size-smlr);
+    color: var(--text-color3);
+    opacity: .5;
+}
+.schedule-crumbs{
+    justify-items: center;
+    align-items: center;
+    margin-top: .35rem;
+    gap: 5px;
+}
+.schedule-rounder{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--text-color3);
+
+}
+.schedule-rounder2{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-color3);
+}
+.schedule-rounder2.down{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--skin-color);
+}
+.schedule-liner{
+    height: 100%;
+    width: 3px;
+    justify-items: center;
+    align-items: center;
+}

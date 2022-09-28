@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
   Select,
+  // eslint-disable-next-line 
   CircularProgress,
+  // eslint-disable-next-line 
   CircularProgressLabel,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
@@ -20,6 +22,10 @@ import {
 import { useRecoilState } from "recoil";
 import { productsState, singleProductState } from "../../data/state";
 import noImage from "../../Assets/no-image.png";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+
 
 const fetchProducts = async (page = 1, brand, take = 12) => {
   const res = await fetch(
@@ -66,6 +72,8 @@ const Offer = () => {
     // eslint-disable-next-line
   }, [page, brand]);
 
+  
+
   return (
     <div className="Container3 grid">
       <div
@@ -106,17 +114,17 @@ const Offer = () => {
        
           
        <div className="progressbar flex">
-       <CircularProgress
-         isIndeterminate
-         color="red.400"
-         size="200px"
-         thickness="4px"
-         className="progress-bar grid"
-       >
-         <CircularProgressLabel className="progress-label">
-           Loading Data...
-         </CircularProgressLabel>
-       </CircularProgress>
+
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+              <p>
+              <Skeleton height={300} /> 
+              </p>
+          </SkeletonTheme>
+        
+        
+        
+        
+       
      </div>
 
           
@@ -137,6 +145,14 @@ const Offer = () => {
             )?.image;
             const name = product?.name;
             const price = product?.meta?.price?.min;
+
+            const rate = 0.05;       
+            const principal = price * 0.7;
+            const months = 6;
+            const init = parseFloat(principal / months);
+            const increment = rate * init;
+            const amount = parseFloat(increment + init);
+           
             return (
               <div key={index} className="phone-card grid">
                 <div className="phone-logo grid">
@@ -152,7 +168,7 @@ const Offer = () => {
                 <h3 className="phone-name">{name}</h3>
 
                 <p className="price">
-                  From <span>{conveneNumber(price)}</span> per month{" "}
+                  From <span>{conveneNumber(amount)}</span> per month{" "}
                 </p>
                 <button
                   onClick={() => {

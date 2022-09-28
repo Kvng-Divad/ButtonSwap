@@ -4,6 +4,10 @@
   border-radius: 0.5rem;
 }
 .pending {
-  opacity: 0.5;
+  opacity: 0.8;
   pointer-events: none;
+}
+.status{
+  font-size: var(--font-size-sm);
+  font-weight: 500;
 }

@@ -4,7 +4,7 @@ import PaymentCard from "../Dashboard-Components/PaymentCard/PaymentCard";
 import PaymentPlan from "../Dashboard-Components/PaymentPlan/PaymentPlan";
 //import PaymentSlider from '../Dashboard-Components/PaymentSlider/PaymentSlider'
 import PlanCard from "../Dashboard-Components/PlanCard/PlanCard";
-import ScheduleCard from "../Dashboard-Components/ScheduleCard/ScheduleCard";
+import ScheduleActivity from "../Dashboard-Components/ScheduleActivity/ScheduleActivity";
 import Sidebar from "../Dashboard-Components/Sidebar/Sidebar";
 import Topbar from "../Dashboard-Components/Topbar/Topbar";
 const Payment = () => {
@@ -44,7 +44,7 @@ const Payment = () => {
                 <div className="dash-header flex">
                   <p className="dash-title">Payment Activity</p>
                 </div>
-                <ScheduleCard />
+                <ScheduleActivity />
               </div>
               <div className="right-cont">
                 <div className="dash-header flex">
