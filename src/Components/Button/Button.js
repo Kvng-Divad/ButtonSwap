@@ -20,7 +20,7 @@ const Button = ({text}) => {
 
 export default Button;
 
-export const Btn = styled.button`
+const Btn = styled.button`
     background:transparent;
     button{
       background: var(--skin-color);

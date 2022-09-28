@@ -27,20 +27,28 @@ const Faqs = () => {
           description:'Choose from a wide range of phone brands including brand new or pre-owned phones',
         },
         {
-          name: "How many monthly instalments do i get?",
-          description:'Check your eligibility and fill the application form for a convenient payment plan',
+          name: "Why do you need my BVN?",
+          description:'We need your BVN to confirm that you aren’t being impersonated and all details provided match with your BVN information.  We understand that this is very sensitive information and take your privacy very seriously.',
         },
         {
-          name: "Can i get pre-owned phones?",
-          description:'Make your first payment after your application has been approved to get your phone delivered.',
+          name: "How do I make my first payment?",
+          description:'When you get approved, payment can be made via bank transfer or through card.',
         },
         {
           name: "How long does it take to get my phone?",
           description:'Once your application has been completed and approved you will be required to make a downpayment. Once this is done your phone willbe delivered to your doorstep.',
         },
         {
-          name: "What products are available?",
-          description:'Make your first payment after your application has been approved to get your phone delivered.',
+          name: "How long do applications take to get approved?",
+          description:'Applications typically take 24 hours to get reviewed.',
+        },
+        {
+          name: "How would I know that my application has been approved?",
+          description:'Once your application gets approved, we would send you an application approval email.',
+        },
+        {
+          name: "What should I do if I need help?",
+          description:'You can easily reach us on any of our social media platforms and we’ll respond as soon as possible. Alternatively, you can send an email to support@kezaafrica.com.',
         },
       ]
 
