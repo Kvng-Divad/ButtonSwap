@@ -55,12 +55,13 @@ const EmailDetail = () => {
         setInfo({ message: res.data.message, status: "success" });
       })
       .catch(err => {
-        const message = err?.response
+        const message = err?.response?.data
           ? err?.response?.data?.message
           : err?.message;
         setInfo({ message, status: "error" });
       });
   });
+
   return (
     <div>
       {info?.message && (
