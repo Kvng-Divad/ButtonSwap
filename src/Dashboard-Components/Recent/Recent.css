@@ -11,6 +11,6 @@
   color: var(--text-color) !important;
 }
 .recent {
-  opacity: 0.4;
+  opacity: 0.8;
   pointer-events: none;
 }

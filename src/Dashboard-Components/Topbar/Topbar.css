@@ -12,12 +12,12 @@
 .top-left{
     gap: 1.5rem;
     align-items: center;
-    margin-left: 2rem;
+    margin-left: 1rem;
 }
 .top-right{
     gap: 1.5rem;
     align-items: center;
-    margin-right: 5rem;
+    margin-right: 2rem;
 }
 .top-link{
     font-weight: 500;
@@ -46,6 +46,9 @@
     }
     .top-left{
         margin-left: 5rem;
+    }
+    .top-right{
+        margin-right: 5rem;
     }
     .toggler2{
         display:none;
