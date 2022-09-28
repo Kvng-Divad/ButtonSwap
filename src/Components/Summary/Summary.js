@@ -13,7 +13,7 @@ const Summarys = () => {
   const logo = product?.brand?.image;
   const model = product?.name;
   const image = product?.meta?.images?.find(
-    (image) => image?.image?.length > 1
+    image => image?.image?.length > 1
   )?.image;
   const capacity = application.product.capacity;
   const color = application.product.color;
@@ -88,21 +88,27 @@ const Summarys = () => {
 
             <div className="order-details">
               <h4>TOTAL</h4>
-              <p>Down Payment: {conveneNumber(down)}</p>
-              {[...Array(tenure).keys()].map((number) => {
-                const cardinal = Number(String(number + 1).slice(-1));
-                return (
-                  <p key={number}>{`${number + 1}${
-                    cardinal === 1
-                      ? "st"
-                      : cardinal === 2
-                      ? "nd"
-                      : cardinal === 3
-                      ? "rd"
-                      : "th"
-                  } payment: ${conveneNumber(dividend / 100)}`}</p>
-                );
-              })}
+              {application?.meta?.plan === "once" ? (
+                <p> {conveneNumber(product?.meta?.price?.min)} </p>
+              ) : (
+                <>
+                  <p>Down Payment: {conveneNumber(down / 100)}</p>
+                  {[...Array(tenure).keys()].map(number => {
+                    const cardinal = Number(String(number + 1).slice(-1));
+                    return (
+                      <p key={number}>{`${number + 1}${
+                        cardinal === 1
+                          ? "st"
+                          : cardinal === 2
+                          ? "nd"
+                          : cardinal === 3
+                          ? "rd"
+                          : "th"
+                      } payment: ${conveneNumber(dividend / 100)}`}</p>
+                    );
+                  })}
+                </>
+              )}
             </div>
           </div>
 

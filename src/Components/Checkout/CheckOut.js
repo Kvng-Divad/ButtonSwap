@@ -115,7 +115,7 @@ const CheckOut = () => {
                   <input type="radio" />
                 </span>
                 <p>Down Payment</p>
-                <h1>{conveneNumber(down)}</h1>
+                <h1>{conveneNumber(down / 100)}</h1>
               </div>
               <div className="main-payment">
                 {[...Array(tenure).keys()].map(number => {
