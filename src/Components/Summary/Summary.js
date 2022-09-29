@@ -13,7 +13,7 @@ const Summarys = () => {
   const logo = product?.brand?.image;
   const model = product?.name;
   const image = product?.meta?.images?.find(
-    (image) => image?.image?.length > 1
+    image => image?.image?.length > 1
   )?.image;
   const capacity = application.product.capacity;
   const color = application.product.color;
@@ -83,50 +83,48 @@ const Summarys = () => {
             <div className="order-details">
               <h4>PAYMENT PLAN</h4>
               <p>{paymentPlan}</p>
-              {application?.meta?.plan === 'once' ?(
+              {application?.meta?.plan === "once" ? (
                 <p></p>
-               ) : (
+              ) : (
                 <p>{paymentTerms}</p>
-               )}
+              )}
             </div>
 
             <div className="order-details">
               <h4>TOTAL</h4>
-              {application?.meta?.plan === 'once' ?(
+              {application?.meta?.plan === "once" ? (
                 <p>{conveneNumber(product?.meta?.price?.min)}</p>
-               ) : (
-                  <>
-                      <p>Down Payment: {conveneNumber(down/ 100)}</p>
-                      {[...Array(tenure).keys()].map((number) => {
-                        const FinalDividend = Math.round(dividend );
-                        const cardinal = Number(String(number + 1).slice(-1));
-                        return (
-                          <p key={number}>{`${number + 1}${
-                            cardinal === 1
-                              ? "st"
-                              : cardinal === 2
-                              ? "nd"
-                              : cardinal === 3
-                              ? "rd"
-                              : "th"
-                          } payment: ${conveneNumber(FinalDividend/ 100)}`}
-                          </p>
-                          );
-                      })}
-              </>
-               )}
+              ) : (
+                <>
+                  <p>Down Payment: {conveneNumber(down / 100)}</p>
+                  {[...Array(tenure).keys()].map(number => {
+                    const FinalDividend = Math.round(dividend);
+                    const cardinal = Number(String(number + 1).slice(-1));
+                    return (
+                      <p key={number}>
+                        {`${number + 1}${
+                          cardinal === 1
+                            ? "st"
+                            : cardinal === 2
+                            ? "nd"
+                            : cardinal === 3
+                            ? "rd"
+                            : "th"
+                        } payment: ${conveneNumber(FinalDividend / 100)}`}
+                      </p>
+                    );
+                  })}
+                </>
+              )}
             </div>
           </div>
 
-          
-
           <div className="Button grid">
-          {application?.meta?.plan === 'once' ?(
-                <Buttonalt text="Pay now" link="/Pay-now" />
-               ) : (
-                <Buttonalt text="Apply" link="/details" />
-               )}
-            
+            {application?.meta?.plan === "once" ? (
+              <Buttonalt text="Pay now" link="/Pay-now" />
+            ) : (
+              <Buttonalt text="Apply" link="/details" />
+            )}
           </div>
         </div>
       </div>

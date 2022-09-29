@@ -29,6 +29,12 @@
   border-radius: 5px;
 }
 
+@media (max-width: 425px) {
+  .payment {
+    height: 200px;
+  }
+}
+
 .payment h3 {
   font-size: 15px;
   opacity: 0.7;
@@ -49,6 +55,21 @@
   line-height: 1;
 }
 
+@media (max-width: 425px) {
+  .top-pay h1 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 375px) {
+  .top-pay h1 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 320px) {
+  .top-pay h1 {
+    font-size: 15px;
+  }
+}
 .top-pay p {
   margin-left: 10px;
 }

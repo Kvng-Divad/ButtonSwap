@@ -1,0 +1,319 @@
+.wrapper {
+  width: 100;
+  margin-top: 40px;
+}
+
+h1,
+h3,
+p {
+  line-height: 1;
+}
+
+h1 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.mainBody {
+  margin-top: 30px;
+  width: 100%;
+  background-color: #fafafa;
+  display: flex;
+  height: 200vh;
+  padding-top: 50px;
+}
+@media (max-width: 425px) {
+  .mainBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.mainLeft {
+  width: 60%;
+  height: 500px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .mainLeft {
+    width: 500px;
+    height: 400px;
+  }
+}
+@media (max-width: 425px) {
+  .mainLeft {
+    width: 800px;
+  }
+}
+
+.mainLeft img {
+  width: 35px;
+  margin-top: 15px;
+}
+
+.mainLeft hr {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.imageHolder {
+  display: flex;
+  align-items: center;
+}
+
+.leftArrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.Carousel img {
+  width: 200px;
+  height: 230px;
+  object-fit: contain;
+}
+
+.rightArrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.tabs {
+  margin-top: 20px;
+  display: flex;
+}
+
+.tab2 {
+  width: 8px;
+  height: 8px;
+  background: red;
+  margin: 0 5px;
+}
+
+.tab1 {
+  width: 8px;
+  height: 8px;
+  background: #e7e7e7;
+  margin: 0 5px;
+}
+
+.preDisplay {
+  display: flex;
+}
+
+.pre {
+  height: 60px;
+  width: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
+.pre1 {
+  height: 60px;
+  width: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 7px;
+  margin-top: 30px;
+  border-radius: 5px;
+  opacity: 0.3;
+}
+
+.preDisplay img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  margin: unset;
+}
+
+.right {
+  width: 50%;
+
+  /* display: none; */
+}
+
+@media (max-width: 425px) {
+  .right {
+    width: 80%;
+  }
+}
+
+.right hr {
+  background: rgb(216, 216, 216);
+  height: 1px;
+  width: 80%;
+}
+
+.right p {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 425px) {
+  .right p {
+    margin-top: 20px;
+  }
+}
+
+.box {
+  margin-top: 10px;
+}
+
+.box p {
+  text-align: unset;
+  font-size: unset;
+  font-weight: unset;
+  margin-bottom: unset;
+  margin: 15px 0;
+  text-transform: capitalize;
+}
+
+.box hr {
+  margin-bottom: 8px;
+}
+
+/* span {
+  opacity: 0.5;
+  text-transform: uppercase;
+} */
+
+.name {
+  margin-top: 40px;
+}
+.box1 p {
+  font-size: 22px;
+  font-weight: 900;
+  text-align: unset;
+  font-weight: unset;
+  margin-top: 15px;
+  color: #e3000f;
+}
+
+.holder {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  justify-content: space-between;
+}
+
+@media (max-width: 425px) {
+  .holder {
+    width: 120px;
+  }
+}
+
+.circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background-color: green;
+}
+.paymentHolder {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+@media (max-width: 425px) {
+  .paymentHolder {
+    margin-bottom: 20px;
+  }
+}
+
+.box2 {
+  margin-top: 10px;
+}
+
+.box2 p {
+  text-align: unset;
+  font-size: unset;
+  font-weight: unset;
+  margin-bottom: unset;
+  margin: 15px 0;
+  text-transform: capitalize;
+}
+
+.box2 div {
+  font-size: 18px;
+  font-weight: bold;
+}
+.pay {
+  opacity: unset;
+  text-transform: unset;
+  font-size: 13px;
+  font-weight: lighter;
+}
+.payHold {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+
+@media (max-width: 425px) {
+  .payHold {
+    width: 100%;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bttn {
+  height: 32px;
+  width: 300px;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  background: var(--bg-color-2);
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 425px) {
+  .bttn {
+    width: 200px;
+  }
+}
