@@ -1,6 +1,5 @@
 import React from "react";
 import "./AppSummary.css";
-// import logo from "./logo.png";
 import phone from "./phone.png";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 

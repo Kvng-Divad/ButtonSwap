@@ -1,11 +1,58 @@
-
-.input{
-    gap: .5rem;
-    padding: .5rem;
+.input {
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
-.label{
-    font-size: var(--font-size-nr);
-    font-weight: 500;
-    color: var(--text-color);
+.label {
+  font-size: var(--font-size-nr);
+  font-weight: 500;
+  color: var(--text-color);
+}
+.cont1 {
+  margin-top: 20px;
+}
+.holder {
+  display: flex;
+  flex-direction: column;
+  margin-left: 22%;
+}
+
+@media (max-width: 768px) {
+  .holder {
+    margin-left: 28%;
+  }
+}
+@media (max-width: 425px) {
+  .holder {
+    margin-left: 55%;
+  }
+}
+@media (max-width: 375px) {
+  .holder {
+    margin-left: 62%;
+  }
+}
+@media (max-width: 320px) {
+  .holder {
+    margin-left: 75%;
+  }
+}
+
+.holder h3 {
+  font-size: var(--font-size-n);
+  font-weight: 700;
+  color: var(--text-color);
+  width: 500px;
+}
+.holder p {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-color2);
+  width: 500px;
+  margin-top: 8px;
+}
+@media (max-width: 320px) {
+  .holder p {
+    font-size: 11px;
+  }
 }

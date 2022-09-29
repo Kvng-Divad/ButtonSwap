@@ -12,7 +12,7 @@ const SignIn = () => {
       <Wrapper>
         <Form>
           <FormHolder>
-            {/* <Labels>Work email</Labels> */}
+            <Labels>Work email</Labels>
             <input />
           </FormHolder>
           <FormHolder>
