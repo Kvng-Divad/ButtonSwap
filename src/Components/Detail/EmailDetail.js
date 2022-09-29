@@ -55,12 +55,13 @@ const EmailDetail = () => {
         setInfo({ message: res.data.message, status: "success" });
       })
       .catch(err => {
-        const message = err?.response
+        const message = err?.response?.data
           ? err?.response?.data?.message
           : err?.message;
         setInfo({ message, status: "error" });
       });
   });
+
   return (
     <div>
       {info?.message && (
@@ -146,9 +147,9 @@ const Button = styled.button`
   color: var(--text-color-alt);
   font-family: var(--bdy-font-family);
   font-size: var(--font-size-sm);
-  font-weight: 700;
-  border-radius: 20px;
-  padding: 0.65rem 4rem;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 0.65rem 9rem;
   text-transform: uppercase;
 
   :hover {
@@ -161,7 +162,7 @@ const Button = styled.button`
   }
   @media (min-width: 780px) {
     button {
-      padding: 0.65rem 4rem;
+      padding: 0.65rem 5rem;
     }
   }
 `;
