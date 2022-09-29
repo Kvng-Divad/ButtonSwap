@@ -4,15 +4,14 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import { CreateContext } from "./Context";
-
+import { CreateContext } from "../Components/Detail/Context";
 import OTPInput from "otp-input-react";
 import { useNavigate } from "react-router-dom";
-import { API_URI } from "../../constants";
+import { API_URI } from "../constants";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const OTPDetail = () => {
+const OTPDetails = () => {
   const { authEmail } = useContext(CreateContext);
   const hist = useNavigate();
 
@@ -36,7 +35,7 @@ const OTPDetail = () => {
         { headers: { "Access-Control-Allow-Origin": "*" } }
       )
       .then(res => {
-        hist("/application");
+        hist("");
       })
       .catch(err => {
         const message = err?.response
@@ -90,7 +89,7 @@ const OTPDetail = () => {
   );
 };
 
-export default OTPDetail;
+export default OTPDetails;
 
 const InputHolder = styled.div`
   position: relative;

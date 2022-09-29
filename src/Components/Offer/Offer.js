@@ -22,7 +22,7 @@ import {
 import { useRecoilState } from "recoil";
 import { productsState, singleProductState } from "../../data/state";
 import noImage from "../../Assets/no-image.png";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { Skeleton, SkeletonCircle, SkeletonText, Box} from '@chakra-ui/react'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 
@@ -112,20 +112,62 @@ const Offer = () => {
 
       {(status === "loading" || loading) && (
        
-          
-       <div className="progressbar flex">
+      <>  
+        <div className="phone-cards grid">
 
-          <SkeletonTheme baseColor="#202020" highlightColor="#444">
-              <p>
-              <Skeleton height={300} /> 
-              </p>
-          </SkeletonTheme>
+            <Box padding='3' boxShadow='lg' bg='white'height='250px'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3'height='90px' width='140px'  />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px'  width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15'  />
+              <Skeleton mt='3' height='90px' width='140px' />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px'  width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px' width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
         
+        </div>
+        <div className="phone-cards grid">
+
+            <Box padding='3' boxShadow='lg' bg='white'height='250px'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3'height='90px' width='140px'  />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px'  width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15'  />
+              <Skeleton mt='3' height='90px' width='140px' />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px'  width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px' width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
         
-        
-        
-       
-     </div>
+        </div>
+      </>
 
           
 

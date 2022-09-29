@@ -4,15 +4,15 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import { CreateContext } from "./Context";
+import { CreateContext } from "../Components/Detail/Context";
 import { Center } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
-import { applicationState } from "../../data/state";
+import { applicationState } from "../data/state";
 import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
-import { API_URI } from "../../constants";
+import { API_URI } from "../constants";
 const defaultInfo = { message: "", status: "" };
-const EmailDetail = () => {
+const EmailDetails = () => {
   const { setEmail, authEmail } = useContext(CreateContext);
   const [checkEmail, setCheckEmail] = React.useState("");
   // eslint-disable-next-line
@@ -114,7 +114,7 @@ const EmailDetail = () => {
   );
 };
 
-export default EmailDetail;
+export default EmailDetails;
 
 const MailText = styled.div`
   font-weight: bold;
