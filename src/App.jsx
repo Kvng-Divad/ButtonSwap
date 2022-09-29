@@ -28,6 +28,7 @@ import { authTokenState } from "./data/state";
 import { useGetUser } from "./operations/user.operation";
 import { useGetUserApplications } from "./operations/application.operation";
 import { useGetSingleProduct } from "./operations/product.operation";
+import PayNowPage from "./Routes/PayNowPage";
 
 export const UserContext = createContext();
 
@@ -72,6 +73,7 @@ function App() {
             <Route path="/products" element={<Offers />} />
             <Route path="/products/:id" element={<Order />} />
             <Route path="/summary" element={<Summary />} />
+            <Route path="/pay-now" element={<PayNowPage />} />
             <Route path="/application" element={<Application />} />
             <Route path="/details" element={<Details />} />
             <Route path="/income" element={<Income />} />
@@ -82,7 +84,6 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/paymentdetail" element={<PaymentDetail />} />
-            <Route path="/applications" element={<Payment />} />
             <Route path="/header" element={<Headers />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/appsummary" element={<ApplicationSummary />} />

@@ -66,7 +66,7 @@ const Applications = () => {
         });
       })
       .catch(err => {
-        const message = err?.response
+        const message = err?.response?.data
           ? err?.response?.data?.message ===
             "Something went wrong: BVN not found. Provide a valid BVN"
             ? "Sorry, we can't get your details at this time, please proceed."

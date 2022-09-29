@@ -22,6 +22,10 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
+//import { Swiper, SwiperSlide } from 'swiper/react';
+//import 'swiper/css';
+//import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
 import conveneNumber from "../../utils/convene-number";
 import noImage from "../../Assets/no-image.png";
 
@@ -29,14 +33,28 @@ const Orders = () => {
   const [product] = useRecoilState(singleProductState);
   const [application, setApplication] = useRecoilState(applicationState);
 
-  const logo = product?.brand?.image;
+  //const logo = product?.brand?.image;
 
   const image = product?.meta?.images?.find(
     (image) => image?.image?.length > 1
   )?.image;
+  // eslint-disable-next-line 
+  const image2 = product?.meta?.images?.find(
+    image => image?.image?.length > 1
+  )?.image;
+  // eslint-disable-next-line 
+  const image3 = product?.meta?.images?.find(
+    image => image?.image?.length > 1
+  )?.image;
   const name = product?.name;
 
   const price = product?.meta?.price?.min;
+            const rate = 0.05;       
+            const principal = price * 0.7;
+            const months = 6;
+            const init = parseFloat(principal / months);
+            const increment = rate * init;
+            const amount = parseFloat(increment + init);
 
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
@@ -46,7 +64,7 @@ const Orders = () => {
   }`;
   const chip = product?.components?.chip;
 
-  const ram = product?.storage?.ram;
+  const ram = product?.storage?.rom;
   const plans = [
     { name: "Pay Monthly", value: "recurring" },
     { name: "Pay Now", value: "once" },
@@ -74,16 +92,15 @@ const Orders = () => {
       <div className="order-container grid">
         <div className="order-left grid">
           <div className="order-left-images grid">
-            <div className="order-logo">
-              <img src={logo} alt="log" />
-            </div>
-
+            
             <div className="order-img">
-              <img
+            <img
                 src={image || noImage}
                 style={{ width: !image ? "100%" : "" }}
                 alt="img"
               />
+            
+              
             </div>
           </div>
 
@@ -120,7 +137,7 @@ const Orders = () => {
               <h4>MODEL</h4>
               <h3>{name}</h3>
               <p className="phone-price">
-                From <span>{conveneNumber(price)}</span> per month
+                From <span>{conveneNumber(amount)}</span> per month
               </p>
             </div>
 

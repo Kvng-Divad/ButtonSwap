@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
   Select,
+  // eslint-disable-next-line 
   CircularProgress,
+  // eslint-disable-next-line 
   CircularProgressLabel,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
@@ -20,6 +22,10 @@ import {
 import { useRecoilState } from "recoil";
 import { productsState, singleProductState } from "../../data/state";
 import noImage from "../../Assets/no-image.png";
+import { Skeleton, SkeletonCircle, SkeletonText, Box} from '@chakra-ui/react'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+
 
 const fetchProducts = async (page = 1, brand, take = 12) => {
   const res = await fetch(
@@ -66,6 +72,8 @@ const Offer = () => {
     // eslint-disable-next-line
   }, [page, brand]);
 
+  
+
   return (
     <div className="Container3 grid">
       <div
@@ -104,20 +112,62 @@ const Offer = () => {
 
       {(status === "loading" || loading) && (
        
-          
-       <div className="progressbar flex">
-       <CircularProgress
-         isIndeterminate
-         color="red.400"
-         size="200px"
-         thickness="4px"
-         className="progress-bar grid"
-       >
-         <CircularProgressLabel className="progress-label">
-           Loading Data...
-         </CircularProgressLabel>
-       </CircularProgress>
-     </div>
+      <>  
+        <div className="phone-cards grid">
+
+            <Box padding='3' boxShadow='lg' bg='white'height='250px'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3'height='90px' width='140px'  />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px'  width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15'  />
+              <Skeleton mt='3' height='90px' width='140px' />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px'  width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px' width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+        
+        </div>
+        <div className="phone-cards grid">
+
+            <Box padding='3' boxShadow='lg' bg='white'height='250px'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3'height='90px' width='140px'  />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px'  width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15'  />
+              <Skeleton mt='3' height='90px' width='140px' />
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px'  width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+
+            <Box padding='6' boxShadow='lg' bg='white'>
+              <SkeletonCircle size='15' />
+              <Skeleton mt='3' height='90px' width='140px'/>
+              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            </Box>
+        
+        </div>
+      </>
 
           
 
@@ -137,6 +187,14 @@ const Offer = () => {
             )?.image;
             const name = product?.name;
             const price = product?.meta?.price?.min;
+
+            const rate = 0.05;       
+            const principal = price * 0.7;
+            const months = 6;
+            const init = parseFloat(principal / months);
+            const increment = rate * init;
+            const amount = parseFloat(increment + init);
+           
             return (
               <div key={index} className="phone-card grid">
                 <div className="phone-logo grid">
@@ -152,7 +210,7 @@ const Offer = () => {
                 <h3 className="phone-name">{name}</h3>
 
                 <p className="price">
-                  From <span>{conveneNumber(price)}</span> per month{" "}
+                  From <span>{conveneNumber(amount)}</span> per month{" "}
                 </p>
                 <button
                   onClick={() => {

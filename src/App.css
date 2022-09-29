@@ -175,8 +175,8 @@ button {
   color: var(--text-color-alt);
   font-size: var(--font-size-sm) !important;
   font-weight: 700;
-  border-radius: 25px !important;
-  padding: 0.65rem 5rem !important;
+  border-radius: 20px !important;
+  padding: 0.5rem 4rem !important;
   text-transform: uppercase;
 }
 .btns:hover {
@@ -310,17 +310,14 @@ button {
   }
 
   .btns {
-    padding: 0.65rem 9rem !important;
+    padding: 0.65rem 3rem !important;
   }
 }
 @media (min-width: 960px) {
   * {
     font-size: 16px;
   }
-  .Button {
-    width: 100%;
-    justify-items: flex-end;
-  }
+  
   .Container3 {
     padding: 0 5rem;
     max-width: 85%;

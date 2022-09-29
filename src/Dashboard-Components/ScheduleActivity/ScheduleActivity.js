@@ -1,23 +1,22 @@
-import "./ScheduleCard.css";
-import React from "react";
+import React from 'react'
+import "./ScheduleActivity.css";
+
 import { useUserContext } from "../../App";
 import line from '../../Assets/line.svg'
-import Dashbtn from "../dash-btn";
 
-const ScheduleCard = () => {
-  const { application } = useUserContext();
+const ScheduleActivity = () => {
+    const { application } = useUserContext();
   
   
-  const Data = [...Array(application?.meta?.terms?.tenure).keys()];
-
+    const Data = [...Array(application?.meta?.terms?.tenure).keys()];
   return (
-    <div className="ScheduleCard">
+    <div className="ScheduleActivity">
 
       <div className="payment-schdule grid">
 
       <div className="payment-schduler flex">
         <div className="schedule-crumbs grid">
-          <span className="schedule-rounder"><span className="schedule-rounder2 down"></span></span>
+          <span className="schedule-rounder "><span className="schedule-rounder2 down"></span></span>
           <div className="schedule-liner grid">
             <img src={line} alt='line'/>
           </div>
@@ -30,19 +29,18 @@ const ScheduleCard = () => {
 
             <p>Down Payment</p>
             <span className="duedate">Due date : <span className="due-date"></span> </span>
-
+            <span className="duedate">Payment date:  <span className="due-date"></span> </span>
+            <span className="duedate">Status: <span className="due-date"></span> </span>
           </div>
 
-              <div className="profile-btn">
-                <Dashbtn disabed={true} text="Pay Now" type="" link="" />
-              </div>
+          
         </div>
       </div>
 
         {Data.map(number => {
           const cardinal = Number(String(number + 1).slice(-1));
           return (
-          <div className="payment-schduler active flex">
+          <div className="payment-schduler flex">
             <div className="schedule-crumbs grid">
               <span className="schedule-rounder"><span className="schedule-rounder2"></span></span>
               <div className="schedule-liner grid">
@@ -63,12 +61,11 @@ const ScheduleCard = () => {
                 } Installment`}</p>
 
                 <span className="duedate">Due date : <span className="due-date"></span> </span>
-
+                <span className="duedate">Payment date:  <span className="due-date"></span> </span>
+                <span className="duedate">Status: <span className="due-date"></span> </span>
               </div>
 
-              <div className="profile-btn">
-                <Dashbtn disabed={false} text="Pay Now" type="" link="" />
-              </div>
+              
             </div>
           </div>
             
@@ -76,7 +73,7 @@ const ScheduleCard = () => {
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ScheduleCard;
+export default ScheduleActivity

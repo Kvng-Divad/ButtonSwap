@@ -1,6 +1,6 @@
 import React from "react";
-import "./Pending.css";
 
+import "./Pending.css";
 import {
   Table,
   Thead,
@@ -13,13 +13,52 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
+
+
+
+ 
+  const makeStyle=(status)=>{
+    if(status === "Complete"){
+        return{
+            background:"rgb(145 254 157 / 47%)",
+            color: "green",
+            padding:'.25rem',
+            borderRadius:'.25rem',
+        }
+    }
+    if(status === "Pending"){
+        return{
+            background:"rgb(245 145 157 / 47%)",
+            color: "red",
+            padding:'.25rem',
+            borderRadius:'.25rem',
+        }
+    }
+    if(status === "Ongoing"){
+      return{
+          background:"rgba(94, 94, 94, 0.67)",
+          color: "yellow",
+          padding:'.25rem',
+          borderRadius:'.25rem',
+      }
+  }
+    else{
+        return{
+            background:"rgb(15 17 256 / 47%)",
+            color: "white",
+            padding:'.25rem',
+            borderRadius:'.25rem',
+        }
+    }
+}
+
 const Pending = () => {
   const Data = [
     {
       actions: "Payment plan agreement",
       type: "Proposal",
       date: "18th October, 2022",
-      status: "Incomplete",
+      status: "Ongoing",
     },
     {
       actions: "Payment plan agreement",
@@ -31,7 +70,7 @@ const Pending = () => {
       actions: "Payment plan agreement",
       type: "Proposal",
       date: "18th October, 2022",
-      status: "Incomplete",
+      status: "Pending",
     },
   ];
   return (
@@ -54,13 +93,17 @@ const Pending = () => {
                   <Td className="table-row">{item.actions}</Td>
                   <Td className="table-row">{item.type}</Td>
                   <Td className="table-row">{item.date}</Td>
-                  <Td className="table-row">{item.status}</Td>
+                  <Td className="table-row">
+                    <span className='status' style={makeStyle(item.status)}>{item.status}</span>
+                  </Td>
                 </Tr>
               );
             })}
           </Tbody>
         </Table>
-      </TableContainer>
+          </TableContainer>
+
+
     </div>
   );
 };

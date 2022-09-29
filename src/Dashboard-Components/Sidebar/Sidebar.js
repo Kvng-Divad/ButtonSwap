@@ -1,7 +1,9 @@
 import { React, useContext } from "react";
 import "./Sidebar.css";
-import { FaRegClipboard, FaSignOutAlt } from "react-icons/fa";
-import { AiOutlineHome, AiOutlineWallet } from "react-icons/ai";
+import {VscSignOut} from 'react-icons/vsc'
+import {HiOutlineClipboardList} from 'react-icons/hi'
+import {AiOutlineHome} from 'react-icons/ai'
+import {BiWalletAlt} from 'react-icons/bi'
 //import {BiSupport}from 'react-icons/bi'
 import { NavLink } from "react-router-dom";
 import profile from "../../Assets/profile.svg";
@@ -10,23 +12,24 @@ import { motion } from "framer-motion";
 import { toggleContext } from "../../Context/Context";
 import { useUserContext } from "../../App";
 
-const SidebarData = [
-  {
-    heading: "Dashboard",
-    link: "/dashboard",
-    icon: AiOutlineHome,
-  },
-  {
-    heading: "My Application",
-    link: "/applications",
-    icon: FaRegClipboard,
-  },
-  {
-    heading: "Payment",
-    link: "/payment",
-    icon: AiOutlineWallet,
-  },
-  /*{
+const SidebarData = 
+  [
+    {
+      heading: "Dashboard",
+      link: "/dashboard",
+      icon: AiOutlineHome,
+    },
+    {
+      heading: "My Application",
+      link: "/applications",
+      icon: HiOutlineClipboardList,
+    },
+    {
+      heading:'Payment',
+      link:'/payment',
+      icon: BiWalletAlt,
+    },
+   /*{
       heading:'Action Center',
       link:'/history',
       icon: FaHistory,
@@ -36,7 +39,7 @@ const SidebarData = [
       link:'/support',
       icon: BiSupport,
     },*/
-];
+  ];
 
 const Sidebar = () => {
   const { expanded, setExpanded } = useContext(toggleContext);
@@ -106,7 +109,7 @@ const Sidebar = () => {
         </NavLink>
 
         <div className="signout flex">
-          <FaSignOutAlt className="menu-icon2" />
+          <VscSignOut className="menu-icon2"/>
           <p>Sign Out</p>
         </div>
       </div>
