@@ -30,3 +30,33 @@
     justify-content: center;
   }
 }
+
+.paymentHolder {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+@media (max-width: 425px) {
+  .paymentHolder {
+    margin-bottom: 20px;
+  }
+}
+
+.pay {
+  opacity: unset;
+  text-transform: unset;
+  font-size: 13px;
+  font-weight: lighter;
+}
+.payHold {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+
+@media (max-width: 425px) {
+  .payHold {
+    width: 100%;
+  }
+}

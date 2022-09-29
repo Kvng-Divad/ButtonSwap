@@ -88,7 +88,28 @@ const Summarys = () => {
 
             <div className="order-details">
               <h4>TOTAL</h4>
-              <p>Down Payment: {conveneNumber(down)}</p>
+              <div className="paymentHolder">
+                <div className="payHold">
+                  {" "}
+                  <span className="pay">Down payment</span>
+                  <div>{conveneNumber(down)}</div>
+                </div>
+                <div className="payHold">
+                  {" "}
+                  <span className="pay">1st payment</span>
+                  <div>₦63,500</div>
+                </div>
+                <div className="payHold">
+                  {" "}
+                  <span className="pay">2nd payment</span>
+                  <div>₦63,500</div>
+                </div>
+                <div className="payHold">
+                  {" "}
+                  <span className="pay">3rd payment</span>
+                  <div>₦63,500</div>
+                </div>
+              </div>
               {[...Array(tenure).keys()].map((number) => {
                 const cardinal = Number(String(number + 1).slice(-1));
                 return (
@@ -105,8 +126,6 @@ const Summarys = () => {
               })}
             </div>
           </div>
-
-          <div className="payment1"></div>
 
           <div className="Button1">
             <Buttonalt text="Apply" link="/details" />
