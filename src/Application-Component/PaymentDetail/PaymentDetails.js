@@ -2,36 +2,45 @@ import "./PaymentDetails.css";
 
 import Buttonalt from "../../Components/Buttonalt/Buttonalt";
 import React from "react";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 const PaymentDetails = () => {
   return (
     <div className="wrapper">
-      <h1 className="name">Payment Details</h1>
+      <div className="section-head grid">
+        <div
+          className="hero-icon flex"
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          <ChevronLeftIcon className="heroicon" />
+        </div>
+      
+        <h3 className="hero-title">Payment Details</h3>
+      </div>
       <div className="mainBodyPayment">
+
         <div className="leftPay">
           <div className="leftHolder">
-            <div className="boxe">
-              <span className="text">MODEL</span>
-              <p>Iphone 13 pro</p>
+            <div className="box">
+              <span>Full Name</span>
+              <p>jeremimah jane johnson</p>
             </div>
-            <div className="boxe">
+            <div className="box">
               <hr />
-              <span className="text">CAPACITY</span>
-              <p>128GB</p>
+              <span>work email</span>
+              <p>jemimah@gmmail.com</p>
             </div>
-            <div className="boxe">
+            <div className="box">
               <hr />
-              <span className="text">COLOR</span>
-              <p>ALphine Green</p>
+              <span>phone number</span>
+              <p>07082254216</p>
             </div>
-            <div className="boxe">
+            <div className="box">
               <hr />
-              <span className="text">PAYMENT PLAN</span>
-              <h4>Monthly Payment</h4>
-              <div className="detailBottom">
-                <p>3 months change</p>
-                <button>Change</button>
-              </div>
+              <span>delivery address</span>
+              <p>42, canaan street, osberre 2 estate, ikoyi, lagos</p>
             </div>
             <hr />
           </div>
@@ -43,25 +52,26 @@ const PaymentDetails = () => {
                   <input type="radio" />
                 </span>
                 <p>Down Payment</p>
-                <h1>₦141,500</h1>
+                <h1>₦110,000</h1>
               </div>
               <div className="leftList">
-                <p>30% Down payment:</p>
-                <h4>₦110,000</h4>
+                <p>1st montly payment:</p>
+                <h4>₦63,500</h4>
               </div>
               <div className="leftList">
-                <p>Insurance:</p>
-                <h4>₦30,000</h4>
+                <p>2nd montly payment:</p>
+                <h4>₦63,500</h4>
               </div>
               <div className="leftList">
-                <p>Shipping(flat rate):</p>
-                <h4>₦1,500</h4>
+                <p>3rd montly payment:</p>
+                <h4>₦63,500</h4>
               </div>
             </div>
           </div>
         </div>
+
         <div className="rightPay">
-          <div className="boxe">
+          <div className="box">
             <p>select payment method</p>
             <hr />
           </div>
@@ -72,40 +82,40 @@ const PaymentDetails = () => {
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦65,500</h1>
+              <h1>₦110,000</h1>
             </div>
             <div className="leftList">
-              <p>30% Down payment:</p>
-              <h4>₦110,000</h4>
+              <p>1st montly payment:</p>
+              <h4>₦63,500</h4>
             </div>
             <div className="leftList">
-              <p>Insurance:</p>
-              <h4>₦30,000</h4>
+              <p>2nd montly payment:</p>
+              <h4>₦63,500</h4>
             </div>
             <div className="leftList">
-              <p>Shipping(flat rate):</p>
-              <h4>₦1,500</h4>
+              <p>3rd montly payment:</p>
+              <h4>₦63,500</h4>
             </div>
             <div className="Detailpayment">
               <span>
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦65,500</h1>
+              <h1>₦110,000</h1>
             </div>
             <div className="Detailpayment">
               <span>
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦65,500</h1>
+              <h1>₦110,000</h1>
             </div>
             <div className="Detailpayment">
               <span>
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦65,500</h1>
+              <h1>₦110,000</h1>
             </div>
           </div>
           <div className="rightBottom">
@@ -119,13 +129,15 @@ const PaymentDetails = () => {
               <span>This amount should exceed: ₦141,500</span>
             </div>
           </div>
-          <div className="Button1">
+          <div className="buttons">
             <button>
-              <Buttonalt text="PAY NOW" link="/details" />
-            </button>{" "}
+              <Buttonalt text="Next" link="" />
+            </button>
+
             <button>SKIP</button>
           </div>
         </div>
+
       </div>
     </div>
   );

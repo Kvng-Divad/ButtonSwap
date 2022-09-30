@@ -91,7 +91,7 @@ const AppSummary = () => {
           <div className="box">
             <hr />
             <span>COLOR</span>
-            <div className="holde">
+            <div className="holder">
               <div className="circle"></div>
               <p>AIpine Green</p>
             </div>
