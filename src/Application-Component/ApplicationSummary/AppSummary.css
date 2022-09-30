@@ -23,7 +23,7 @@ h1 {
   height: 200vh;
   padding-top: 50px;
 }
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .mainBody {
     display: flex;
     flex-direction: column;
@@ -54,7 +54,7 @@ h1 {
     height: 400px;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .mainLeft {
     width: 800px;
   }
@@ -166,7 +166,7 @@ h1 {
   /* display: none; */
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .right {
     width: 80%;
   }
@@ -185,7 +185,7 @@ h1 {
   margin-bottom: 5px;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .right p {
     margin-top: 20px;
   }
@@ -208,11 +208,6 @@ h1 {
   margin-bottom: 8px;
 }
 
-/* span {
-  opacity: 0.5;
-  text-transform: uppercase;
-} */
-
 .name {
   margin-top: 40px;
 }
@@ -225,15 +220,15 @@ h1 {
   color: #e3000f;
 }
 
-.holder {
+.holde {
   display: flex;
   align-items: center;
   width: 150px;
   justify-content: space-between;
 }
 
-@media (max-width: 425px) {
-  .holder {
+@media (max-width: 700px) {
+  .holde {
     width: 120px;
   }
 }
@@ -249,7 +244,7 @@ h1 {
   flex-direction: column;
   margin-top: 15px;
 }
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .paymentHolder {
     margin-bottom: 20px;
   }
@@ -285,7 +280,7 @@ h1 {
   width: 60%;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .payHold {
     width: 100%;
   }
@@ -312,7 +307,7 @@ h1 {
   cursor: pointer;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .bttn {
     width: 200px;
   }

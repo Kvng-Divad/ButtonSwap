@@ -5,56 +5,65 @@
   display: flex;
   height: 100%;
   min-height: 100vh;
- 
 }
-@media (max-width: 425px) {
-  .mainBodyPayment{
-  flex-direction:column;
- 
+@media (max-width: 700px) {
+  .mainBodyPayment {
+    flex-direction: column;
   }
-
-
+}
+.boxe {
+  margin-top: 10px;
 }
 
+.boxe p {
+  text-align: unset;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: unset;
+  opacity: 0.7;
+  margin: 15px 0;
+  text-transform: capitalize;
+}
+
+.boxe hr {
+  margin-bottom: 8px;
+}
+
+.text {
+  opacity: 0.5;
+}
 .leftPay {
   width: 50%;
   display: flex;
   align-items: flex-end;
 }
-@media (max-width: 425px) {
-  .leftPay{
- width:100%
+@media (max-width: 700px) {
+  .leftPay {
+    width: 100%;
   }
-
-
 }
 .leftHolder {
   width: 80%;
   margin-top: 50px;
 }
-@media (max-width: 425px) {
-
-  .leftHolder{
-    width:90%;
-    
+@media (max-width: 700px) {
+  .leftHolder {
+    width: 90%;
   }
-  
-  }
+}
 
 .rightPay {
   background: white;
   width: 50%;
   padding-left: 40px;
 }
-@media (max-width: 425px) {
-
-  .rightPay{
-    width:100%;
+@media (max-width: 700px) {
+  .rightPay {
+    width: 100%;
     padding: 20px 0px;
     padding-left: 40px;
   }
-  
-  }
+}
 .leftHolder hr {
   background: rgba(0, 0, 0, 0.2);
   height: 1px;
@@ -70,10 +79,17 @@
   margin-bottom: 20px;
 }
 
+.leftHolder h4 {
+  margin-left: 15px;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 18px;
+}
+
 .leftPay {
   display: flex;
   flex-direction: column;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 .paymentLeft {
@@ -83,13 +99,11 @@
   flex-direction: column;
   align-items: center;
 }
-@media (max-width: 425px) {
-
-.paymentLeft{
-  width:100%;
-  padding-bottom: 30px;
-}
-
+@media (max-width: 700px) {
+  .paymentLeft {
+    width: 100%;
+    padding-bottom: 30px;
+  }
 }
 
 .paymentLeft h3 {
@@ -100,6 +114,8 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  width: 300px;
+  justify-content: space-between;
 }
 
 .payment-details {
@@ -111,6 +127,7 @@
   font-size: 25px;
   line-height: 1;
   margin-left: 40px;
+  font-weight: bold;
 }
 
 .top-payment p {
@@ -123,6 +140,8 @@
   margin-top: 7px;
   align-items: center;
   margin-left: 20px;
+  width: 240px;
+  justify-content: space-between;
 }
 
 .leftList p {
@@ -130,11 +149,14 @@
   opacity: 0.5;
   margin-right: 30px;
 }
+.leftList h4 {
+  opacity: 0.5;
+  font-weight: bold;
+}
 
 .rightPay h3 {
   margin-top: 20px;
 }
-
 
 .Detailpayment {
   display: flex;
@@ -149,6 +171,10 @@
   margin-left: 10px;
   margin-right: 55px;
 }
+.Detailpayment h1 {
+  font-weight: bold;
+  font-size: 15px;
+}
 
 .rightBottom {
   width: 70%;
@@ -156,15 +182,10 @@
   margin-bottom: 50px;
 }
 
-@media (max-width: 425px) {
-
-  .rightBottom{
- 
-  }
-  
-  }
-  
-
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
 .rightBottom h5 {
   text-align: center;
 }
@@ -204,5 +225,35 @@
   margin-top: 70px;
   margin-bottom: 70px;
   width: 100%;
+  margin-left: -40px;
+}
 
+.detailBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.detailBottom button {
+  color: #f3000f;
+}
+
+.Button1 {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.but {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+
+@media (max-width: 768px) {
+  .Button1 {
+    justify-content: center;
+  }
 }
