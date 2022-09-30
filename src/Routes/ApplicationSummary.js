@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Application-Component/Header/Header";
+import Topbar from "../Dashboard-Components/Topbar/Topbar";
 import AppSummary from "../Application-Component/ApplicationSummary/AppSummary";
 
 const ApplicationSummary = () => {
   return (
-    <div className="ApplicationSummary">
-      <Header />
+    <div className="dashboard">
+      <Topbar />
       <AppSummary />
     </div>
   );

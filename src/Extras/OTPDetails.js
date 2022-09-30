@@ -35,7 +35,7 @@ const OTPDetails = () => {
         { headers: { "Access-Control-Allow-Origin": "*" } }
       )
       .then(res => {
-        hist("");
+        hist("/paymentdeatil");
       })
       .catch(err => {
         const message = err?.response

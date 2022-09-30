@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Application-Component/Header/Header";
+import Topbar from "../Dashboard-Components/Topbar/Topbar";
 import PaymentDetails from "../Application-Component/PaymentDetail/PaymentDetails";
 
 const PaymentDetail = () => {
   return (
-    <div className="PaymentDetail">
-      <Header />
+    <div className="dashboard">
+      <Topbar />
       <PaymentDetails />
     </div>
   );

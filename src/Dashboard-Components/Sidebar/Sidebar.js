@@ -108,10 +108,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <div className="signout flex">
+        <NavLink to='/signin' className="signout flex">
           <VscSignOut className="menu-icon2"/>
           <p>Sign Out</p>
-        </div>
+        </NavLink>
       </div>
     </motion.div>
   );

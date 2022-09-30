@@ -30,6 +30,7 @@ const SignIn = () => {
 export default SignIn;
 
 const Container = styled.div`
+  margin:7rem 0;
   height: 80vh;
   width: 100%;
   display: flex;
@@ -50,16 +51,18 @@ const TextHolder = styled.div`
 
 const Text = styled.div`
   font-weight: bold;
-  font-size: 20px;
+  font-size: var(--font-size-m);
 `;
 
 const SmallText = styled.div`
-  font-size: 13px;
+  font-size: var(--font-size-sm);
+  coloe:var(text-color);
+  opacity:.7;
 `;
 
 const Wrapper = styled.div`
   height: 400px;
-  width: 70%;
+  width: 60%;
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -88,15 +91,16 @@ const FormHolder = styled.div`
       width: 350px;
     }
     @media screen and (max-width: 375px) {
-      width: 300px;
+      width: 250px;
     }
     @media screen and (max-width: 320px) {
-      width: 250px;
+      width: 225px;
     }
   }
 `;
 
-const Labels = styled.div``;
+const Labels = styled.div`
+font-size: var(--font-size-nr);`;
 
 const Forget = styled.div`
   display: flex;
@@ -104,6 +108,7 @@ const Forget = styled.div`
   margin-top: 10px;
   color: var(--skin-color);
   cursor: pointer;
+  font-size: var(--font-size-sm)
 `;
 
 const Button = styled.div`
@@ -111,13 +116,19 @@ const Button = styled.div`
   width: 150px;
   display: flex;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   background: var(--bg-color-2);
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border: 1px solid var(--skin-color);
+  border-radius: 20px;
   cursor: pointer;
   @media screen and (max-width: 375px) {
-    width: 250px;
+    width: 200px;
+  }
+  :hover{
+    color: var(--text-color);
+    border: 1px solid var(--skin-color);
+    background: white;
   }
 `;
