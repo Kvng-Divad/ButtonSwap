@@ -1,6 +1,5 @@
 import React from "react";
 import "./AppSummary.css";
-import logo from "./logo.png";
 import phone from "./phone.png";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -11,8 +10,6 @@ const AppSummary = () => {
       <div className="mainBody">
         <div className="left">
           <div className="mainLeft">
-            <img src={logo} alt="" />
-            <hr />
             <div className="imageHolder">
               <div className="leftArrow">
                 <ChevronLeftIcon />
@@ -94,7 +91,7 @@ const AppSummary = () => {
           <div className="box">
             <hr />
             <span>COLOR</span>
-            <div className="holder">
+            <div className="holde">
               <div className="circle"></div>
               <p>AIpine Green</p>
             </div>
@@ -112,26 +109,25 @@ const AppSummary = () => {
               <div className="payHold">
                 {" "}
                 <span className="pay">Down payment</span>
-                <div>#110,000</div>
+                <div>₦110,000</div>
               </div>
               <div className="payHold">
                 {" "}
                 <span className="pay">1st payment</span>
-                <div>#63,500</div>
+                <div>₦63,500</div>
               </div>
               <div className="payHold">
                 {" "}
                 <span className="pay">2nd payment</span>
-                <div>#63,500</div>
+                <div>₦63,500</div>
               </div>
               <div className="payHold">
                 {" "}
                 <span className="pay">3rd payment</span>
-                <div>#63,500</div>
+                <div>₦63,500</div>
               </div>
             </div>
           </div>
-          <hr />
         </div>
       </div>
       <div className="btn">

@@ -32,7 +32,7 @@ const Incomes = () => {
     useFormik({
       initialValues,
       enableReinitialize: true,
-      onSubmit: values => {
+      onSubmit: (values) => {
         setApplication({
           ...application,
           user: {
@@ -65,13 +65,13 @@ const Incomes = () => {
 
       <div className="Container grid">
         <div className="form-container grid">
-          <div className="section-title">
+          <div className="holder">
             <h3>Other information</h3>
             <p>Kindly provide your information in the required fields</p>
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="input grid">
+            <div className="cont">
               <FormControl
                 isInvalid={touched.monthly_income && errors.monthly_income}
               >
@@ -97,7 +97,7 @@ const Incomes = () => {
               </FormControl>
             </div>
 
-            <div className="input grid">
+            <div className="cont1">
               <FormControl>
                 <label className="label">Bank Branch</label>
 
@@ -106,13 +106,13 @@ const Incomes = () => {
                   spacing={3}
                   name="bank_branch"
                   value={values.bank_branch}
-                  onChange={event =>
+                  onChange={(event) =>
                     setFieldValue("bank_branch", event.target.value)
                   }
                   className="filter"
                   size="lg"
                 >
-                  {banks.map(bank => (
+                  {banks.map((bank) => (
                     <option
                       style={{ textTransform: "uppercase" }}
                       key={bank}

@@ -1,31 +1,37 @@
-import React from "react";
 import "./PaymentDetails.css";
+
+import Buttonalt from "../../Components/Buttonalt/Buttonalt";
+import React from "react";
 
 const PaymentDetails = () => {
   return (
     <div className="wrapper">
-      <h1>Payment Details</h1>
+      <h1 className="name">Payment Details</h1>
       <div className="mainBodyPayment">
         <div className="leftPay">
           <div className="leftHolder">
-            <div className="box">
-              <span>Full Name</span>
-              <p>jeremimah jane johnson</p>
+            <div className="boxe">
+              <span className="text">MODEL</span>
+              <p>Iphone 13 pro</p>
             </div>
-            <div className="box">
+            <div className="boxe">
               <hr />
-              <span>work email</span>
-              <p>jemimah@gmmail.com</p>
+              <span className="text">CAPACITY</span>
+              <p>128GB</p>
             </div>
-            <div className="box">
+            <div className="boxe">
               <hr />
-              <span>phone number</span>
-              <p>07082254216</p>
+              <span className="text">COLOR</span>
+              <p>ALphine Green</p>
             </div>
-            <div className="box">
+            <div className="boxe">
               <hr />
-              <span>delivery address</span>
-              <p>42, canaan street, osberre 2 estate, ikoyi, lagos</p>
+              <span className="text">PAYMENT PLAN</span>
+              <h4>Monthly Payment</h4>
+              <div className="detailBottom">
+                <p>3 months change</p>
+                <button>Change</button>
+              </div>
             </div>
             <hr />
           </div>
@@ -37,25 +43,25 @@ const PaymentDetails = () => {
                   <input type="radio" />
                 </span>
                 <p>Down Payment</p>
-                <h1>₦110,000</h1>
+                <h1>₦141,500</h1>
               </div>
               <div className="leftList">
-                <p>1st montly payment:</p>
-                <h4>₦63,500</h4>
+                <p>30% Down payment:</p>
+                <h4>₦110,000</h4>
               </div>
               <div className="leftList">
-                <p>2nd montly payment:</p>
-                <h4>₦63,500</h4>
+                <p>Insurance:</p>
+                <h4>₦30,000</h4>
               </div>
               <div className="leftList">
-                <p>3rd montly payment:</p>
-                <h4>₦63,500</h4>
+                <p>Shipping(flat rate):</p>
+                <h4>₦1,500</h4>
               </div>
             </div>
           </div>
         </div>
         <div className="rightPay">
-          <div className="box">
+          <div className="boxe">
             <p>select payment method</p>
             <hr />
           </div>
@@ -66,40 +72,40 @@ const PaymentDetails = () => {
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦110,000</h1>
+              <h1>₦65,500</h1>
             </div>
             <div className="leftList">
-              <p>1st montly payment:</p>
-              <h4>₦63,500</h4>
+              <p>30% Down payment:</p>
+              <h4>₦110,000</h4>
             </div>
             <div className="leftList">
-              <p>2nd montly payment:</p>
-              <h4>₦63,500</h4>
+              <p>Insurance:</p>
+              <h4>₦30,000</h4>
             </div>
             <div className="leftList">
-              <p>3rd montly payment:</p>
-              <h4>₦63,500</h4>
+              <p>Shipping(flat rate):</p>
+              <h4>₦1,500</h4>
             </div>
             <div className="Detailpayment">
               <span>
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦110,000</h1>
+              <h1>₦65,500</h1>
             </div>
             <div className="Detailpayment">
               <span>
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦110,000</h1>
+              <h1>₦65,500</h1>
             </div>
             <div className="Detailpayment">
               <span>
                 <input type="radio" />
               </span>
               <p>Down Payment</p>
-              <h1>₦110,000</h1>
+              <h1>₦65,500</h1>
             </div>
           </div>
           <div className="rightBottom">
@@ -112,6 +118,12 @@ const PaymentDetails = () => {
               </div>
               <span>This amount should exceed: ₦141,500</span>
             </div>
+          </div>
+          <div className="Button1">
+            <button>
+              <Buttonalt text="PAY NOW" link="/details" />
+            </button>{" "}
+            <button>SKIP</button>
           </div>
         </div>
       </div>

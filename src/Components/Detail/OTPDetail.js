@@ -39,7 +39,7 @@ const OTPDetail = () => {
         hist("/application");
       })
       .catch(err => {
-        const message = err?.response
+        const message = err?.response?.data
           ? err?.response?.data?.message
           : err?.message;
         toast(message, {

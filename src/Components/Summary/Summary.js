@@ -83,28 +83,35 @@ const Summarys = () => {
             <div className="order-details">
               <h4>PAYMENT PLAN</h4>
               <p>{paymentPlan}</p>
-              <p>{paymentTerms}</p>
+              {application?.meta?.plan === "once" ? (
+                <p></p>
+              ) : (
+                <p>{paymentTerms}</p>
+              )}
             </div>
 
             <div className="order-details">
               <h4>TOTAL</h4>
               {application?.meta?.plan === "once" ? (
-                <p> {conveneNumber(product?.meta?.price?.min)} </p>
+                <p>{conveneNumber(product?.meta?.price?.min)}</p>
               ) : (
                 <>
                   <p>Down Payment: {conveneNumber(down / 100)}</p>
                   {[...Array(tenure).keys()].map(number => {
+                    const FinalDividend = Math.round(dividend);
                     const cardinal = Number(String(number + 1).slice(-1));
                     return (
-                      <p key={number}>{`${number + 1}${
-                        cardinal === 1
-                          ? "st"
-                          : cardinal === 2
-                          ? "nd"
-                          : cardinal === 3
-                          ? "rd"
-                          : "th"
-                      } payment: ${conveneNumber(dividend / 100)}`}</p>
+                      <p key={number}>
+                        {`${number + 1}${
+                          cardinal === 1
+                            ? "st"
+                            : cardinal === 2
+                            ? "nd"
+                            : cardinal === 3
+                            ? "rd"
+                            : "th"
+                        } payment: ${conveneNumber(FinalDividend / 100)}`}
+                      </p>
                     );
                   })}
                 </>
@@ -112,10 +119,12 @@ const Summarys = () => {
             </div>
           </div>
 
-          <div className="payment1"></div>
-
           <div className="Button grid">
-            <Buttonalt text="Apply" link="/details" />
+            {application?.meta?.plan === "once" ? (
+              <Buttonalt text="Pay now" link="/Pay-now" />
+            ) : (
+              <Buttonalt text="Apply" link="/details" />
+            )}
           </div>
         </div>
       </div>

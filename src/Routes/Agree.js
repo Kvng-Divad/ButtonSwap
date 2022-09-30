@@ -12,4 +12,3 @@ const Agree = () => {
 };
 
 export default Agree;
-

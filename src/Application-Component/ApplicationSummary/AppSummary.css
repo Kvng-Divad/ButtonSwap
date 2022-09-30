@@ -18,12 +18,12 @@ h1 {
 .mainBody {
   margin-top: 30px;
   width: 100%;
-  background-color: #eee;
+  background-color: #fafafa;
   display: flex;
   height: 200vh;
   padding-top: 50px;
 }
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .mainBody {
     display: flex;
     flex-direction: column;
@@ -48,9 +48,15 @@ h1 {
   flex-direction: column;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
   .mainLeft {
-    width: 700px;
+    width: 500px;
+    height: 400px;
+  }
+}
+@media (max-width: 700px) {
+  .mainLeft {
+    width: 800px;
   }
 }
 
@@ -160,6 +166,12 @@ h1 {
   /* display: none; */
 }
 
+@media (max-width: 700px) {
+  .right {
+    width: 80%;
+  }
+}
+
 .right hr {
   background: rgb(216, 216, 216);
   height: 1px;
@@ -173,7 +185,7 @@ h1 {
   margin-bottom: 5px;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .right p {
     margin-top: 20px;
   }
@@ -196,11 +208,6 @@ h1 {
   margin-bottom: 8px;
 }
 
-span {
-  opacity: 0.5;
-  text-transform: uppercase;
-}
-
 .name {
   margin-top: 40px;
 }
@@ -213,15 +220,15 @@ span {
   color: #e3000f;
 }
 
-.holder {
+.holde {
   display: flex;
   align-items: center;
   width: 150px;
   justify-content: space-between;
 }
 
-@media (max-width: 425px) {
-  .holder {
+@media (max-width: 700px) {
+  .holde {
     width: 120px;
   }
 }
@@ -237,9 +244,9 @@ span {
   flex-direction: column;
   margin-top: 15px;
 }
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .paymentHolder {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 }
 
@@ -273,7 +280,7 @@ span {
   width: 60%;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .payHold {
     width: 100%;
   }
@@ -300,7 +307,7 @@ span {
   cursor: pointer;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 700px) {
   .bttn {
     width: 200px;
   }

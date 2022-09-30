@@ -1,25 +1,24 @@
-.summary-card{
-    padding: 0 1rem;
+.summary-card {
+  padding: 0 1rem;
 }
-.summary-card h3{
-    font-size: 1.25rem;
-    color: var(--text-color);
-    font-weight: 700;
+.summary-card h3 {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  font-weight: 700;
 }
-.summary-detail{
-    grid-template-columns: repeat(2, 1fr);
+.summary-detail {
+  grid-template-columns: repeat(2, 1fr);
 }
-.summary-detail-left{
-    gap: .15rem;
+.summary-detail-left {
+  gap: 0.15rem;
 }
-.summary-detail-left h4{
-    font-size: var(--font-size-nr);
+.summary-detail-left h4 {
+  font-size: var(--font-size-nr);
 }
-.summary-detail-center{
-    
-    justify-self: flex-end;
+.summary-detail-center {
+  justify-self: flex-end;
 }
-.summary-detail-center p{
-    font-size: var(--font-size-sm);
-    color: var(--text-color2);
+.summary-detail-center p {
+  font-size: var(--font-size-sm);
+  color: var(--text-color2);
 }
