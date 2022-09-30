@@ -19,7 +19,7 @@
   height: 40vh;
   object-fit: cover;
 }
-.right {
+.rights {
   align-items: center;
 }
 .overlay {
@@ -60,7 +60,7 @@
 }
 .seeMore{
   font-size: var(--font-size-nr);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--skin-color);
 }
 .item {

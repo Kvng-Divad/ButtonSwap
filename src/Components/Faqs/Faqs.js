@@ -123,7 +123,7 @@ const Faqs = () => {
               
             </div>
 
-            <div className='right grid'>
+            <div className='rights grid'>
 
               <div className="title grid">
                   <h3>FREQUENTLY ASKED QUESTIONS</h3>
