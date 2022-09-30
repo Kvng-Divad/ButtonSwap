@@ -187,6 +187,7 @@ const Offer = () => {
             )?.image;
             const name = product?.name;
             const price = product?.meta?.price?.min;
+            
 
             const rate = 0.05;       
             const principal = price * 0.7;

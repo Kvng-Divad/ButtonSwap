@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { CreateContext } from "./Context";
-
 import OTPInput from "otp-input-react";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../../constants";
