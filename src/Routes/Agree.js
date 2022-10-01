@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Application-Component/Header/Header";
+import Topbar from "../Dashboard-Components/Topbar/Topbar";
 import Agreement from "../Application-Component/Agreement/Agreement";
 
 const Agree = () => {
   return (
-    <div className="Agree">
-      <Header />
+    <div className="dashboard">
+      <Topbar />
       <Agreement />
     </div>
   );

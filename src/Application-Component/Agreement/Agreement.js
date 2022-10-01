@@ -1,12 +1,24 @@
 import "./Agreement.css";
-
-import Buttonalt from "../../Components/Buttonalt/Buttonalt";
 import React from "react";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
+import Buttonalt from "../../Components/Buttonalt/Buttonalt";
 
 const Task2 = () => {
   return (
     <div className="wrapper">
-      <div className="bigText">Loan Agreement and Insurance</div>
+      <div className="section-head grid">
+        <div
+          className="hero-icon flex"
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          <ChevronLeftIcon className="heroicon" />
+        </div>
+
+        <h3 className="hero-title">Loan Agreement and Insurance</h3>
+      </div>
+      
       <div className="Holder">
         <div className="forHolder">
           <div className="smallTxt">Loan Agreement</div>
@@ -193,7 +205,7 @@ const Task2 = () => {
       </div>
       <div className="buttons">
         <button>
-          <Buttonalt text="Next" link="/details" />
+          <Buttonalt text="Next" link="/paymentdetail" />
         </button>
         <button>Skip</button>
       </div>

@@ -48,6 +48,21 @@
   font-weight: 400;
   color: var(--text-color2);
 }
+.phonePrice{
+  gap: .5rem;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+.minmaxprices{
+  font-size: var(--font-size-nr);
+  font-weight: 500;
+  color: var(--text-color) !important; 
+}
+.hyphen{
+  font-size: var(--font-size-nr);
+  font-weight: 500;
+  color: var(--text-color2);
+}
 .order-left {
   background-color: #eee;
   padding: 2rem;

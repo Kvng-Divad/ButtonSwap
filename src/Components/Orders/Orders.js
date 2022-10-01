@@ -47,7 +47,7 @@ const Orders = () => {
     image => image?.image?.length > 1
   )?.image;
   const name = product?.name;
-
+  const maxprice = product?.meta?.price?.max;
   const price = product?.meta?.price?.min;
             const rate = 0.05;       
             const principal = price * 0.7;
@@ -136,6 +136,37 @@ const Orders = () => {
             <div className="order-details grid">
               <h4>MODEL</h4>
               <h3>{name}</h3>
+              </div>
+
+              <div className="order-details grid">
+                <h4>PRICES</h4>
+
+                {price === maxprice ? (
+                  <div className="phonePrice flex">
+
+                    <p className="minmaxprices">
+                      {conveneNumber(price)}
+                    </p>
+
+                  </div>
+                ):(
+                  <div className="phonePrice flex">
+              
+                  <p className="minmaxprices">
+                    {conveneNumber(price)}
+                  </p>
+
+                  <span className="hyphen">---</span>
+
+                  <p className="minmaxprices">
+                    {conveneNumber(maxprice)} 
+                  </p>
+
+                </div>
+                )}
+
+                  
+
               <p className="phone-price">
                 From <span>{conveneNumber(amount)}</span> per month
               </p>
