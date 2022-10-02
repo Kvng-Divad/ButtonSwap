@@ -111,7 +111,7 @@
 }
 @media screen and (max-width: 500px) {
   .phone-img.empty::after {
-    width: 115px;
+    width: 185px;
   }
 }
 @media (min-width: 650px) {

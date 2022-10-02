@@ -12,8 +12,7 @@ import conveneNumber from "../../utils/convene-number";
 import axios from "axios";
 import { API_URI } from "../../constants";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const CheckOut = () => {
   const navigate = useNavigate();
@@ -147,7 +146,6 @@ const CheckOut = () => {
           />
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

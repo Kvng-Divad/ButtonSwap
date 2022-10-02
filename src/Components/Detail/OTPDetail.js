@@ -8,8 +8,7 @@ import { CreateContext } from "./Context";
 import OTPInput from "otp-input-react";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../../constants";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const OTPDetail = () => {
   const { authEmail } = useContext(CreateContext);
@@ -19,12 +18,16 @@ const OTPDetail = () => {
     otp: yup.string().required(),
   });
   const [OTP, setOTP] = React.useState("");
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
   const {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(authSchema),
   });
+
   const onSubmit = () => {
+    setIsSubmitting(true);
     axios
       .post(
         `${API_URI}/auth/verify-otp`,
@@ -35,19 +38,23 @@ const OTPDetail = () => {
         { headers: { "Access-Control-Allow-Origin": "*" } }
       )
       .then(res => {
+        setIsSubmitting(false);
+        toast(res.data?.message, { type: "success" });
         hist("/application");
       })
       .catch(err => {
+        setIsSubmitting(false);
         const message = err?.response?.data
           ? err?.response?.data?.message
           : err?.message;
         toast(message, {
-          type: "success",
+          type: "error",
         });
       });
 
     axios.defaults.withCredentials = true;
   };
+
   return (
     <div>
       <Form
@@ -68,6 +75,7 @@ const OTPDetail = () => {
               color: "#000",
               backgroundColor: "white",
               zIndex: "999",
+              marginTop: "10px",
             }}
             value={OTP}
             onChange={setOTP}
@@ -81,10 +89,9 @@ const OTPDetail = () => {
 
         <br />
         <Button disabled={OTP.length !== 4} type="submit" bg="darkorange">
-          Verify
+          {isSubmitting ? "Verifying..." : "Verify"}
         </Button>
       </Form>
-      <ToastContainer />
     </div>
   );
 };
