@@ -36,25 +36,25 @@ const Orders = () => {
   //const logo = product?.brand?.image;
 
   const image = product?.meta?.images?.find(
-    (image) => image?.image?.length > 1
+    image => image?.image?.length > 1
   )?.image;
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const image2 = product?.meta?.images?.find(
     image => image?.image?.length > 1
   )?.image;
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const image3 = product?.meta?.images?.find(
     image => image?.image?.length > 1
   )?.image;
   const name = product?.name;
   const maxprice = product?.meta?.price?.max;
   const price = product?.meta?.price?.min;
-            const rate = 0.05;       
-            const principal = price * 0.7;
-            const months = 6;
-            const init = parseFloat(principal / months);
-            const increment = rate * init;
-            const amount = parseFloat(increment + init);
+  const rate = 0.05;
+  const principal = price * 0.7;
+  const months = 6;
+  const init = parseFloat(principal / months);
+  const increment = rate * init;
+  const amount = parseFloat(increment + init);
 
   const colors = product?.meta?.colors;
   const camera = product?.components?.camera?.join(" ");
@@ -92,15 +92,12 @@ const Orders = () => {
       <div className="order-container grid">
         <div className="order-left grid">
           <div className="order-left-images grid">
-            
             <div className="order-img">
-            <img
+              <img
                 src={image || noImage}
                 style={{ width: !image ? "100%" : "" }}
                 alt="img"
               />
-            
-              
             </div>
           </div>
 
@@ -176,7 +173,7 @@ const Orders = () => {
               <div className="order-details">
                 <h4>CAPACITY</h4>
                 <HStack>
-                  {ram.map((value) => {
+                  {ram.map(value => {
                     return (
                       <RadioCard
                         onChange={() => {
@@ -234,7 +231,7 @@ const Orders = () => {
               <div className="order-details">
                 <h4>PAYMENT PLAN</h4>
                 <HStack className="radios-label flex">
-                  {plans.map((plan) => {
+                  {plans.map(plan => {
                     return (
                       <RadioCard
                         onChange={() =>
@@ -267,7 +264,7 @@ const Orders = () => {
                     maxW="100px"
                     max={6}
                     defaultValue={application.meta.terms.tenure}
-                    onChange={(value) =>
+                    onChange={value =>
                       setApplication({
                         ...application,
                         meta: {
@@ -290,7 +287,7 @@ const Orders = () => {
 
                   <Select
                     disabled={oneTime}
-                    onChange={(event) =>
+                    onChange={event =>
                       setApplication({
                         ...application,
                         meta: {

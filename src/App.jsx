@@ -29,6 +29,8 @@ import { useGetUser } from "./operations/user.operation";
 import { useGetUserApplications } from "./operations/application.operation";
 import { useGetSingleProduct } from "./operations/product.operation";
 import PayNowPage from "./Routes/PayNowPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const UserContext = createContext();
 
@@ -92,6 +94,7 @@ function App() {
             <Route path="/agree" element={<Agree />} />
           </Routes>
         </div>
+        <ToastContainer />
       </toggleContext.Provider>
     </UserContext.Provider>
   );

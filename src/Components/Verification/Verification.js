@@ -18,8 +18,7 @@ import axios from "axios";
 import { applicationState } from "../../data/state";
 import { useRecoilState } from "recoil";
 import { API_URI } from "../../constants";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const defaultInfo = { message: "", status: "" };
 
@@ -31,6 +30,7 @@ const Verify = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [info, setInfo] = React.useState(defaultInfo);
+  const isMobile = window.innerWidth <= 768;
 
   function startCameraMaxResolution(idealFacingMode) {
     if (cameraPhoto) {
@@ -58,37 +58,50 @@ const Verify = () => {
     }
   }
 
+  function urltoFile(url, filename, mimeType) {
+    return fetch(url)
+      .then(function (res) {
+        return res.arrayBuffer();
+      })
+      .then(function (buf) {
+        return new File([buf], filename, { type: mimeType });
+      });
+  }
+
   const checkBvn = () => {
     stopCamera();
-    const form = new FormData();
-    form.append("idNumber", application.user.bvn);
-    form.append("photoBase64", supplied);
-    axios
-      .post(`${API_URI}/auth/face-match`, form)
-      .then(res => {
-        if (res.data.ok) {
-          const { supplied, stored, face_verification } = res.data.payload;
-          setApplication({
-            ...application,
-            identity: {
-              stored,
-              supplied,
-            },
-            face_verification,
+    urltoFile(supplied, "photoBase64", "img/png").then(file => {
+      const form = new FormData();
+      form.append("idNumber", application.user.bvn);
+      form.append("photoBase64", file);
+      axios
+        .post(`${API_URI}/auth/face-match`, form)
+        .then(res => {
+          if (res.data.ok) {
+            const { supplied, stored, face_verification } = res.data.payload;
+            setApplication({
+              ...application,
+              identity: {
+                stored,
+                supplied,
+              },
+              face_verification,
+            });
+            setIsDisabled(false);
+          }
+        })
+        .catch(error => {
+          console.log({ error });
+          const message = error?.response
+            ? error?.response?.data?.message
+            : error?.message;
+          toast(message, {
+            type: "error",
           });
-          setIsDisabled(false);
-        }
-      })
-      .catch(error => {
-        const message = error?.response
-          ? error?.response?.data?.message
-          : error?.message;
-        toast(message, {
-          type: "error",
         });
-      });
-    setIsDisabled(false);
-    axios.defaults.withCredentials = true;
+      setIsDisabled(false);
+      axios.defaults.withCredentials = true;
+    });
   };
 
   useEffect(() => {
@@ -129,7 +142,9 @@ const Verify = () => {
             className="verify-input grid"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              const facingMode = FACING_MODES.USER;
+              const facingMode = isMobile
+                ? FACING_MODES.USER
+                : FACING_MODES.ENVIRONMENT;
               startCameraMaxResolution(facingMode);
             }}
           >
@@ -199,7 +214,6 @@ const Verify = () => {
           <Buttonalt disabled={isDisabled} text="Next" link="/authentication" />
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

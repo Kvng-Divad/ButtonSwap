@@ -5,20 +5,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { CreateContext } from "./Context";
-import { Center } from "@chakra-ui/react";
-
 import { useRecoilState } from "recoil";
 import { applicationState } from "../../data/state";
-import { Alert, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
 import { API_URI } from "../../constants";
-const defaultInfo = { message: "", status: "" };
+import { toast } from "react-toastify";
 const EmailDetail = () => {
   const { setEmail, authEmail } = useContext(CreateContext);
   const [checkEmail, setCheckEmail] = React.useState("");
-  // eslint-disable-next-line
   const [application, setApplication] = useRecoilState(applicationState);
-  // eslint-disable-next-line
-  const [info, setInfo] = React.useState(defaultInfo);
 
   const authSchema = yup.object({
     email: yup.string().required(),
@@ -52,32 +46,17 @@ const EmailDetail = () => {
         { headers: { "Access-Control-Allow-Origin": "*" } }
       )
       .then(res => {
-        setInfo({ message: res.data.message, status: "success" });
+        toast(res.data?.message, { type: "success" });
       })
       .catch(err => {
         const message = err?.response?.data
           ? err?.response?.data?.message
           : err?.message;
-        setInfo({ message, status: "error" });
+        toast(message, { type: "error" });
       });
   });
   return (
     <div>
-      {info?.message && (
-        <Center>
-          <Alert
-            display={"flex"}
-            justifyContent="space-between"
-            alignSelf={"center"}
-            w={{ base: "90%", md: "50%" }}
-            status={info.status}
-          >
-            <AlertIcon />
-            <AlertTitle>{info?.message}</AlertTitle>
-            <CloseButton onClick={() => setInfo(defaultInfo)} />
-          </Alert>
-        </Center>
-      )}
       <Form onSubmit={onSubmit}>
         <Text></Text>
         <InputHolder>

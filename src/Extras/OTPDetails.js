@@ -8,8 +8,7 @@ import { CreateContext } from "../Components/Detail/Context";
 import OTPInput from "otp-input-react";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../constants";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const OTPDetails = () => {
   const { authEmail } = useContext(CreateContext);
@@ -84,7 +83,6 @@ const OTPDetails = () => {
           Verify
         </Button>
       </Form>
-      <ToastContainer />
     </div>
   );
 };

@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
   Select,
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   CircularProgress,
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   CircularProgressLabel,
 } from "@chakra-ui/react";
-import { useQuery } from "react-query";
+import { useMutation } from "react-query";
 import {
   Pagination,
   PaginationContainer,
@@ -22,14 +22,14 @@ import {
 import { useRecoilState } from "recoil";
 import { productsState, singleProductState } from "../../data/state";
 import noImage from "../../Assets/no-image.png";
-import { Skeleton, SkeletonCircle, SkeletonText, Box} from '@chakra-ui/react'
-import 'react-loading-skeleton/dist/skeleton.css'
+import { Skeleton, SkeletonCircle, SkeletonText, Box } from "@chakra-ui/react";
+import "react-loading-skeleton/dist/skeleton.css";
 
-
-
-const fetchProducts = async (page = 1, brand, take = 12) => {
+const fetchProductsMutation = async ({ page = 1, brand, take = 12 }) => {
   const res = await fetch(
-    `https://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}&brand=${brand}`
+    `https://kezaafrica.herokuapp.com/v1/products/with-images?take=${take}&page=${page}${
+      brand ? `&brand=${brand}` : ""
+    }`
   );
   return res.json();
 };
@@ -41,9 +41,9 @@ const Offer = () => {
   const [loading, setLoading] = useState(false);
   const [, setProduct] = useRecoilState(singleProductState);
   const [products, setProducts] = useRecoilState(productsState);
-  const { status } = useQuery("products", () => fetchProducts(page, brand), {
-    keepPreviousData: true,
-  });
+  const { mutateAsync: fetchProducts, ...fetchProductsResult } = useMutation(
+    fetchProductsMutation
+  );
   const list = products.list;
   const totalCount = products.totalCount;
   const numberOfPages = products.numberOfPages;
@@ -65,14 +65,12 @@ const Offer = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchProducts(page, brand)?.then((data) => {
+    fetchProducts({ page, brand })?.then(data => {
       setProducts(data?.data);
       setLoading(false);
     });
     // eslint-disable-next-line
   }, [page, brand]);
-
-  
 
   return (
     <div className="Container3 grid">
@@ -96,7 +94,7 @@ const Offer = () => {
         variant="filled"
         className="filter"
         size="lg"
-        onClick={(e) => {
+        onChange={e => {
           setBrand(e.target.value);
           setPage(1);
         }}
@@ -110,92 +108,136 @@ const Offer = () => {
         <option value="google">Google</option>
       </Select>
 
-      {(status === "loading" || loading) && (
-       
-      <>  
-        <div className="phone-cards grid">
-
-            <Box padding='3' boxShadow='lg' bg='white'height='250px'>
-              <SkeletonCircle size='15' />
-              <Skeleton mt='3'height='90px' width='140px'  />
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px'  width='140px'/>
+      {(fetchProductsResult.isLoading || loading) && (
+        <>
+          <div className="phone-cards grid">
+            <Box padding="3" boxShadow="lg" bg="white" height="250px">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
             </Box>
 
-            <Box padding='6' boxShadow='lg' bg='white'>
-              <SkeletonCircle size='15'  />
-              <Skeleton mt='3' height='90px' width='140px' />
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
             </Box>
 
-            <Box padding='6' boxShadow='lg' bg='white'>
-              <SkeletonCircle size='15' />
-              <Skeleton mt='3' height='90px'  width='140px'/>
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
             </Box>
 
-            <Box padding='6' boxShadow='lg' bg='white'>
-              <SkeletonCircle size='15' />
-              <Skeleton mt='3' height='90px' width='140px'/>
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
             </Box>
-        
-        </div>
-        <div className="phone-cards grid">
-
-            <Box padding='3' boxShadow='lg' bg='white'height='250px'>
-              <SkeletonCircle size='15' />
-              <Skeleton mt='3'height='90px' width='140px'  />
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px'  width='140px'/>
-            </Box>
-
-            <Box padding='6' boxShadow='lg' bg='white'>
-              <SkeletonCircle size='15'  />
-              <Skeleton mt='3' height='90px' width='140px' />
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
-            </Box>
-
-            <Box padding='6' boxShadow='lg' bg='white'>
-              <SkeletonCircle size='15' />
-              <Skeleton mt='3' height='90px'  width='140px'/>
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+          </div>
+          <div className="phone-cards grid">
+            <Box padding="3" boxShadow="lg" bg="white" height="250px">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
             </Box>
 
-            <Box padding='6' boxShadow='lg' bg='white'>
-              <SkeletonCircle size='15' />
-              <Skeleton mt='3' height='90px' width='140px'/>
-              <SkeletonText mt='3' noOfLines={3} spacing='3' height='20px' width='140px'/>
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
             </Box>
-        
-        </div>
-      </>
 
-          
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
+            </Box>
 
+            <Box padding="6" boxShadow="lg" bg="white">
+              <SkeletonCircle size="15" />
+              <Skeleton mt="3" height="90px" width="140px" />
+              <SkeletonText
+                mt="3"
+                noOfLines={3}
+                spacing="3"
+                height="20px"
+                width="140px"
+              />
+            </Box>
+          </div>
+        </>
       )}
 
-      {status === "error" && (
+      {fetchProductsResult.isError && (
         <div className="progressbar flex">
           <h2 className="progress-label">Error Fetching Data...</h2>
         </div>
       )}
       <div className="phone-cards grid">
-        {!(status === "error" || status === "loading" || loading) &&
+        {!(
+          fetchProductsResult.isError ||
+          fetchProductsResult.isLoading ||
+          loading
+        ) &&
           list?.map((product, index) => {
             const logo = product?.brand?.image;
             const image = product?.meta?.images?.find(
-              (image) => image?.image?.length > 1
+              image => image?.image?.length > 1
             )?.image;
             const name = product?.name;
             const price = product?.meta?.price?.min;
             
 
-            const rate = 0.05;       
+            const rate = 0.05;
             const principal = price * 0.7;
             const months = 6;
             const init = parseFloat(principal / months);
             const increment = rate * init;
             const amount = parseFloat(increment + init);
-           
+
             return (
               <div key={index} className="phone-card grid">
                 <div className="phone-logo grid">
@@ -230,7 +272,7 @@ const Offer = () => {
       <Pagination
         pagesCount={pagesCount}
         currentPage={currentPage}
-        onPageChange={(page) => {
+        onPageChange={page => {
           setCurrentPage(page);
           setPage(page);
         }}
@@ -242,7 +284,7 @@ const Offer = () => {
             justifyContent="center"
             className="page"
           >
-            {pages.map((page) => (
+            {pages.map(page => (
               <PaginationPage
                 className={`page-key${currentPage === page ? " active" : ""}`}
                 key={`pagination_page_${page}`}
