@@ -15,24 +15,25 @@ const PaymentCard = () => {
       icon: icon1,
       name: "Payment so far",
       description: `Next payment: ${conveneNumber(
-        Math.round(application?.payment?.down / 100)
+        Math.round(application?.payment?.down / 100) || 0
       )}`,
       color: "#267D18",
       color2: "#E3000F",
-      value: Math.round(application?.payment?.paid / 100),
+      value: Math.round(application?.payment?.paid / 100) || 0,
       progress: "",
     },
     {
       icon: icon2,
       name: "Payment pending",
       description: `Next payment: ${conveneNumber(
-        Math.round(application?.payment?.down / 100)
+        Math.round(application?.payment?.down / 100) || 0
       )}`,
       color: "#E3000F",
       color2: "#585858",
-      value: Math.round(
-        (application?.payment?.total - application?.payment?.paid) / 100
-      ),
+      value:
+        Math.round(
+          (application?.payment?.total - application?.payment?.paid) / 100
+        ) || 0,
       progress: "",
     },
     {
@@ -41,10 +42,12 @@ const PaymentCard = () => {
       progress: "",
       color: "#8E8E8E",
       color2: "#585858",
-      value: application?.payment?.total / 100,
-      description: `${Math.round(
-        (application?.payment?.paid / application?.payment?.total) * 100
-      )}% complete`,
+      value: application?.payment?.total / 100 || 0,
+      description: `${
+        Math.round(
+          (application?.payment?.paid / application?.payment?.total) * 100
+        ) || 0
+      }% complete`,
     },
   ];
   return (

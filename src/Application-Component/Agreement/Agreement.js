@@ -1,9 +1,83 @@
 import "./Agreement.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import Buttonalt from "../../Components/Buttonalt/Buttonalt";
+import { useFormik } from "formik";
+import numToWords from "num-words";
+import { useUserContext } from "../../App";
+import { useCreateAgreement } from "../../operations/agreement.operation";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+const defaultValues = {
+  day: new Date().getDate(),
+  month: new Date().toLocaleDateString("en-US", { month: "long" }),
+  borrower: "",
+  delivery_address: "",
+  amount: 0,
+  asset_value: 0,
+  delivery_fee: 4000,
+  dividend: 0,
+  months: 0,
+  by: "",
+  date: Date.now(),
+  user: "",
+  application: "",
+};
 
 const Task2 = () => {
+  const navigate = useNavigate();
+  const [signed, setSigned] = useState(null);
+  const { product, application, user } = useUserContext();
+  const [initialValues, setInitialValues] = useState(defaultValues);
+  const { createAgreement, createAgreementResult } = useCreateAgreement();
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues,
+    enableReinitialize: true,
+    onSubmit: values => {
+      const formElement = document.querySelector("form");
+      const form = new FormData(formElement);
+      form.append("signed", signed);
+      form.append("user", user?.id);
+      form.append("application", application?.id);
+      form.append("date", Date.now());
+      form.append("months", application?.meta?.terms?.tenure);
+      form.append("asset_value", product?.meta?.price?.min);
+      form.append("dividend", application?.payment?.dividend);
+
+      createAgreement(form)
+        .then(res => {
+          if (res.data?.ok) {
+            toast(res.data?.message, { type: "success" });
+            navigate("/paymentdetail");
+          }
+        })
+        .catch(error => {
+          const message = error?.response?.data
+            ? error?.response?.data?.message
+            : error?.message;
+          toast(message, { type: "error" });
+        });
+    },
+  });
+
+  useEffect(() => {
+    if (product && application && user) {
+      setInitialValues(initialValues => ({
+        ...initialValues,
+        borrower: user?.full_name,
+        delivery_address: user?.delivery_address,
+        amount: product?.meta?.price?.min * 0.7,
+        asset_value: product?.meta?.price?.min,
+        dividend: application?.payment?.dividend / 100,
+        months: application?.meta?.terms?.tenure,
+        by: user?.full_name,
+        user: user?.id,
+        application: application?.id,
+      }));
+    }
+  }, [product, application, user]);
+
   return (
     <div className="wrapper">
       <div className="section-head grid">
@@ -18,7 +92,7 @@ const Task2 = () => {
 
         <h3 className="hero-title">Loan Agreement and Insurance</h3>
       </div>
-      
+
       <div className="Holder">
         <div className="forHolder">
           <div className="smallTxt">Loan Agreement</div>
@@ -26,11 +100,36 @@ const Task2 = () => {
           <form>
             <p>This Loan Agreement (the “Agreement”) is entered into on the</p>
             <p>
-              <input /> day of <input /> 2022 (the “Effective Date”), by and
-              between Keza Technologies Limited, with an address of 4, Prince
-              Ladejebi Close, Lagos (the “Lender”) and <input /> with an address
-              of Delivery to <input /> (the “Borrower”), collectively “the
-              Parties.”
+              <input
+                name="day"
+                type="text"
+                value={values.day}
+                onChange={handleChange}
+              />{" "}
+              day of{" "}
+              <input
+                name="month"
+                type="text"
+                value={values.month}
+                onChange={handleChange}
+              />{" "}
+              2022 (the “Effective Date”), by and between Keza Technologies
+              Limited, with an address of 4, Prince Ladejebi Close, Lagos (the
+              “Lender”) and{" "}
+              <input
+                name="borrower"
+                type="text"
+                value={values.borrower}
+                onChange={handleChange}
+              />{" "}
+              with an address of Delivery to{" "}
+              <input
+                name="delivery_address"
+                type="text"
+                value={values.delivery_address}
+                onChange={handleChange}
+              />{" "}
+              (the “Borrower”), collectively “the Parties.”
             </p>
             <br />
             <p>
@@ -48,8 +147,15 @@ const Task2 = () => {
             <p>
               1. Loan Amount. The Parties agree that the Lender will loan the
               Borrower NGN
-              <input /> (
-              <input /> only), (the “Loan”).
+              <input
+                name="amount"
+                type="number"
+                value={values.amount}
+                onChange={handleChange}
+              />{" "}
+              (
+              <input readOnly value={numToWords(values.amount)} /> only), (the
+              “Loan”).
             </p>
             <br />
             <p>
@@ -67,15 +173,21 @@ const Task2 = () => {
               4. Loan Purpose. The loan is granted to purchase a smartphone (the
               Asset). The details of the phone is as follows:
             </p>
-            <p> Make:</p>
-            <p> Capacity:</p>
-            <p> Condition:</p>
+            <p> Make: {product?.name}</p>
+            <br />
+            <p> Capacity: {application?.product?.capacity}</p>
+            <br />
+            <p> Condition: {application?.product?.condition}</p>
             <br />
             <p>
               5. Collateral and Asset Value. The asset shall serve as collateral
               for this loan. The Total value of the asset is NGN
-              <input /> (
-              <input /> only).
+              <input value={product?.meta?.price?.min} readOnly /> (
+              <input
+                value={numToWords(product?.meta?.price?.min || 0)}
+                readOnly
+              />{" "}
+              only).
             </p>
             <br />
             <p>
@@ -86,16 +198,28 @@ const Task2 = () => {
             <p>
               7. Equity Contribution. The borrower shall pay an equity
               contribution in the amount of NGN
-              <input /> (
-              <input /> only)before the phone is delivered
+              <input
+                value={values.delivery_fee}
+                type="number"
+                name="delivery_fee"
+                onChange={handleChange}
+              />{" "}
+              (
+              <input
+                value={numToWords(values.delivery_fee)}
+                type="number"
+                readOnly
+              />{" "}
+              only)before the phone is delivered
             </p>
             <br />
             <p>
               8. Repayment. The Parties agree that the Borrower shall pay Lender
               NGN
-              <input /> (
-              <input /> only)every 30 days for a period of <input /> months as
-              the loan installment.
+              <input value={values.dividend} type="number" readOnly /> (
+              <input type="number" readOnly /> only)every 30 days for a period
+              of <input value={values.months} type="number" readOnly /> months
+              as the loan installment.
             </p>
             <br />
             <p>
@@ -186,13 +310,26 @@ const Task2 = () => {
             <br />
             <p>“BORROWER”</p>
             <p>
-              Signed: <input />
+              Signed:{" "}
+              <input
+                type={"file"}
+                onChange={event => setSigned(event.target.files[0])}
+              />
+            </p>
+            <p>Please upload a picture of your signature</p>
+            <br />
+            <p>
+              By:{" "}
+              <input
+                value={values.by}
+                type="text"
+                name="by"
+                onChange={handleChange}
+              />
             </p>
             <p>
-              By: <input />
-            </p>
-            <p>
-              Date: <input />
+              Date:{" "}
+              <input readOnly value={new Date(values.date).toDateString()} />
             </p>
             <br />
             <br />
@@ -205,9 +342,12 @@ const Task2 = () => {
       </div>
       <div className="buttons">
         <button>
-          <Buttonalt text="Next" link="/paymentdetail" />
+          <Buttonalt
+            onClick={handleSubmit}
+            text={createAgreementResult.isLoading ? "Submitting..." : "Next"}
+            link=""
+          />
         </button>
-        <button>Skip</button>
       </div>
     </div>
   );

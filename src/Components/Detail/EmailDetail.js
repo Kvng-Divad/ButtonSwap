@@ -10,9 +10,11 @@ import { applicationState } from "../../data/state";
 import { API_URI } from "../../constants";
 import { toast } from "react-toastify";
 const EmailDetail = () => {
-  const { setEmail, authEmail } = useContext(CreateContext);
-  const [checkEmail, setCheckEmail] = React.useState("");
+  const { setEmail } = useContext(CreateContext);
   const [application, setApplication] = useRecoilState(applicationState);
+  const [checkEmail, setCheckEmail] = React.useState(
+    application?.user?.work_email
+  );
 
   const authSchema = yup.object({
     email: yup.string().required(),
@@ -33,7 +35,7 @@ const EmailDetail = () => {
       ...application,
       user: {
         ...application.user,
-        work_email: authEmail,
+        work_email: checkEmail,
       },
     });
     await axios

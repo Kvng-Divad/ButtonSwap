@@ -17,7 +17,7 @@ const DeviceInfo = ({ title }) => {
             <span className="name">Loan Agreement</span>
 
             <div className="profile-btn grid">
-              <Dashbtn text="complete" type="submit" link="" />
+              <Dashbtn text="complete" type="submit" link="/agree" />
             </div>
           </div>
 
@@ -25,7 +25,7 @@ const DeviceInfo = ({ title }) => {
             <span className="name">Complete Payment</span>
 
             <div className="profile-btn grid">
-              <Dashbtn text="complete" type="submit" link="" />
+              <Dashbtn text="complete" type="submit" link="/paymentdetail" />
             </div>
           </div>
         </div>

@@ -15,7 +15,11 @@ const Submit = () => {
         We will notify you via email once your application has been approved
       </h3>
 
-      <Buttonalt text="Close" link="/dashboard" />
+      <Buttonalt
+        text="Close"
+        link=""
+        onClick={() => window.location.replace("/dashboard")}
+      />
     </div>
   );
 };
