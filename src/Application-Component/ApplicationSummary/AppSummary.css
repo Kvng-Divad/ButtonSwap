@@ -201,7 +201,7 @@ h1 {
   font-weight: unset;
   margin-bottom: unset;
   margin: 15px 0;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 .box hr {

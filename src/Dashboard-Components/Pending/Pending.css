@@ -3,11 +3,11 @@
   padding: 0.75rem;
   border-radius: 0.5rem;
 }
-.pending {
+/* .pending {
   opacity: 0.8;
   pointer-events: none;
-}
-.status{
+} */
+.status {
   font-size: var(--font-size-sm);
   font-weight: 500;
 }

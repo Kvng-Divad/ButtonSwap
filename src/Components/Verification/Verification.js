@@ -82,16 +82,16 @@ const Verify = () => {
             setApplication({
               ...application,
               identity: {
-                stored,
+                stored: stored || face_verification?.photo || "",
                 supplied,
               },
               face_verification,
             });
+            toast("We've successfully received your Selfie!", { type: "info" });
             setIsDisabled(false);
           }
         })
         .catch(error => {
-          console.log({ error });
           const message = error?.response
             ? error?.response?.data?.message
             : error?.message;
@@ -99,7 +99,6 @@ const Verify = () => {
             type: "error",
           });
         });
-      setIsDisabled(false);
       axios.defaults.withCredentials = true;
     });
   };

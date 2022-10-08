@@ -1,27 +1,78 @@
 import React from "react";
 import styled from "styled-components";
+import { useFormik } from "formik";
+import { toast } from "react-toastify";
+import { useLoginUser } from "../../operations/auth.operation";
+import { useRecoilState } from "recoil";
+import { authTokenState } from "../../data/state";
 
 const SignIn = () => {
+  const { loginUser, loginUserResult } = useLoginUser();
+  const [, setToken] = useRecoilState(authTokenState);
+  const handleLoginUser = identity => {
+    loginUser(identity)
+      .then(res => {
+        if (res.data?.ok) {
+          setToken(res.data?.payload?.token);
+          window.location.replace("/dashboard");
+        }
+      })
+      .catch(error => {
+        const message = error?.response?.data
+          ? error?.response?.data?.message
+          : error?.message;
+        toast(message, { type: "error" });
+      });
+  };
+
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    onSubmit: values => {
+      handleLoginUser(values);
+    },
+  });
+
+  const inputStyles = {
+    padding: "10px",
+  };
+
   return (
     <Container>
       <TextHolder>
         {" "}
-        <Text>Welcome Jemimah</Text>
+        <Text>Welcome</Text>
         <SmallText>Sign in to your account</SmallText>
       </TextHolder>
       <Wrapper>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <FormHolder>
             <Labels>Work email</Labels>
-            <input />
+            <input
+              style={inputStyles}
+              name="username"
+              type="text"
+              value={values.username}
+              onChange={handleChange}
+            />
           </FormHolder>
           <FormHolder>
             <Labels>Password</Labels>
-            <input />
+            <input
+              style={inputStyles}
+              name="password"
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+            />
           </FormHolder>
           <Forget>Forget password?</Forget>
+          <Button type="submit">
+            {loginUserResult.isLoading ? "Logging in..." : "Login"}
+          </Button>
         </Form>
-        <Button>SIGN IN</Button>
       </Wrapper>
     </Container>
   );
@@ -30,7 +81,7 @@ const SignIn = () => {
 export default SignIn;
 
 const Container = styled.div`
-  margin:7rem 0;
+  margin: 7rem 0;
   height: 80vh;
   width: 100%;
   display: flex;
@@ -56,8 +107,8 @@ const Text = styled.div`
 
 const SmallText = styled.div`
   font-size: var(--font-size-sm);
-  coloe:var(text-color);
-  opacity:.7;
+  color: var(text-color);
+  opacity: 0.7;
 `;
 
 const Wrapper = styled.div`
@@ -75,8 +126,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const Form = styled.div`
-  margin-top: 20px;
+const Form = styled.form`
+  width: unset;
+  margin: 20px 0 0 0;
 `;
 
 const FormHolder = styled.div`
@@ -100,7 +152,8 @@ const FormHolder = styled.div`
 `;
 
 const Labels = styled.div`
-font-size: var(--font-size-nr);`;
+  font-size: var(--font-size-nr);
+`;
 
 const Forget = styled.div`
   display: flex;
@@ -108,10 +161,10 @@ const Forget = styled.div`
   margin-top: 10px;
   color: var(--skin-color);
   cursor: pointer;
-  font-size: var(--font-size-sm)
+  font-size: var(--font-size-sm);
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   height: 40px;
   width: 150px;
   display: flex;
@@ -126,7 +179,7 @@ const Button = styled.div`
   @media screen and (max-width: 375px) {
     width: 200px;
   }
-  :hover{
+  :hover {
     color: var(--text-color);
     border: 1px solid var(--skin-color);
     background: white;

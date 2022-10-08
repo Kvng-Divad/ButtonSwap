@@ -1,9 +1,9 @@
 import { React, useContext } from "react";
 import "./Sidebar.css";
-import {VscSignOut} from 'react-icons/vsc'
-import {HiOutlineClipboardList} from 'react-icons/hi'
-import {AiOutlineHome} from 'react-icons/ai'
-import {BiWalletAlt} from 'react-icons/bi'
+import { VscSignOut } from "react-icons/vsc";
+import { HiOutlineClipboardList } from "react-icons/hi";
+import { AiOutlineHome } from "react-icons/ai";
+import { BiWalletAlt } from "react-icons/bi";
 //import {BiSupport}from 'react-icons/bi'
 import { NavLink } from "react-router-dom";
 import profile from "../../Assets/profile.svg";
@@ -11,25 +11,26 @@ import male from "../../Assets/male-avatar.png";
 import { motion } from "framer-motion";
 import { toggleContext } from "../../Context/Context";
 import { useUserContext } from "../../App";
+import { useResetRecoilState } from "recoil";
+import { authTokenState } from "../../data/state";
 
-const SidebarData = 
-  [
-    {
-      heading: "Dashboard",
-      link: "/dashboard",
-      icon: AiOutlineHome,
-    },
-    {
-      heading: "My Application",
-      link: "/applications",
-      icon: HiOutlineClipboardList,
-    },
-    {
-      heading:'Payment',
-      link:'/payment',
-      icon: BiWalletAlt,
-    },
-   /*{
+const SidebarData = [
+  {
+    heading: "Dashboard",
+    link: "/dashboard",
+    icon: AiOutlineHome,
+  },
+  {
+    heading: "My Application",
+    link: "/applications",
+    icon: HiOutlineClipboardList,
+  },
+  {
+    heading: "Payment",
+    link: "/payment",
+    icon: BiWalletAlt,
+  },
+  /*{
       heading:'Action Center',
       link:'/history',
       icon: FaHistory,
@@ -39,10 +40,18 @@ const SidebarData =
       link:'/support',
       icon: BiSupport,
     },*/
-  ];
+];
 
 const Sidebar = () => {
   const { expanded, setExpanded } = useContext(toggleContext);
+  const resetToken = useResetRecoilState(authTokenState);
+  const logoutUser = () => {
+    const confirm = window.confirm("Are you sure you want to log out?");
+    if (confirm) {
+      resetToken();
+      window.location.replace("/");
+    }
+  };
   const { user } = useUserContext();
   const reSize = () => {
     if (expanded === true) {
@@ -103,13 +112,13 @@ const Sidebar = () => {
             </div>
 
             <div className="profile-name">
-              <h3>{user?.full_name}</h3>
+              <h3>{user?.full_name?.split(" ")[0]?.toLowerCase()}</h3>
             </div>
           </div>
         </NavLink>
 
-        <NavLink to='/signin' className="signout flex">
-          <VscSignOut className="menu-icon2"/>
+        <NavLink to="" onClick={logoutUser} className="signout flex">
+          <VscSignOut className="menu-icon2" />
           <p>Sign Out</p>
         </NavLink>
       </div>

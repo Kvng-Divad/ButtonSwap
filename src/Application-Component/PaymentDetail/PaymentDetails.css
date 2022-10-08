@@ -5,15 +5,11 @@
   display: flex;
   height: 100%;
   min-height: 100vh;
- 
 }
 @media (max-width: 425px) {
-  .mainBodyPayment{
-  flex-direction:column;
- 
+  .mainBodyPayment {
+    flex-direction: column;
   }
-
-
 }
 
 .leftPay {
@@ -22,24 +18,19 @@
   align-items: flex-end;
 }
 @media (max-width: 425px) {
-  .leftPay{
- width:100%
+  .leftPay {
+    width: 100%;
   }
-
-
 }
 .leftHolder {
   width: 80%;
   margin-top: 50px;
 }
 @media (max-width: 425px) {
-
-  .leftHolder{
-    width:90%;
-    
+  .leftHolder {
+    width: 90%;
   }
-  
-  }
+}
 
 .rightPay {
   background: white;
@@ -47,14 +38,12 @@
   padding-left: 40px;
 }
 @media (max-width: 425px) {
-
-  .rightPay{
-    width:100%;
+  .rightPay {
+    width: 100%;
     padding: 20px 0px;
     padding-left: 40px;
   }
-  
-  }
+}
 .leftHolder hr {
   background: rgba(0, 0, 0, 0.2);
   height: 1px;
@@ -73,7 +62,7 @@
 .leftPay {
   display: flex;
   flex-direction: column;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 .paymentLeft {
@@ -84,12 +73,10 @@
   align-items: center;
 }
 @media (max-width: 425px) {
-
-.paymentLeft{
-  width:100%;
-  padding-bottom: 30px;
-}
-
+  .paymentLeft {
+    width: 100%;
+    padding-bottom: 30px;
+  }
 }
 
 .paymentLeft h3 {
@@ -135,7 +122,6 @@
   margin-top: 20px;
 }
 
-
 .Detailpayment {
   display: flex;
   align-items: center;
@@ -156,14 +142,10 @@
   margin-bottom: 50px;
 }
 
-@media (max-width: 425px) {
-
-  .rightBottom{
- 
+/* @media (max-width: 425px) {
+  .rightBottom {
   }
-  
-  }
-  
+} */
 
 .rightBottom h5 {
   text-align: center;
@@ -204,5 +186,4 @@
   margin-top: 70px;
   margin-bottom: 70px;
   width: 100%;
-
 }

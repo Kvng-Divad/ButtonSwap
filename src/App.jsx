@@ -31,6 +31,7 @@ import { useGetSingleProduct } from "./operations/product.operation";
 import PayNowPage from "./Routes/PayNowPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGetActions } from "./operations/action.api";
 
 export const UserContext = createContext();
 
@@ -44,10 +45,12 @@ function App() {
     useGetUserApplications();
 
   const { getSingleProduct, getSingleProductResult } = useGetSingleProduct();
+  const { getActions, getActionsResult } = useGetActions();
 
   useEffect(() => {
     if (token) {
       getUser();
+      getActions();
       getUserApplications().then(res => {
         if (res.data?.ok) {
           getSingleProduct(res?.data?.payload?.[0]?.product?.id);
@@ -66,6 +69,7 @@ function App() {
         applications: getUserApplicationsResult?.data?.data?.payload,
         application: getUserApplicationsResult?.data?.data?.payload?.[0],
         product: getSingleProductResult?.data?.data?.data,
+        actions: getActionsResult?.data?.data?.payload,
       }}
     >
       <toggleContext.Provider value={{ expanded, setExpanded }}>
